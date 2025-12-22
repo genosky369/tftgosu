@@ -1,0 +1,1595 @@
+{
+  "set": 16,
+  "set_name": "Lore & Legends",
+  "total_champions": 100,
+  "champions": [
+    {
+      "cost": 5,
+      "health": 1400,
+      "attack_damage": 75,
+      "dps": 68,
+      "attack_speed": 0.9,
+      "armor": 70,
+      "mana": "30/100",
+      "name": "T-헥스",
+      "traits": [
+        "필트오버",
+        "마법공학기계"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1200,
+      "attack_damage": 65,
+      "dps": 39,
+      "attack_speed": 0.6,
+      "armor": 60,
+      "mana": "50/130",
+      "name": "가렌",
+      "traits": [
+        "데마시아"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 1100,
+      "attack_damage": 50,
+      "dps": 45,
+      "attack_speed": 0.9,
+      "armor": 65,
+      "mana": "90/140",
+      "name": "갈리오",
+      "traits": [
+        "데마시아",
+        "영웅"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 3,
+      "health": 850,
+      "attack_damage": 45,
+      "dps": 36,
+      "attack_speed": 0.8,
+      "armor": 55,
+      "mana": "0/50",
+      "name": "갱플랭크",
+      "traits": [
+        "빌지워터"
+      ],
+      "classes": [
+        "학살자",
+        "토벌자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 750,
+      "attack_damage": 55,
+      "dps": 39,
+      "attack_speed": 0.7,
+      "armor": 45,
+      "mana": "0/50",
+      "name": "그레이브즈",
+      "traits": [
+        "빌지워터"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 850,
+      "attack_damage": 40,
+      "dps": 32,
+      "attack_speed": 0.8,
+      "armor": 55,
+      "mana": "0/30",
+      "name": "그웬",
+      "traits": [
+        "그림자 군도"
+      ],
+      "classes": [
+        "방해꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1500,
+      "attack_damage": 60,
+      "dps": 39,
+      "attack_speed": 0.65,
+      "armor": 70,
+      "mana": "10/70",
+      "name": "나서스",
+      "traits": [
+        "슈리마"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 7,
+      "health": 3000,
+      "attack_damage": 120,
+      "dps": 60,
+      "attack_speed": 0.5,
+      "armor": 85,
+      "mana": "0/50",
+      "name": "내셔 남작",
+      "traits": [
+        "균열의 재앙",
+        "공허"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 3,
+      "health": 900,
+      "attack_damage": 50,
+      "dps": 30,
+      "attack_speed": 0.6,
+      "armor": 50,
+      "mana": "60/120",
+      "name": "노틸러스",
+      "traits": [
+        "빌지워터"
+      ],
+      "classes": [
+        "전쟁기계",
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1100,
+      "attack_damage": 45,
+      "dps": 41,
+      "attack_speed": 0.9,
+      "armor": 70,
+      "mana": "0/40",
+      "name": "니달리",
+      "traits": [
+        "여사냥꾼",
+        "이쉬탈"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 2,
+      "health": 850,
+      "attack_damage": 50,
+      "dps": 30,
+      "attack_speed": 0.6,
+      "armor": 45,
+      "mana": "15/65",
+      "name": "니코",
+      "traits": [
+        "이쉬탈"
+      ],
+      "classes": [
+        "비전 마법사",
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 900,
+      "attack_damage": 50,
+      "dps": 33,
+      "attack_speed": 0.65,
+      "armor": 50,
+      "mana": "15/75",
+      "name": "다리우스",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1300,
+      "attack_damage": 45,
+      "dps": 36,
+      "attack_speed": 0.8,
+      "armor": 70,
+      "mana": "0/30",
+      "name": "다이애나",
+      "traits": [
+        "타곤"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 45,
+      "dps": 34,
+      "attack_speed": 0.75,
+      "armor": 25,
+      "mana": "60/100",
+      "name": "드레이븐",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 7,
+      "health": 1000,
+      "attack_damage": 35,
+      "dps": 32,
+      "attack_speed": 0.9,
+      "armor": 40,
+      "mana": "0/45",
+      "name": "라이즈",
+      "traits": [
+        "룬 마법사"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 30,
+      "dps": 23,
+      "attack_speed": 0.75,
+      "armor": 30,
+      "mana": "0/50",
+      "name": "럭스",
+      "traits": [
+        "데마시아"
+      ],
+      "classes": [
+        "비전 마법사"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 700,
+      "attack_damage": 45,
+      "dps": 27,
+      "attack_speed": 0.6,
+      "armor": 40,
+      "mana": "40/110",
+      "name": "럼블",
+      "traits": [
+        "요들"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1400,
+      "attack_damage": 75,
+      "dps": 68,
+      "attack_speed": 0.9,
+      "armor": 70,
+      "mana": "0/30",
+      "name": "레넥톤",
+      "traits": [
+        "슈리마"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 3,
+      "health": 1000,
+      "attack_damage": 50,
+      "dps": 33,
+      "attack_speed": 0.65,
+      "armor": 60,
+      "mana": "70/120",
+      "name": "레오나",
+      "traits": [
+        "타곤"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 2,
+      "health": 750,
+      "attack_damage": 50,
+      "dps": 43,
+      "attack_speed": 0.85,
+      "armor": 45,
+      "mana": "0/30",
+      "name": "렉사이",
+      "traits": [
+        "공허"
+      ],
+      "classes": [
+        "토벌자"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 950,
+      "attack_damage": 60,
+      "dps": 36,
+      "attack_speed": 0.6,
+      "armor": 50,
+      "mana": "70/140",
+      "name": "로리스",
+      "traits": [
+        "필트오버"
+      ],
+      "classes": [
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 65,
+      "dps": 52,
+      "attack_speed": 0.8,
+      "armor": 40,
+      "mana": "0/70",
+      "name": "루시안과 세나",
+      "traits": [
+        "영혼결속자"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 500,
+      "attack_damage": 25,
+      "dps": 18,
+      "attack_speed": 0.7,
+      "armor": 15,
+      "mana": "20/70",
+      "name": "룰루",
+      "traits": [
+        "요들"
+      ],
+      "classes": [
+        "비전 마법사"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 35,
+      "dps": 26,
+      "attack_speed": 0.75,
+      "armor": 25,
+      "mana": "0/60",
+      "name": "르블랑",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 30,
+      "dps": 23,
+      "attack_speed": 0.75,
+      "armor": 30,
+      "mana": "20/70",
+      "name": "리산드라",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 30,
+      "dps": 24,
+      "attack_speed": 0.8,
+      "armor": 25,
+      "mana": "0/35",
+      "name": "말자하",
+      "traits": [
+        "공허"
+      ],
+      "classes": [
+        "방해꾼"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 50,
+      "dps": 40,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "0/200",
+      "name": "멜",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "방해꾼"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 900,
+      "attack_damage": 50,
+      "dps": 30,
+      "attack_speed": 0.6,
+      "armor": 50,
+      "mana": "0/60",
+      "name": "문도 박사",
+      "traits": [
+        "자운"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 55,
+      "dps": 41,
+      "attack_speed": 0.75,
+      "armor": 30,
+      "mana": "0/30",
+      "name": "미스 포츈",
+      "traits": [
+        "빌지워터"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 30,
+      "dps": 23,
+      "attack_speed": 0.75,
+      "armor": 30,
+      "mana": "0/60",
+      "name": "밀리오",
+      "traits": [
+        "이쉬탈"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 750,
+      "attack_damage": 30,
+      "dps": 23,
+      "attack_speed": 0.75,
+      "armor": 20,
+      "mana": "0/55",
+      "name": "바드",
+      "traits": [
+        "관리인"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 2,
+      "health": 700,
+      "attack_damage": 60,
+      "dps": 51,
+      "attack_speed": 0.85,
+      "armor": 40,
+      "mana": "0/30",
+      "name": "바이",
+      "traits": [
+        "필트오버",
+        "자운"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 33,
+      "dps": 26,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "0/60",
+      "name": "베이가",
+      "traits": [
+        "요들"
+      ],
+      "classes": [
+        "비전 마법사"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 70,
+      "dps": 63,
+      "attack_speed": 0.9,
+      "armor": 25,
+      "mana": "0/40",
+      "name": "베인",
+      "traits": [
+        "데마시아"
+      ],
+      "classes": [
+        "원거리 사격"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1000,
+      "attack_damage": 65,
+      "dps": 55,
+      "attack_speed": 0.85,
+      "armor": 50,
+      "mana": "0/100",
+      "name": "벨베스",
+      "traits": [
+        "공허"
+      ],
+      "classes": [
+        "학살자"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 1200,
+      "attack_damage": 55,
+      "dps": 50,
+      "attack_speed": 0.9,
+      "armor": 60,
+      "mana": "0/20",
+      "name": "볼리베어",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1200,
+      "attack_damage": 50,
+      "dps": 30,
+      "attack_speed": 0.6,
+      "armor": 60,
+      "mana": "60/120",
+      "name": "브라움",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 650,
+      "attack_damage": 42,
+      "dps": 32,
+      "attack_speed": 0.75,
+      "armor": 35,
+      "mana": "0/40",
+      "name": "브라이어",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "전쟁기계",
+        "학살자"
+      ]
+    },
+    {
+      "cost": 7,
+      "health": 1800,
+      "attack_damage": 270,
+      "dps": 135,
+      "attack_speed": 0.5,
+      "armor": 60,
+      "mana": "40/100",
+      "name": "브록",
+      "traits": [
+        "이쉬탈"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 1,
+      "health": 700,
+      "attack_damage": 50,
+      "dps": 28,
+      "attack_speed": 0.55,
+      "armor": 40,
+      "mana": "60/120",
+      "name": "블리츠크랭크",
+      "traits": [
+        "자운"
+      ],
+      "classes": [
+        "전쟁기계"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 650,
+      "attack_damage": 40,
+      "dps": 30,
+      "attack_speed": 0.75,
+      "armor": 35,
+      "mana": "0/30",
+      "name": "비에고",
+      "traits": [
+        "그림자 군도"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 850,
+      "attack_damage": 50,
+      "dps": 35,
+      "attack_speed": 0.7,
+      "armor": 45,
+      "mana": "40/80",
+      "name": "뽀삐",
+      "traits": [
+        "데마시아",
+        "요들"
+      ],
+      "classes": [
+        "전쟁기계"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 650,
+      "attack_damage": 50,
+      "dps": 28,
+      "attack_speed": 0.55,
+      "armor": 40,
+      "mana": "0/70",
+      "name": "사이온",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 7,
+      "health": 1600,
+      "attack_damage": 65,
+      "dps": 59,
+      "attack_speed": 0.9,
+      "armor": 70,
+      "mana": "0/30",
+      "name": "사일러스",
+      "traits": [
+        "사슬파괴자"
+      ],
+      "classes": [
+        "비전 마법사",
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 30,
+      "dps": 23,
+      "attack_speed": 0.75,
+      "armor": 30,
+      "mana": "0/20",
+      "name": "세라핀",
+      "traits": [
+        "필트오버"
+      ],
+      "classes": [
+        "방해꾼"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 900,
+      "attack_damage": 60,
+      "dps": 36,
+      "attack_speed": 0.6,
+      "armor": 50,
+      "mana": "40/80",
+      "name": "세주아니",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 1000,
+      "attack_damage": 60,
+      "dps": 54,
+      "attack_speed": 0.9,
+      "armor": 50,
+      "mana": "10/90",
+      "name": "세트",
+      "traits": [
+        "아이오니아",
+        "우두머리"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 1,
+      "health": 500,
+      "attack_damage": 20,
+      "dps": 14,
+      "attack_speed": 0.7,
+      "armor": 15,
+      "mana": "0/30",
+      "name": "소나",
+      "traits": [
+        "데마시아"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 700,
+      "attack_damage": 65,
+      "dps": 42,
+      "attack_speed": 0.65,
+      "armor": 40,
+      "mana": "30/90",
+      "name": "쉔",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 1200,
+      "attack_damage": 80,
+      "dps": 76,
+      "attack_speed": 0.95,
+      "armor": 60,
+      "mana": "0/40",
+      "name": "쉬바나",
+      "traits": [
+        "용족"
+      ],
+      "classes": [
+        "전쟁기계"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1200,
+      "attack_damage": 40,
+      "dps": 26,
+      "attack_speed": 0.65,
+      "armor": 60,
+      "mana": "50/145",
+      "name": "스웨인",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "비전 마법사",
+        "전쟁기계"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1400,
+      "attack_damage": 65,
+      "dps": 42,
+      "attack_speed": 0.65,
+      "armor": 70,
+      "mana": "60/120",
+      "name": "스카너",
+      "traits": [
+        "이쉬탈"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 2,
+      "health": 850,
+      "attack_damage": 50,
+      "dps": 33,
+      "attack_speed": 0.65,
+      "armor": 45,
+      "mana": "15/70",
+      "name": "신 짜오",
+      "traits": [
+        "데마시아",
+        "아이오니아"
+      ],
+      "classes": [
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1100,
+      "attack_damage": 15,
+      "dps": 11,
+      "attack_speed": 0.7,
+      "armor": 60,
+      "mana": "0/80",
+      "name": "신지드",
+      "traits": [
+        "자운"
+      ],
+      "classes": [
+        "전쟁기계"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 1200,
+      "attack_damage": 60,
+      "dps": 51,
+      "attack_speed": 0.85,
+      "armor": 75,
+      "mana": "0/40",
+      "name": "쓰레쉬",
+      "traits": [
+        "그림자 군도"
+      ],
+      "classes": [
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 30,
+      "dps": 24,
+      "attack_speed": 0.8,
+      "armor": 25,
+      "mana": "0/30",
+      "name": "아리",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "비전 마법사"
+      ]
+    },
+    {
+      "cost": 7,
+      "health": 1100,
+      "attack_damage": 50,
+      "dps": 40,
+      "attack_speed": 0.8,
+      "armor": 40,
+      "mana": "20/90",
+      "name": "아우렐리온 솔",
+      "traits": [
+        "타곤",
+        "별의 창조자"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 5,
+      "health": 800,
+      "attack_damage": 35,
+      "dps": 28,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "20/40",
+      "name": "아지르",
+      "traits": [
+        "황제",
+        "슈리마"
+      ],
+      "classes": [
+        "방해꾼"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 65,
+      "dps": 59,
+      "attack_speed": 0.9,
+      "armor": 55,
+      "mana": "0/30",
+      "name": "아트록스",
+      "traits": [
+        "다르킨",
+        "세계의 종결자"
+      ],
+      "classes": [
+        "학살자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 650,
+      "attack_damage": 20,
+      "dps": 15,
+      "attack_speed": 0.75,
+      "armor": 20,
+      "mana": "0/40",
+      "name": "아펠리오스",
+      "traits": [
+        "타곤"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 4,
+      "health": 1100,
+      "attack_damage": 50,
+      "dps": 45,
+      "attack_speed": 0.9,
+      "armor": 60,
+      "mana": "0/20",
+      "name": "암베사",
+      "traits": [
+        "녹서스"
+      ],
+      "classes": [
+        "토벌자"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 800,
+      "attack_damage": 30,
+      "dps": 24,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "0/170",
+      "name": "애니",
+      "traits": [
+        "어둠의 아이"
+      ],
+      "classes": [
+        "비전 마법사"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 500,
+      "attack_damage": 30,
+      "dps": 21,
+      "attack_speed": 0.7,
+      "armor": 20,
+      "mana": "0/40",
+      "name": "애니비아",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 550,
+      "attack_damage": 53,
+      "dps": 37,
+      "attack_speed": 0.7,
+      "armor": 20,
+      "mana": "20/80",
+      "name": "애쉬",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 750,
+      "attack_damage": 45,
+      "dps": 36,
+      "attack_speed": 0.8,
+      "armor": 45,
+      "mana": "0/30",
+      "name": "야스오",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "학살자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 750,
+      "attack_damage": 35,
+      "dps": 30,
+      "attack_speed": 0.85,
+      "armor": 50,
+      "mana": "0/40",
+      "name": "에코",
+      "traits": [
+        "자운"
+      ],
+      "classes": [
+        "방해꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1050,
+      "attack_damage": 60,
+      "dps": 39,
+      "attack_speed": 0.65,
+      "armor": 60,
+      "mana": "30/60",
+      "name": "오공",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 70,
+      "dps": 39,
+      "attack_speed": 0.55,
+      "armor": 55,
+      "mana": "50/150",
+      "name": "오른",
+      "traits": [
+        "대장장이"
+      ],
+      "classes": [
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 550,
+      "attack_damage": 30,
+      "dps": 21,
+      "attack_speed": 0.7,
+      "armor": 20,
+      "mana": "20/60",
+      "name": "오리아나",
+      "traits": [
+        "필트오버"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1100,
+      "attack_damage": 20,
+      "dps": 18,
+      "attack_speed": 0.9,
+      "armor": 60,
+      "mana": "30/100",
+      "name": "요네",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "학살자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 850,
+      "attack_damage": 60,
+      "dps": 36,
+      "attack_speed": 0.6,
+      "armor": 45,
+      "mana": "15/75",
+      "name": "요릭",
+      "traits": [
+        "그림자 군도"
+      ],
+      "classes": [
+        "파수꾼"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1200,
+      "attack_damage": 60,
+      "dps": 54,
+      "attack_speed": 0.9,
+      "armor": 60,
+      "mana": "0/90",
+      "name": "워윅",
+      "traits": [
+        "자운"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 60,
+      "dps": 48,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "0/50",
+      "name": "유나라",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 700,
+      "attack_damage": 50,
+      "dps": 30,
+      "attack_speed": 0.6,
+      "armor": 40,
+      "mana": "40/100",
+      "name": "일라오이",
+      "traits": [
+        "빌지워터"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 700,
+      "attack_damage": 55,
+      "dps": 33,
+      "attack_speed": 0.6,
+      "armor": 40,
+      "mana": "30/100",
+      "name": "자르반 4세",
+      "traits": [
+        "데마시아"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 7,
+      "health": 1200,
+      "attack_damage": 60,
+      "dps": 66,
+      "attack_speed": 1.1,
+      "armor": 80,
+      "mana": "0/40",
+      "name": "자헨",
+      "traits": [
+        "다르킨",
+        "불멸자"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 40,
+      "dps": 32,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "0/135",
+      "name": "제라스",
+      "traits": [
+        "초월체",
+        "슈리마"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 3,
+      "health": 800,
+      "attack_damage": 35,
+      "dps": 28,
+      "attack_speed": 0.8,
+      "armor": 25,
+      "mana": "30/60",
+      "name": "조이",
+      "traits": [
+        "타곤"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 0,
+      "dps": 0,
+      "attack_speed": 0.85,
+      "armor": 30,
+      "mana": "0/160",
+      "name": "직스",
+      "traits": [
+        "요들",
+        "자운"
+      ],
+      "classes": [
+        "원거리 사격"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 444,
+      "attack_damage": 48,
+      "dps": 34,
+      "attack_speed": 0.7,
+      "armor": 24,
+      "mana": "0/70",
+      "name": "진",
+      "traits": [
+        "아이오니아"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 40,
+      "dps": 36,
+      "attack_speed": 0.9,
+      "armor": 30,
+      "mana": "0/35",
+      "name": "질리언",
+      "traits": [
+        "시간의 수호자"
+      ],
+      "classes": [
+        "기원자"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 650,
+      "attack_damage": 50,
+      "dps": 38,
+      "attack_speed": 0.75,
+      "armor": 25,
+      "mana": "0/18",
+      "name": "징크스",
+      "traits": [
+        "자운"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 850,
+      "attack_damage": 50,
+      "dps": 30,
+      "attack_speed": 0.6,
+      "armor": 45,
+      "mana": "40/100",
+      "name": "초가스",
+      "traits": [
+        "공허"
+      ],
+      "classes": [
+        "전쟁기계"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 850,
+      "attack_damage": 50,
+      "dps": 25,
+      "attack_speed": 0.5,
+      "armor": 30,
+      "mana": "0/10",
+      "name": "카이사",
+      "traits": [
+        "흡수자",
+        "공허"
+      ],
+      "classes": [
+        "원거리 사격"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 800,
+      "attack_damage": 50,
+      "dps": 40,
+      "attack_speed": 0.8,
+      "armor": 30,
+      "mana": "20/70",
+      "name": "칼리스타",
+      "traits": [
+        "그림자 군도"
+      ],
+      "classes": [
+        "토벌자"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 900,
+      "attack_damage": 50,
+      "dps": 33,
+      "attack_speed": 0.65,
+      "armor": 50,
+      "mana": "70/125",
+      "name": "케넨",
+      "traits": [
+        "아이오니아",
+        "요들"
+      ],
+      "classes": [
+        "엄호대"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 500,
+      "attack_damage": 45,
+      "dps": 34,
+      "attack_speed": 0.75,
+      "armor": 15,
+      "mana": "0/80",
+      "name": "케이틀린",
+      "traits": [
+        "필트오버"
+      ],
+      "classes": [
+        "원거리 사격"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 500,
+      "attack_damage": 20,
+      "dps": 14,
+      "attack_speed": 0.7,
+      "armor": 15,
+      "mana": "0/30",
+      "name": "코그모",
+      "traits": [
+        "공허"
+      ],
+      "classes": [
+        "비전 마법사",
+        "원거리 사격"
+      ]
+    },
+    {
+      "cost": 3,
+      "health": 950,
+      "attack_damage": 20,
+      "dps": 13,
+      "attack_speed": 0.65,
+      "armor": 50,
+      "mana": "30/90",
+      "name": "코부코와 유미",
+      "traits": [
+        "요들"
+      ],
+      "classes": [
+        "난동꾼",
+        "기원자"
+      ]
+    },
+    {
+      "cost": 1,
+      "health": 650,
+      "attack_damage": 42,
+      "dps": 32,
+      "attack_speed": 0.75,
+      "armor": 35,
+      "mana": "0/30",
+      "name": "키아나",
+      "traits": [
+        "이쉬탈"
+      ],
+      "classes": [
+        "학살자"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 900,
+      "attack_damage": 73,
+      "dps": 66,
+      "attack_speed": 0.9,
+      "armor": 40,
+      "mana": "80/200",
+      "name": "킨드레드",
+      "traits": [
+        "영겁"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1300,
+      "attack_damage": 70,
+      "dps": 46,
+      "attack_speed": 0.65,
+      "armor": 70,
+      "mana": "0/80",
+      "name": "타릭",
+      "traits": [
+        "타곤"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 5,
+      "health": 1100,
+      "attack_damage": 70,
+      "dps": 39,
+      "attack_speed": 0.55,
+      "armor": 60,
+      "mana": "10/90",
+      "name": "탐 켄치",
+      "traits": [
+        "빌지워터",
+        "대식가"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 550,
+      "attack_damage": 55,
+      "dps": 41,
+      "attack_speed": 0.75,
+      "armor": 20,
+      "mana": "0/50",
+      "name": "트리스타나",
+      "traits": [
+        "요들"
+      ],
+      "classes": [
+        "총잡이"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 750,
+      "attack_damage": 60,
+      "dps": 45,
+      "attack_speed": 0.75,
+      "armor": 45,
+      "mana": "0/50",
+      "name": "트린다미어",
+      "traits": [
+        "프렐요드"
+      ],
+      "classes": [
+        "학살자"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 550,
+      "attack_damage": 0,
+      "dps": 0,
+      "attack_speed": 0.75,
+      "armor": 20,
+      "mana": "0/3",
+      "name": "트위스티드 페이트",
+      "traits": [
+        "빌지워터"
+      ],
+      "classes": [
+        "기동타격대"
+      ]
+    },
+    {
+      "cost": 2,
+      "health": 550,
+      "attack_damage": 35,
+      "dps": 26,
+      "attack_speed": 0.75,
+      "armor": 20,
+      "mana": "0/30",
+      "name": "티모",
+      "traits": [
+        "요들"
+      ],
+      "classes": [
+        "원거리 사격"
+      ]
+    },
+    {
+      "cost": 5,
+      "health": 1200,
+      "attack_damage": 50,
+      "dps": 45,
+      "attack_speed": 0.9,
+      "armor": 60,
+      "mana": "30/70",
+      "name": "피들스틱",
+      "traits": [
+        "수확자"
+      ],
+      "classes": [
+        "토벌자"
+      ]
+    },
+    {
+      "cost": 4,
+      "health": 1000,
+      "attack_damage": 30,
+      "dps": 27,
+      "attack_speed": 0.9,
+      "armor": 50,
+      "mana": "0/20",
+      "name": "피즈",
+      "traits": [
+        "빌지워터",
+        "요들"
+      ],
+      "classes": []
+    },
+    {
+      "cost": 4,
+      "health": 1100,
+      "attack_damage": 60,
+      "dps": 36,
+      "attack_speed": 0.6,
+      "armor": 60,
+      "mana": "60/125",
+      "name": "협곡의 전령",
+      "traits": [
+        "공허"
+      ],
+      "classes": [
+        "난동꾼"
+      ]
+    }
+  ]
+}

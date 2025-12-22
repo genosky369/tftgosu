@@ -1,0 +1,207 @@
+{
+  "tier": "bronze",
+  "description": "브론즈 등급 시너지 목록 (브론즈 최소값 ~ 실버 최소값-1)",
+  "total_count": 40,
+  "synergies": [
+    {
+      "synergy": "공허",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "공허",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "그림자 군도",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "기동타격대",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "기원자",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "난동꾼",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "난동꾼",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "녹서스",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "녹서스",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "다르킨",
+      "count": 1,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "데마시아",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "데마시아",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "방해꾼",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "비전 마법사",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "비전 마법사",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "빌지워터",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "빌지워터",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "슈리마",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "아이오니아",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "아이오니아",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "엄호대",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "엄호대",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "요들",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "요들",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "원거리 사격",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "이쉬탈",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "이쉬탈",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "자운",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "자운",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "전쟁기계",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "전쟁기계",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "총잡이",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "토벌자",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "파수꾼",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "프렐요드",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "프렐요드",
+      "count": 4,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "필트오버",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "필트오버",
+      "count": 3,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "학살자",
+      "count": 2,
+      "tier": "bronze"
+    },
+    {
+      "synergy": "학살자",
+      "count": 3,
+      "tier": "bronze"
+    }
+  ]
+}
