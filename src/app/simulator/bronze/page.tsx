@@ -12,11 +12,11 @@ export default function BronzeSimulatorPage() {
   const [isCalculating, setIsCalculating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleCalculate = async (level: number, symbols: string[]) => {
+  const handleCalculate = async (level: number, symbols: string[], excludedChampions: string[]) => {
     setError(null);
 
     // 입력 검증
-    const validation = validateInput({ level, symbols });
+    const validation = validateInput({ level, symbols, excludedChampions });
     if (!validation.valid) {
       setError(validation.error || "입력 오류");
       return;
@@ -27,7 +27,7 @@ export default function BronzeSimulatorPage() {
     // 비동기로 계산 (UI 블로킹 방지)
     setTimeout(() => {
       try {
-        const calculatedResults = calculate({ level, symbols });
+        const calculatedResults = calculate({ level, symbols, excludedChampions });
         setResults(calculatedResults);
       } catch (e) {
         setError("계산 중 오류가 발생했습니다.");

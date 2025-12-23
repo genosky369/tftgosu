@@ -139,12 +139,13 @@ function* generateCombinations(
 
 /** 메인 계산 함수 */
 export function calculate(input: SimulatorInput): SimulatorResult[] {
-  const { level, symbols } = input;
+  const { level, symbols, excludedChampions = [] } = input;
   const results: SimulatorResult[] = [];
 
-  // 1. 챔피언별 점수 계산 및 정렬
+  // 1. 챔피언별 점수 계산 및 정렬 (제외된 챔피언 필터링)
   const scoredChampions = CHAMPIONS
     .filter(c => c.cost <= 5) // 7코스트 제외 (특수 유닛)
+    .filter(c => !excludedChampions.includes(c.name)) // 제외된 챔피언 필터링
     .map(c => ({ champion: c, score: calculateChampionScore(c) }))
     .sort((a, b) => b.score - a.score);
 

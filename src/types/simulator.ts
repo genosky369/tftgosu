@@ -64,6 +64,7 @@ export interface BronzeSynergy {
 export interface SimulatorInput {
   level: number;        // 6~10
   symbols: string[];    // 보유 상징 (최대 7개)
+  excludedChampions?: string[];  // 제외할 챔피언 목록 (해금 챔피언 포함)
 }
 
 /** 활성화된 시너지 */
