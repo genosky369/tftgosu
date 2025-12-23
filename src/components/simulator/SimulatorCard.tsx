@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Simulator } from "@/config/simulators";
 
 interface SimulatorCardProps {
@@ -29,8 +30,20 @@ export default function SimulatorCard({ simulator }: SimulatorCardProps) {
         style={{ backgroundColor: simulator.color }}
       />
 
-      {/* 아이콘 */}
-      <div className="text-5xl mb-3">{simulator.icon}</div>
+      {/* 아이콘 - 이미지 또는 이모지 */}
+      <div className="mb-3">
+        {simulator.iconType === 'image' ? (
+          <Image
+            src={simulator.icon}
+            alt={simulator.name}
+            width={56}
+            height={56}
+            className="rounded-lg"
+          />
+        ) : (
+          <span className="text-5xl">{simulator.icon}</span>
+        )}
+      </div>
 
       {/* 이름 */}
       <h3 className="text-lg font-bold text-text mb-1">{simulator.name}</h3>

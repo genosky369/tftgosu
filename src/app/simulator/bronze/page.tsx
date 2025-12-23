@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { SimulatorResult } from "@/types/simulator";
 import { calculate, validateInput } from "@/lib/simulator/BronzeSimulator";
 import InputForm from "./components/InputForm";
@@ -52,7 +53,13 @@ export default function BronzeSimulatorPage() {
       {/* 헤더 */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-4xl">🥉</span>
+          <Image
+            src="/images/simulators/bronze.png"
+            alt="브론즈 시뮬레이터"
+            width={48}
+            height={48}
+            className="rounded-lg"
+          />
           <h1 className="text-3xl font-bold">브론즈 시뮬레이터</h1>
         </div>
         <p className="text-text-sub">

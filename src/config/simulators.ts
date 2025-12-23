@@ -7,7 +7,8 @@ export interface Simulator {
   id: string;
   name: string;
   description: string;
-  icon: string;
+  icon: string;        // 이모지 또는 이미지 경로 (/images/simulators/xxx.png)
+  iconType: 'emoji' | 'image';
   color: string;
   path: string;
   status: SimulatorStatus;
@@ -18,16 +19,18 @@ export const SIMULATORS: Simulator[] = [
     id: 'bronze',
     name: '브론즈 시뮬레이터',
     description: '영원한 브론즈 시너지 최대화',
-    icon: '🥉',
+    icon: '/images/simulators/bronze.png',
+    iconType: 'image',
     color: '#cd7f32',
     path: '/simulator/bronze',
     status: 'active',
   },
   {
     id: 'worldrune',
-    name: '월드룬 시뮬레이터',
+    name: '세계룬 시뮬레이터',
     description: '지역 4개 빠른 활성화',
-    icon: '🌍',
+    icon: '/images/simulators/worldrune.jpg',
+    iconType: 'image',
     color: '#4ecdc4',
     path: '/simulator/worldrune',
     status: 'active',
@@ -38,6 +41,7 @@ export const SIMULATORS: Simulator[] = [
   //   name: '새 시뮬레이터',
   //   description: '설명',
   //   icon: '🎮',
+  //   iconType: 'emoji',
   //   color: '#ffffff',
   //   path: '/simulator/new',
   //   status: 'coming-soon',

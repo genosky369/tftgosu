@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const NAV_ITEMS = [
   { name: "시뮬레이터", path: "/" },
-  { name: "말랑이", path: "/mallang" },
   { name: "자유게시판", path: "/board" },
 ];
 

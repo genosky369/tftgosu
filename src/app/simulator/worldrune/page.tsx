@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { WorldRuneResult } from "@/types/simulator";
 import { calculate, validateInput } from "@/lib/simulator/WorldRuneSimulator";
 import InputForm from "./components/InputForm";
@@ -76,17 +77,23 @@ export default function WorldRuneSimulatorPage() {
       {/* 헤더 */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-4xl">🌍</span>
-          <h1 className="text-3xl font-bold">월드룬 시뮬레이터</h1>
+          <Image
+            src="/images/simulators/worldrune.jpg"
+            alt="세계룬 시뮬레이터"
+            width={48}
+            height={48}
+            className="rounded-lg"
+          />
+          <h1 className="text-3xl font-bold">세계룬 시뮬레이터</h1>
         </div>
         <p className="text-text-sub">
-          &quot;지역 룬&quot; 증강 선택 시, 지역 4개를 가장 빠르게 활성화하는 조합을 찾습니다.
+          &quot;세계룬&quot; 증강 선택 시, 지역 4개를 가장 빠르게 활성화하는 조합을 찾습니다.
         </p>
       </div>
 
       {/* 증강 효과 설명 */}
       <div className="bg-background-card rounded-xl p-4 mb-6 border border-accent-worldrune/30">
-        <h3 className="font-bold text-accent-worldrune mb-2">지역 룬 증강 효과</h3>
+        <h3 className="font-bold text-accent-worldrune mb-2">세계룬 증강 효과</h3>
         <ul className="text-sm text-text-sub space-y-1">
           <li>• 무작위 지역 특성 상징 <span className="text-yellow-400">2개</span> 획득</li>
           <li>• 지역 특성 <span className="text-accent-worldrune">4개</span> 활성화 상태로 플레이어 대전 4회 → 강력한 보상</li>
