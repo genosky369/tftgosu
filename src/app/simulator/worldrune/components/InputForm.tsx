@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { REGIONS } from "@/data/regions";
 import { CHAMPIONS } from "@/data/champions";
+import { UNLOCK_CHAMPIONS } from "@/data/unlockChampions";
 
 interface InputFormProps {
   onCalculate: (
@@ -15,7 +16,7 @@ interface InputFormProps {
   isCalculating: boolean;
 }
 
-const LEVELS = [6, 7, 8, 9, 10];
+const LEVELS = [6, 7, 8, 9];
 const COSTS = [1, 2, 3, 4, 5];
 
 export default function InputForm({ onCalculate, isCalculating }: InputFormProps) {
@@ -24,6 +25,7 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
   const [symbolCounts, setSymbolCounts] = useState<Record<string, number>>({});
   const [excludedRegions, setExcludedRegions] = useState<string[]>([]);
   const [excludedChampions, setExcludedChampions] = useState<string[]>([]);
+  const [excludeUnlockChampions, setExcludeUnlockChampions] = useState(false);
   const [activeTab, setActiveTab] = useState(5); // 코스트별 탭
 
   // 총 상징 개수
@@ -69,6 +71,21 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
     );
   };
 
+  // 해금 챔피언 제외 토글
+  const handleExcludeUnlockChange = (checked: boolean) => {
+    setExcludeUnlockChampions(checked);
+    if (checked) {
+      // 해금 챔피언 40개를 제외 목록에 추가 (중복 제거)
+      setExcludedChampions(prev => [...new Set([...prev, ...UNLOCK_CHAMPIONS])]);
+    } else {
+      // 해금 챔피언 40개를 제외 목록에서 제거
+      setExcludedChampions(prev => prev.filter(c => !UNLOCK_CHAMPIONS.includes(c)));
+    }
+  };
+
+  // 해금 챔피언인지 확인
+  const isUnlockChampion = (name: string) => UNLOCK_CHAMPIONS.includes(name);
+
   // 계산 실행
   const handleCalculate = () => {
     const symbolsArray: string[] = [];
@@ -85,6 +102,7 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
     setSymbolCounts({});
     setExcludedRegions([]);
     setExcludedChampions([]);
+    setExcludeUnlockChampions(false);
   };
 
   // 코스트별 챔피언 필터링
@@ -242,13 +260,16 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
 
       {/* 제외할 챔피언 */}
       <div className="bg-background-card rounded-xl p-4 border border-accent-blue/20">
-        <div className="flex justify-between items-center mb-2">
+        <div className="flex justify-between items-center mb-3">
           <label className="block text-sm font-medium text-text-sub">
             제외할 챔피언 (선택)
           </label>
           {excludedChampions.length > 0 && (
             <button
-              onClick={() => setExcludedChampions([])}
+              onClick={() => {
+                setExcludedChampions([]);
+                setExcludeUnlockChampions(false);
+              }}
               className="text-xs text-accent-pink hover:underline"
             >
               전체 해제
@@ -256,18 +277,48 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
           )}
         </div>
 
+        {/* 해금 챔피언 제외 체크박스 */}
+        <label className="flex items-start gap-3 p-3 bg-background rounded-lg mb-3 cursor-pointer hover:bg-background-header transition-colors">
+          <input
+            type="checkbox"
+            checked={excludeUnlockChampions}
+            onChange={(e) => handleExcludeUnlockChange(e.target.checked)}
+            className="mt-0.5 w-4 h-4 accent-accent-worldrune"
+          />
+          <div>
+            <div className="text-sm font-medium text-text flex items-center gap-2">
+              해금 챔피언 제외
+              <span className="text-xs text-text-muted">({UNLOCK_CHAMPIONS.length}개)</span>
+            </div>
+            <p className="text-xs text-text-muted mt-0.5">
+              퀘스트로 해금해야 하는 챔피언들을 일괄 제외합니다
+            </p>
+          </div>
+        </label>
+
         {/* 선택된 제외 챔피언 */}
         {excludedChampions.length > 0 && (
-          <div className="flex flex-wrap gap-1 mb-3 p-2 bg-background rounded-lg">
-            {excludedChampions.map(name => (
-              <span
-                key={name}
-                onClick={() => toggleExcludeChampion(name)}
-                className="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs cursor-pointer hover:bg-red-500/30"
-              >
-                {name} ✕
-              </span>
-            ))}
+          <div className="mb-3">
+            <p className="text-xs text-text-muted mb-1">
+              선택된 제외 챔피언 ({excludedChampions.length}개)
+            </p>
+            <div className="flex flex-wrap gap-1 p-2 bg-background rounded-lg max-h-20 overflow-y-auto">
+              {excludedChampions.slice(0, 10).map(name => (
+                <span
+                  key={name}
+                  onClick={() => toggleExcludeChampion(name)}
+                  className="px-2 py-1 bg-red-500/20 text-red-400 rounded text-xs cursor-pointer hover:bg-red-500/30 flex items-center gap-1"
+                >
+                  {isUnlockChampion(name) && <span>🔒</span>}
+                  {name} ✕
+                </span>
+              ))}
+              {excludedChampions.length > 10 && (
+                <span className="px-2 py-1 text-text-muted text-xs">
+                  +{excludedChampions.length - 10}개
+                </span>
+              )}
+            </div>
           </div>
         )}
 
@@ -295,18 +346,20 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
             {championsByCost.map(champion => {
               const isExcluded = excludedChampions.includes(champion.name);
+              const isUnlock = isUnlockChampion(champion.name);
               return (
                 <button
                   key={champion.name}
                   onClick={() => toggleExcludeChampion(champion.name)}
                   className={`
-                    px-2 py-1 rounded text-xs text-left transition-all
+                    px-2 py-1 rounded text-xs text-left transition-all flex items-center gap-1
                     ${isExcluded
                       ? "bg-red-500/20 text-red-400"
                       : "bg-background text-text-sub hover:bg-background-card"
                     }
                   `}
                 >
+                  {isUnlock && <span className="text-yellow-500">🔒</span>}
                   {champion.name}
                 </button>
               );
@@ -317,6 +370,10 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
               해당 코스트의 챔피언이 없습니다
             </p>
           )}
+          {/* 범례 */}
+          <p className="text-[10px] text-text-muted mt-2 text-right">
+            🔒 = 해금 챔피언
+          </p>
         </div>
       </div>
 
