@@ -9,14 +9,33 @@ interface Admin {
   username: string;
 }
 
+interface VisitorStats {
+  today: number;
+  total: number;
+}
+
 export default function AdminDashboardPage() {
   const router = useRouter();
   const [admin, setAdmin] = useState<Admin | null>(null);
   const [loading, setLoading] = useState(true);
+  const [visitorStats, setVisitorStats] = useState<VisitorStats>({ today: 0, total: 0 });
 
   useEffect(() => {
     checkAuth();
+    fetchVisitorStats();
   }, []);
+
+  const fetchVisitorStats = async () => {
+    try {
+      const res = await fetch("/api/visitors");
+      if (res.ok) {
+        const data = await res.json();
+        setVisitorStats({ today: data.today ?? 0, total: data.total ?? 0 });
+      }
+    } catch {
+      // 에러 무시
+    }
+  };
 
   const checkAuth = async () => {
     try {
@@ -76,13 +95,17 @@ export default function AdminDashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div className="bg-background-card rounded-xl border border-accent-blue/20 p-6">
           <p className="text-text-sub text-sm mb-1">오늘 방문자</p>
-          <p className="text-3xl font-bold text-accent-pink">-</p>
-          <p className="text-text-sub text-xs mt-1">방문자 통계 구현 예정</p>
+          <p className="text-3xl font-bold text-accent-pink">
+            {visitorStats.today.toLocaleString()}
+          </p>
+          <p className="text-text-sub text-xs mt-1">일일 유니크 방문자</p>
         </div>
         <div className="bg-background-card rounded-xl border border-accent-blue/20 p-6">
-          <p className="text-text-sub text-sm mb-1">총 방문자</p>
-          <p className="text-3xl font-bold text-accent-blue">-</p>
-          <p className="text-text-sub text-xs mt-1">방문자 통계 구현 예정</p>
+          <p className="text-text-sub text-sm mb-1">전체 방문자</p>
+          <p className="text-3xl font-bold text-accent-blue">
+            {visitorStats.total.toLocaleString()}
+          </p>
+          <p className="text-text-sub text-xs mt-1">누적 유니크 방문자</p>
         </div>
         <div className="bg-background-card rounded-xl border border-accent-blue/20 p-6">
           <p className="text-text-sub text-sm mb-1">총 게시글</p>

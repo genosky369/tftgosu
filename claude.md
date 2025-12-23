@@ -583,7 +583,7 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 ## 현재 구현 상태
 
 > 이 섹션은 개발 진행에 따라 업데이트됩니다.
-> 최종 업데이트: 2024-12-24
+> 최종 업데이트: 2024-12-24 (세션 2)
 
 ### 완료된 기능
 - [x] 프로젝트 문서화 구조 수립
@@ -615,13 +615,17 @@ function complexCalculation(champion: Champion, items: Item[]): number {
   - 관리자 로그인 페이지 (`/admin/login`)
   - 관리자 대시보드 (`/admin/dashboard`)
   - 관리자 권한 글/댓글 삭제 (비밀번호 없이)
+- [x] **방문자 통계 구현 완료**
+  - 일일 유니크 방문자 카운트 (IP + 날짜 기준)
+  - 관리자 대시보드에서만 통계 표시
+  - 홈페이지 방문 시 자동 기록
 
 ### 진행 중
 - (없음)
 
 ### 예정된 기능
-- 방문자 통계 (일별 방문자 카운트)
 - 구글 광고 연동
+- 게시글/댓글 통계 (대시보드)
 
 ### GitHub 저장소
 - **URL**: https://github.com/genosky369/tftgosu

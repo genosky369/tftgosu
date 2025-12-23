@@ -95,9 +95,6 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-text-sub text-xs">
-          초기 계정: admin / admin123
-        </p>
       </div>
     </div>
   );

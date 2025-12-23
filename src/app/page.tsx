@@ -15,6 +15,7 @@ export default function Home() {
   const [recentPosts, setRecentPosts] = useState<Post[]>([]);
 
   useEffect(() => {
+    // 게시글 로드
     fetch("/api/posts?page=1")
       .then((res) => res.json())
       .then((data) => {
@@ -23,6 +24,9 @@ export default function Home() {
         }
       })
       .catch(() => {});
+
+    // 방문 기록 (통계는 관리자 페이지에서만 표시)
+    fetch("/api/visitors", { method: "POST" }).catch(() => {});
   }, []);
 
   return (
