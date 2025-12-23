@@ -624,8 +624,10 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 - (없음)
 
 ### 예정된 기능
-- 구글 광고 연동
 - 게시글/댓글 통계 (대시보드)
+
+### 추후 구현 (보류)
+- 구글 광고 연동 (AdSense) - 서비스 안정화 후 진행
 
 ### GitHub 저장소
 - **URL**: https://github.com/genosky369/tftgosu
