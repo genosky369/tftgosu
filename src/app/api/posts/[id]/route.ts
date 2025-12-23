@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { getAdminFromCookie } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
 // GET /api/posts/:id - 글 상세 조회
@@ -106,11 +107,15 @@ export async function DELETE(
     const body = await request.json();
     const { password } = body;
 
-    if (!password) {
+    // 관리자 권한 확인
+    const admin = await getAdminFromCookie();
+
+    // 관리자가 아닌 경우 비밀번호 필수
+    if (!admin && !password) {
       return NextResponse.json({ error: '비밀번호를 입력해주세요' }, { status: 400 });
     }
 
-    // 글 조회 (비밀번호 확인용)
+    // 글 존재 확인
     const { data: post, error: fetchError } = await supabase
       .from('posts')
       .select('password_hash')
@@ -121,10 +126,12 @@ export async function DELETE(
       return NextResponse.json({ error: '글을 찾을 수 없습니다' }, { status: 404 });
     }
 
-    // 비밀번호 확인
-    const isValid = await bcrypt.compare(password, post.password_hash);
-    if (!isValid) {
-      return NextResponse.json({ error: '비밀번호가 일치하지 않습니다' }, { status: 401 });
+    // 관리자가 아닌 경우 비밀번호 확인
+    if (!admin) {
+      const isValid = await bcrypt.compare(password, post.password_hash);
+      if (!isValid) {
+        return NextResponse.json({ error: '비밀번호가 일치하지 않습니다' }, { status: 401 });
+      }
     }
 
     // 글 삭제

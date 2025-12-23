@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 interface Post {
   id: string;
@@ -25,13 +25,14 @@ interface Comment {
 
 type ModalType = "edit" | "delete" | "deleteComment" | null;
 
-export default function PostDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function PostDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const router = useRouter();
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   // 모달 상태
   const [modalType, setModalType] = useState<ModalType>(null);
@@ -52,7 +53,17 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
   useEffect(() => {
     fetchPost();
     fetchComments();
+    checkAdminStatus();
   }, [id]);
+
+  const checkAdminStatus = async () => {
+    try {
+      const res = await fetch("/api/admin/me");
+      setIsAdmin(res.ok);
+    } catch {
+      setIsAdmin(false);
+    }
+  };
 
   const fetchPost = async () => {
     setLoading(true);
@@ -161,7 +172,8 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
   };
 
   const handleDelete = async () => {
-    if (!modalPassword) {
+    // 관리자가 아닌 경우만 비밀번호 필수
+    if (!isAdmin && !modalPassword) {
       setModalError("비밀번호를 입력해주세요");
       return;
     }
@@ -172,7 +184,7 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
       const res = await fetch(`/api/posts/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: modalPassword }),
+        body: JSON.stringify({ password: isAdmin ? "" : modalPassword }),
       });
 
       const data = await res.json();
@@ -221,7 +233,12 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
   };
 
   const handleDeleteComment = async () => {
-    if (!modalPassword || !deleteCommentId) {
+    if (!deleteCommentId) {
+      setModalError("삭제할 댓글이 없습니다");
+      return;
+    }
+    // 관리자가 아닌 경우만 비밀번호 필수
+    if (!isAdmin && !modalPassword) {
       setModalError("비밀번호를 입력해주세요");
       return;
     }
@@ -232,7 +249,7 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
       const res = await fetch(`/api/comments/${deleteCommentId}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: modalPassword }),
+        body: JSON.stringify({ password: isAdmin ? "" : modalPassword }),
       });
 
       const data = await res.json();
@@ -502,16 +519,22 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
                 정말로 이 글을 삭제하시겠습니까?<br />
                 삭제된 글은 복구할 수 없습니다.
               </p>
-              <div>
-                <label className="block text-sm text-text-sub mb-1">비밀번호 확인</label>
-                <input
-                  type="password"
-                  value={modalPassword}
-                  onChange={(e) => setModalPassword(e.target.value)}
-                  placeholder="글 작성 시 입력한 비밀번호"
-                  className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
-                />
-              </div>
+              {isAdmin ? (
+                <div className="p-3 bg-accent-pink/10 border border-accent-pink/30 rounded-lg text-accent-pink text-sm">
+                  👑 관리자 권한으로 삭제합니다
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-sm text-text-sub mb-1">비밀번호 확인</label>
+                  <input
+                    type="password"
+                    value={modalPassword}
+                    onChange={(e) => setModalPassword(e.target.value)}
+                    placeholder="글 작성 시 입력한 비밀번호"
+                    className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
+                  />
+                </div>
+              )}
             </div>
             <div className="px-6 py-4 border-t border-accent-blue/20 flex gap-2 justify-end">
               <button
@@ -548,16 +571,22 @@ export default function PostDetailPage({ params }: { params: Promise<{ id: strin
               <p className="text-text-sub">
                 정말로 이 댓글을 삭제하시겠습니까?
               </p>
-              <div>
-                <label className="block text-sm text-text-sub mb-1">비밀번호 확인</label>
-                <input
-                  type="password"
-                  value={modalPassword}
-                  onChange={(e) => setModalPassword(e.target.value)}
-                  placeholder="댓글 작성 시 입력한 비밀번호"
-                  className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
-                />
-              </div>
+              {isAdmin ? (
+                <div className="p-3 bg-accent-pink/10 border border-accent-pink/30 rounded-lg text-accent-pink text-sm">
+                  👑 관리자 권한으로 삭제합니다
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-sm text-text-sub mb-1">비밀번호 확인</label>
+                  <input
+                    type="password"
+                    value={modalPassword}
+                    onChange={(e) => setModalPassword(e.target.value)}
+                    placeholder="댓글 작성 시 입력한 비밀번호"
+                    className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
+                  />
+                </div>
+              )}
             </div>
             <div className="px-6 py-4 border-t border-accent-blue/20 flex gap-2 justify-end">
               <button

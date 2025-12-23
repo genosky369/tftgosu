@@ -22,7 +22,10 @@ export async function POST(request: NextRequest) {
       .eq('username', username)
       .single();
 
+    console.log('Supabase 조회 결과:', { admin, error });
+
     if (error || !admin) {
+      console.log('관리자 조회 실패:', error);
       return NextResponse.json(
         { error: '아이디 또는 비밀번호가 올바르지 않습니다' },
         { status: 401 }
