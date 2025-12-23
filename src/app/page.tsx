@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import SimulatorGrid from "@/components/simulator/SimulatorGrid";
+
+const CHALLENGER_EMBLEM_URL = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/challenger.png";
 
 interface Post {
   id: string;
@@ -33,10 +36,20 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* 히어로 섹션 */}
       <section className="text-center py-12 mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="text-accent-pink">TFT</span>
-          <span className="text-text">고수</span>
-        </h1>
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <Image
+            src={CHALLENGER_EMBLEM_URL}
+            alt="Challenger"
+            width={64}
+            height={64}
+            className="drop-shadow-[0_0_15px_rgba(251,191,36,0.7)]"
+            unoptimized
+          />
+          <h1 className="text-4xl md:text-5xl font-bold">
+            <span className="text-cyan-400">TFT</span>
+            <span className="text-yellow-400">고수</span>
+          </h1>
+        </div>
         <p className="text-text-sub text-lg">
           TFT 시뮬레이터로 최적의 조합을 찾아보세요
         </p>
@@ -50,10 +63,7 @@ export default function Home() {
         {/* 자유게시판 */}
         <div className="bg-background-card rounded-xl p-6 border border-accent-blue/20">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xl">📢</span>
-              <h3 className="text-lg font-bold">자유게시판</h3>
-            </div>
+            <h3 className="text-lg font-bold">자유게시판</h3>
             <Link href="/board" className="text-sm text-accent-pink hover:underline">
               더보기 →
             </Link>
@@ -79,8 +89,22 @@ export default function Home() {
       </section>
 
       {/* 푸터 */}
-      <footer className="mt-16 py-8 border-t border-accent-blue/20 text-center text-text-sub text-sm">
-        <p>© 2024 TFT고수. 건의사항은 오픈카톡으로 연락주세요.</p>
+      <footer className="mt-16 py-8 border-t border-accent-blue/20 text-center">
+        {/* 건의하기 버튼 */}
+        <a
+          href="https://open.kakao.com/o/spn5XZ7h"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#FEE500] text-[#391B1B] font-bold rounded-full hover:bg-[#FDD835] transition-colors shadow-lg hover:shadow-xl"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.83 5.32 4.6 6.7-.15.54-.8 2.82-.83 3.01 0 0-.02.13.05.19.07.05.16.03.16.03.21-.03 2.44-1.6 3.45-2.27.51.08 1.04.12 1.57.12 5.52 0 10-3.58 10-8S17.52 3 12 3z"/>
+          </svg>
+          건의하기
+        </a>
+        <p className="mt-4 text-text-sub text-sm">
+          © 2025 TFT고수
+        </p>
       </footer>
     </div>
   );

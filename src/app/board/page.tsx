@@ -114,10 +114,7 @@ export default function BoardPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* 헤더 */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">📝</span>
-          <h1 className="text-2xl font-bold">자유게시판</h1>
-        </div>
+        <h1 className="text-2xl font-bold">자유게시판</h1>
         <Link
           href="/board/write"
           className="px-4 py-2 bg-accent-pink text-white rounded-lg hover:bg-accent-pink/80 transition-colors"
