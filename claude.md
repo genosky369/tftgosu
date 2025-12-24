@@ -583,7 +583,7 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 ## 현재 구현 상태
 
 > 이 섹션은 개발 진행에 따라 업데이트됩니다.
-> 최종 업데이트: 2024-12-24 (세션 4)
+> 최종 업데이트: 2024-12-25 (세션 4)
 
 ### 완료된 기능
 - [x] 프로젝트 문서화 구조 수립
@@ -615,6 +615,10 @@ function complexCalculation(champion: Champion, items: Item[]): number {
   - 관리자 로그인 페이지 (`/admin/login`)
   - 관리자 대시보드 (`/admin/dashboard`)
   - 관리자 권한 글/댓글 삭제 (비밀번호 없이)
+- [x] **관리자 글쓰기/댓글 기능 구현 완료**
+  - 관리자 로그인 시 닉네임/비밀번호 입력 없이 글/댓글 작성
+  - 자동으로 "관리자" 닉네임 + 관리자 라벨 표시
+  - UI에서 "관리자로 작성합니다" 안내 표시
 - [x] **방문자 통계 구현 완료**
   - 일일 유니크 방문자 카운트 (IP + 날짜 기준)
   - 관리자 대시보드에서만 통계 표시
@@ -623,7 +627,6 @@ function complexCalculation(champion: Champion, items: Item[]): number {
   - Vercel 프로덕션 배포
   - tftgosu.com 도메인 연결 (가비아 DNS)
   - HTTPS 자동 적용
-
 ### 진행 중
 - (없음)
 
@@ -632,6 +635,7 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 
 ### 추후 구현 (보류)
 - 구글 광고 연동 (AdSense) - 서비스 안정화 후 진행
+- 팀 코드 생성 - TFT 인게임 팀 코드 포맷 불일치로 보류
 
 ### 라이브 URL
 - **사이트**: https://tftgosu.com

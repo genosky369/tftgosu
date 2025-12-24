@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabase } from '@/lib/supabase';
+import { getAdminFromCookie } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
 // GET /api/posts/:id/comments - 댓글 목록 조회
@@ -36,19 +37,12 @@ export async function POST(
     const body = await request.json();
     const { content, author, password } = body;
 
-    // 입력값 검증
-    if (!content || !author || !password) {
-      return NextResponse.json({ error: '모든 필드를 입력해주세요' }, { status: 400 });
-    }
+    // 관리자 여부 확인
+    const admin = await getAdminFromCookie();
 
-    // 닉네임 길이 검증 (2~10자)
-    if (author.length < 2 || author.length > 10) {
-      return NextResponse.json({ error: '닉네임은 2~10자로 입력해주세요' }, { status: 400 });
-    }
-
-    // 비밀번호 길이 검증 (4~20자)
-    if (password.length < 4 || password.length > 20) {
-      return NextResponse.json({ error: '비밀번호는 4~20자로 입력해주세요' }, { status: 400 });
+    // 내용 검증 (공통)
+    if (!content) {
+      return NextResponse.json({ error: '댓글 내용을 입력해주세요' }, { status: 400 });
     }
 
     // 내용 길이 검증 (1~500자)
@@ -67,19 +61,49 @@ export async function POST(
       return NextResponse.json({ error: '게시글을 찾을 수 없습니다' }, { status: 404 });
     }
 
-    // 비밀번호 해시
-    const password_hash = await bcrypt.hash(password, 10);
+    let commentData;
 
-    // 댓글 저장
-    const { data: comment, error } = await getSupabase()
-      .from('comments')
-      .insert({
+    if (admin) {
+      // 관리자: 닉네임/비밀번호 없이 댓글 작성
+      commentData = {
+        post_id: id,
+        content: content.trim(),
+        author: '관리자',
+        password_hash: '',  // 관리자 댓글은 빈 문자열 (삭제 시 관리자 권한으로 처리)
+        is_admin: true,
+      };
+    } else {
+      // 일반 사용자: 닉네임/비밀번호 필수
+      if (!author || !password) {
+        return NextResponse.json({ error: '닉네임과 비밀번호를 입력해주세요' }, { status: 400 });
+      }
+
+      // 닉네임 길이 검증 (2~10자)
+      if (author.length < 2 || author.length > 10) {
+        return NextResponse.json({ error: '닉네임은 2~10자로 입력해주세요' }, { status: 400 });
+      }
+
+      // 비밀번호 길이 검증 (4~20자)
+      if (password.length < 4 || password.length > 20) {
+        return NextResponse.json({ error: '비밀번호는 4~20자로 입력해주세요' }, { status: 400 });
+      }
+
+      // 비밀번호 해시
+      const password_hash = await bcrypt.hash(password, 10);
+
+      commentData = {
         post_id: id,
         content: content.trim(),
         author: author.trim(),
         password_hash,
         is_admin: false,
-      })
+      };
+    }
+
+    // 댓글 저장
+    const { data: comment, error } = await getSupabase()
+      .from('comments')
+      .insert(commentData)
       .select('id, content, author, is_admin, created_at')
       .single();
 

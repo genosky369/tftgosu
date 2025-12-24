@@ -122,9 +122,14 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
       {/* 상징 선택 */}
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-sm font-medium text-text-sub">
-            보유 상징 ({totalSymbolCount}/7)
-          </label>
+          <div>
+            <label className="block text-sm font-medium text-text-sub">
+              보유 상징 ({totalSymbolCount}/7)
+            </label>
+            <p className="text-xs text-text-muted mt-0.5">
+              상징 없이도 계산 가능합니다. +/- 버튼으로 같은 상징을 여러 개 추가할 수 있습니다.
+            </p>
+          </div>
           {totalSymbolCount > 0 && (
             <button
               onClick={clearSymbols}
@@ -356,13 +361,6 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
           {isCalculating ? "계산 중..." : "최적 조합 계산"}
         </button>
       </div>
-
-      {/* 안내 메시지 */}
-      {totalSymbolCount === 0 && excludedChampions.length === 0 && (
-        <p className="mt-3 text-xs text-text-muted text-center">
-          상징 없이도 계산 가능합니다. +/- 버튼으로 같은 상징을 여러 개 추가할 수 있습니다.
-        </p>
-      )}
     </div>
   );
 }

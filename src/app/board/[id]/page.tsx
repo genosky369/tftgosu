@@ -395,28 +395,34 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
               {commentError}
             </div>
           )}
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <input
-                type="text"
-                value={commentAuthor}
-                onChange={(e) => setCommentAuthor(e.target.value)}
-                placeholder="닉네임 (2~10자)"
-                maxLength={10}
-                className="w-full px-3 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text text-sm placeholder-text-sub/50"
-              />
+          {isAdmin ? (
+            <div className="mb-4 p-3 bg-accent-pink/10 border border-accent-pink/30 rounded-lg">
+              <span className="text-accent-pink font-medium text-sm">관리자로 댓글을 작성합니다</span>
             </div>
-            <div>
-              <input
-                type="password"
-                value={commentPassword}
-                onChange={(e) => setCommentPassword(e.target.value)}
-                placeholder="비밀번호 (4~20자)"
-                maxLength={20}
-                className="w-full px-3 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text text-sm placeholder-text-sub/50"
-              />
+          ) : (
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <input
+                  type="text"
+                  value={commentAuthor}
+                  onChange={(e) => setCommentAuthor(e.target.value)}
+                  placeholder="닉네임 (2~10자)"
+                  maxLength={10}
+                  className="w-full px-3 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text text-sm placeholder-text-sub/50"
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  value={commentPassword}
+                  onChange={(e) => setCommentPassword(e.target.value)}
+                  placeholder="비밀번호 (4~20자)"
+                  maxLength={20}
+                  className="w-full px-3 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text text-sm placeholder-text-sub/50"
+                />
+              </div>
             </div>
-          </div>
+          )}
           <div className="flex gap-2">
             <textarea
               value={commentContent}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { REGIONS } from "@/data/regions";
+import { REGIONS, REGION_SYMBOLS } from "@/data/regions";
 import { CHAMPIONS } from "@/data/champions";
 import { UNLOCK_CHAMPIONS } from "@/data/unlockChampions";
 
@@ -169,9 +169,14 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
       {/* 지역 상징 선택 */}
       <div className="bg-background-card rounded-xl p-4 border border-accent-blue/20">
         <div className="flex justify-between items-center mb-2">
-          <label className="block text-sm font-medium text-text-sub">
-            보유 지역 상징 ({totalSymbolCount}/4)
-          </label>
+          <div>
+            <label className="block text-sm font-medium text-text-sub">
+              보유 지역 상징 ({totalSymbolCount}/4)
+            </label>
+            <p className="text-xs text-text-muted mt-0.5">
+              상징 없이도 계산 가능합니다. +/- 버튼으로 같은 상징을 여러 개 추가할 수 있습니다.
+            </p>
+          </div>
           {totalSymbolCount > 0 && (
             <button
               onClick={() => setSymbolCounts({})}
@@ -182,7 +187,7 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
           )}
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {REGIONS.map(region => {
+          {REGION_SYMBOLS.map(region => {
             const count = symbolCounts[region] || 0;
             const isExcluded = excludedRegions.includes(region);
             const isMaxReached = totalSymbolCount >= 4;

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function WritePage() {
   const router = useRouter();
@@ -12,6 +12,25 @@ export default function WritePage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [checkingAdmin, setCheckingAdmin] = useState(true);
+
+  // 관리자 여부 확인
+  useEffect(() => {
+    const checkAdmin = async () => {
+      try {
+        const res = await fetch("/api/admin/me");
+        if (res.ok) {
+          setIsAdmin(true);
+        }
+      } catch {
+        // 관리자 아님
+      } finally {
+        setCheckingAdmin(false);
+      }
+    };
+    checkAdmin();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,35 +84,45 @@ export default function WritePage() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* 닉네임 & 비밀번호 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm text-text-sub mb-1">
-                닉네임 <span className="text-text-sub/50">(2~10자)</span>
-              </label>
-              <input
-                type="text"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-                maxLength={10}
-                placeholder="닉네임을 입력하세요"
-                className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
-              />
+          {/* 관리자 표시 또는 닉네임 & 비밀번호 */}
+          {checkingAdmin ? (
+            <div className="p-3 bg-background rounded-lg border border-accent-blue/30">
+              <span className="text-text-sub">확인 중...</span>
             </div>
-            <div>
-              <label className="block text-sm text-text-sub mb-1">
-                비밀번호 <span className="text-text-sub/50">(4~20자, 수정/삭제용)</span>
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                maxLength={20}
-                placeholder="비밀번호를 입력하세요"
-                className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
-              />
+          ) : isAdmin ? (
+            <div className="p-3 bg-accent-pink/10 border border-accent-pink/30 rounded-lg">
+              <span className="text-accent-pink font-medium">관리자로 작성합니다</span>
             </div>
-          </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm text-text-sub mb-1">
+                  닉네임 <span className="text-text-sub/50">(2~10자)</span>
+                </label>
+                <input
+                  type="text"
+                  value={author}
+                  onChange={(e) => setAuthor(e.target.value)}
+                  maxLength={10}
+                  placeholder="닉네임을 입력하세요"
+                  className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-text-sub mb-1">
+                  비밀번호 <span className="text-text-sub/50">(4~20자, 수정/삭제용)</span>
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  maxLength={20}
+                  placeholder="비밀번호를 입력하세요"
+                  className="w-full px-4 py-2 bg-background border border-accent-blue/30 rounded-lg focus:outline-none focus:border-accent-pink text-text placeholder-text-sub/50"
+                />
+              </div>
+            </div>
+          )}
 
           {/* 제목 */}
           <div>

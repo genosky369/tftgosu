@@ -11,7 +11,6 @@ export default function ResultList({ results }: ResultListProps) {
   if (results.length === 0) {
     return (
       <div className="text-center py-12 text-text-sub">
-        <p className="text-4xl mb-4">🔍</p>
         <p>위에서 레벨과 상징을 선택하고</p>
         <p>계산 버튼을 눌러주세요</p>
       </div>
@@ -52,8 +51,7 @@ export default function ResultList({ results }: ResultListProps) {
       {/* 브론즈 개수별 결과 */}
       {sortedKeys.map(bronzeCount => (
         <div key={bronzeCount}>
-          <h3 className="text-lg font-bold text-text mb-3 flex items-center gap-2">
-            <span className="text-accent-bronze">🥉</span>
+          <h3 className="text-lg font-bold text-text mb-3">
             브론즈 {bronzeCount}개 조합
             <span className="text-sm font-normal text-text-sub">
               ({grouped[bronzeCount].length}개)
