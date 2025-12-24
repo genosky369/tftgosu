@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import { getAdminFromCookie } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
@@ -22,7 +22,7 @@ export async function DELETE(
     }
 
     // 댓글 존재 확인
-    const { data: comment, error: fetchError } = await supabase
+    const { data: comment, error: fetchError } = await getSupabase()
       .from('comments')
       .select('password_hash')
       .eq('id', id)
@@ -41,7 +41,7 @@ export async function DELETE(
     }
 
     // 댓글 삭제
-    const { error: deleteError } = await supabase
+    const { error: deleteError } = await getSupabase()
       .from('comments')
       .delete()
       .eq('id', id);

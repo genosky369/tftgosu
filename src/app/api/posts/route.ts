@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import bcrypt from 'bcryptjs';
 
 // GET /api/posts - 글 목록 조회
@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const offset = (page - 1) * limit;
 
     // 총 글 개수 조회
-    const { count, error: countError } = await supabase
+    const { count, error: countError } = await getSupabase()
       .from('posts')
       .select('*', { count: 'exact', head: true });
 
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     }
 
     // 글 목록 조회 (최신순)
-    const { data: posts, error } = await supabase
+    const { data: posts, error } = await getSupabase()
       .from('posts')
       .select('id, title, author, is_admin, view_count, created_at')
       .order('created_at', { ascending: false })
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
     const password_hash = await bcrypt.hash(password, 10);
 
     // 글 저장
-    const { data: post, error } = await supabase
+    const { data: post, error } = await getSupabase()
       .from('posts')
       .insert({
         title: title.trim(),

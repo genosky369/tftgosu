@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import { getAdminFromCookie } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
@@ -12,7 +12,7 @@ export async function GET(
     const { id } = await params;
 
     // 글 조회
-    const { data: post, error } = await supabase
+    const { data: post, error } = await getSupabase()
       .from('posts')
       .select('id, title, content, author, is_admin, view_count, created_at, updated_at')
       .eq('id', id)
@@ -23,7 +23,7 @@ export async function GET(
     }
 
     // 조회수 증가 (비동기, 에러 무시)
-    supabase
+    getSupabase()
       .from('posts')
       .update({ view_count: post.view_count + 1 })
       .eq('id', id)
@@ -61,7 +61,7 @@ export async function PUT(
     }
 
     // 글 조회 (비밀번호 확인용)
-    const { data: post, error: fetchError } = await supabase
+    const { data: post, error: fetchError } = await getSupabase()
       .from('posts')
       .select('password_hash')
       .eq('id', id)
@@ -78,7 +78,7 @@ export async function PUT(
     }
 
     // 글 수정
-    const { error: updateError } = await supabase
+    const { error: updateError } = await getSupabase()
       .from('posts')
       .update({
         title: title.trim(),
@@ -116,7 +116,7 @@ export async function DELETE(
     }
 
     // 글 존재 확인
-    const { data: post, error: fetchError } = await supabase
+    const { data: post, error: fetchError } = await getSupabase()
       .from('posts')
       .select('password_hash')
       .eq('id', id)
@@ -135,7 +135,7 @@ export async function DELETE(
     }
 
     // 글 삭제
-    const { error: deleteError } = await supabase
+    const { error: deleteError } = await getSupabase()
       .from('posts')
       .delete()
       .eq('id', id);

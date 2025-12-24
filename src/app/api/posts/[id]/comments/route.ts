@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import bcrypt from 'bcryptjs';
 
 // GET /api/posts/:id/comments - 댓글 목록 조회
@@ -10,7 +10,7 @@ export async function GET(
   try {
     const { id } = await params;
 
-    const { data: comments, error } = await supabase
+    const { data: comments, error } = await getSupabase()
       .from('comments')
       .select('id, content, author, is_admin, created_at')
       .eq('post_id', id)
@@ -57,7 +57,7 @@ export async function POST(
     }
 
     // 게시글 존재 확인
-    const { data: post, error: postError } = await supabase
+    const { data: post, error: postError } = await getSupabase()
       .from('posts')
       .select('id')
       .eq('id', id)
@@ -71,7 +71,7 @@ export async function POST(
     const password_hash = await bcrypt.hash(password, 10);
 
     // 댓글 저장
-    const { data: comment, error } = await supabase
+    const { data: comment, error } = await getSupabase()
       .from('comments')
       .insert({
         post_id: id,

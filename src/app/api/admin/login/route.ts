@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import { signToken, createTokenCookie } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 관리자 조회
-    const { data: admin, error } = await supabase
+    const { data: admin, error } = await getSupabase()
       .from('admins')
       .select('id, username, password_hash')
       .eq('username', username)

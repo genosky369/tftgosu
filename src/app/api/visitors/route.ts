@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 
 // POST /api/visitors - 방문 기록
 export async function POST(request: NextRequest) {
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const today = new Date().toISOString().split('T')[0];
 
     // 방문 기록 (중복 시 무시)
-    const { error } = await supabase
+    const { error } = await getSupabase()
       .from('visitors')
       .upsert(
         { ip_address: ip, visit_date: today },
@@ -38,7 +38,7 @@ export async function GET() {
     const today = new Date().toISOString().split('T')[0];
 
     // 오늘 방문자 수
-    const { count: todayCount, error: todayError } = await supabase
+    const { count: todayCount, error: todayError } = await getSupabase()
       .from('visitors')
       .select('*', { count: 'exact', head: true })
       .eq('visit_date', today);
@@ -48,7 +48,7 @@ export async function GET() {
     }
 
     // 전체 방문자 수
-    const { count: totalCount, error: totalError } = await supabase
+    const { count: totalCount, error: totalError } = await getSupabase()
       .from('visitors')
       .select('*', { count: 'exact', head: true });
 
