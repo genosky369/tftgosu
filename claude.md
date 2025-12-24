@@ -583,7 +583,7 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 ## 현재 구현 상태
 
 > 이 섹션은 개발 진행에 따라 업데이트됩니다.
-> 최종 업데이트: 2024-12-24 (세션 2)
+> 최종 업데이트: 2024-12-24 (세션 4)
 
 ### 완료된 기능
 - [x] 프로젝트 문서화 구조 수립
@@ -619,6 +619,10 @@ function complexCalculation(champion: Champion, items: Item[]): number {
   - 일일 유니크 방문자 카운트 (IP + 날짜 기준)
   - 관리자 대시보드에서만 통계 표시
   - 홈페이지 방문 시 자동 기록
+- [x] **Vercel 배포 및 도메인 연결 완료**
+  - Vercel 프로덕션 배포
+  - tftgosu.com 도메인 연결 (가비아 DNS)
+  - HTTPS 자동 적용
 
 ### 진행 중
 - (없음)
@@ -628,6 +632,10 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 
 ### 추후 구현 (보류)
 - 구글 광고 연동 (AdSense) - 서비스 안정화 후 진행
+
+### 라이브 URL
+- **사이트**: https://tftgosu.com
+- **관리자**: https://tftgosu.com/admin/login
 
 ### GitHub 저장소
 - **URL**: https://github.com/genosky369/tftgosu
