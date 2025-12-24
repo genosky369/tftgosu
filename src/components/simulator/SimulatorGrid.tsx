@@ -1,5 +1,6 @@
 import { SIMULATORS } from "@/config/simulators";
 import SimulatorCard from "./SimulatorCard";
+import ComingSoonCard from "./ComingSoonCard";
 
 export default function SimulatorGrid() {
   return (
@@ -12,6 +13,8 @@ export default function SimulatorGrid() {
         {SIMULATORS.map((simulator) => (
           <SimulatorCard key={simulator.id} simulator={simulator} />
         ))}
+        {/* Coming Soon 카드 */}
+        <ComingSoonCard />
       </div>
     </section>
   );
