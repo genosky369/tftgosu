@@ -10,6 +10,7 @@ interface Post {
   is_admin: boolean;
   view_count: number;
   created_at: string;
+  comment_count: number;
 }
 
 interface Pagination {
@@ -160,6 +161,9 @@ export default function BoardPage() {
                   </span>
                 )}
                 <span className="text-text hover:text-accent-pink">{post.title}</span>
+                {post.comment_count > 0 && (
+                  <span className="text-white ml-1">[{post.comment_count}]</span>
+                )}
               </div>
               <div className="col-span-2 text-center text-text-sub text-sm truncate hidden md:block">
                 {post.author}

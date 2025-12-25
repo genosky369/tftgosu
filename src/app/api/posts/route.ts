@@ -20,10 +20,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: '글 개수 조회 실패' }, { status: 500 });
     }
 
-    // 글 목록 조회 (최신순)
+    // 글 목록 조회 (최신순, 댓글 개수 포함)
     const { data: posts, error } = await getSupabase()
       .from('posts')
-      .select('id, title, author, is_admin, view_count, created_at')
+      .select('id, title, author, is_admin, view_count, created_at, comments(count)')
       .order('created_at', { ascending: false })
       .range(offset, offset + limit - 1);
 
@@ -31,10 +31,17 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: '글 목록 조회 실패' }, { status: 500 });
     }
 
+    // 댓글 개수 형식 변환: { comments: [{ count: n }] } -> comment_count: n
+    const postsWithCommentCount = posts?.map(post => ({
+      ...post,
+      comment_count: post.comments?.[0]?.count || 0,
+      comments: undefined,  // 원본 comments 필드 제거
+    })) || [];
+
     const totalPages = Math.ceil((count || 0) / limit);
 
     return NextResponse.json({
-      posts,
+      posts: postsWithCommentCount,
       pagination: {
         currentPage: page,
         totalPages,

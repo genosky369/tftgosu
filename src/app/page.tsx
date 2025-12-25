@@ -12,6 +12,7 @@ interface Post {
   title: string;
   author: string;
   is_admin: boolean;
+  comment_count: number;
 }
 
 export default function Home() {
@@ -80,6 +81,9 @@ export default function Home() {
                   >
                     • {post.is_admin && <span className="text-accent-pink">[관리자] </span>}
                     {post.title}
+                    {post.comment_count > 0 && (
+                      <span className="text-white ml-1">[{post.comment_count}]</span>
+                    )}
                   </Link>
                 </li>
               ))
