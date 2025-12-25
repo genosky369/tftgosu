@@ -6,6 +6,11 @@ interface ResultCardProps {
   isMinimal: boolean;
 }
 
+// 보유 챔피언 여부 확인
+const isOwnedChampion = (name: string, ownedNames: string[]): boolean => {
+  return ownedNames.includes(name);
+};
+
 // 코스트별 색상
 const COST_COLORS: Record<number, string> = {
   1: "#9ca3af",
@@ -16,7 +21,7 @@ const COST_COLORS: Record<number, string> = {
 };
 
 export default function ResultCard({ result, rank, isMinimal }: ResultCardProps) {
-  const { targetRegions, champions, championCount, totalCost, regionCoverages, remainingSlots } = result;
+  const { targetRegions, champions, ownedChampionNames = [], championCount, totalCost, regionCoverages, remainingSlots } = result;
 
   return (
     <div className="bg-background-card rounded-xl p-4 border border-accent-blue/20 hover:border-accent-worldrune/50 transition-colors">
@@ -110,23 +115,40 @@ export default function ResultCard({ result, rank, isMinimal }: ResultCardProps)
       {/* 챔피언 목록 */}
       {champions.length > 0 && (
         <div>
-          <p className="text-xs text-text-sub mb-1">필요 챔피언</p>
+          <p className="text-xs text-text-sub mb-1">
+            필요 챔피언
+            {ownedChampionNames.length > 0 && (
+              <span className="text-accent-worldrune ml-2">
+                (보유: {ownedChampionNames.length}명)
+              </span>
+            )}
+          </p>
           <div className="flex flex-wrap gap-1">
             {champions
-              .sort((a, b) => b.cost - a.cost)
-              .map((champion, idx) => (
-                <span
-                  key={idx}
-                  className="px-2 py-1 rounded text-xs font-medium"
-                  style={{
-                    backgroundColor: `${COST_COLORS[champion.cost]}20`,
-                    color: COST_COLORS[champion.cost],
-                    border: `1px solid ${COST_COLORS[champion.cost]}40`,
-                  }}
-                >
-                  {champion.name}
-                </span>
-              ))}
+              .sort((a, b) => {
+                // 보유 챔피언을 먼저 표시
+                const aOwned = isOwnedChampion(a.name, ownedChampionNames);
+                const bOwned = isOwnedChampion(b.name, ownedChampionNames);
+                if (aOwned !== bOwned) return aOwned ? -1 : 1;
+                return b.cost - a.cost;
+              })
+              .map((champion, idx) => {
+                const owned = isOwnedChampion(champion.name, ownedChampionNames);
+                return (
+                  <span
+                    key={idx}
+                    className={`px-2 py-1 rounded text-xs font-medium ${owned ? 'ring-2 ring-accent-worldrune' : ''}`}
+                    style={{
+                      backgroundColor: owned ? '#10b98130' : `${COST_COLORS[champion.cost]}20`,
+                      color: owned ? '#10b981' : COST_COLORS[champion.cost],
+                      border: `1px solid ${owned ? '#10b98150' : `${COST_COLORS[champion.cost]}40`}`,
+                    }}
+                  >
+                    {owned && <span className="mr-1">★</span>}
+                    {champion.name}
+                  </span>
+                );
+              })}
           </div>
         </div>
       )}

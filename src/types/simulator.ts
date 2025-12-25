@@ -18,6 +18,7 @@ export interface WorldRuneInput {
   regionSymbols: string[];        // 보유 지역 상징 (최대 4개, 중복 허용)
   excludedRegions: string[];      // 제외할 지역
   excludedChampions: string[];    // 제외할 챔피언
+  ownedChampions: string[];       // 보유 중인 챔피언 (결과에 무조건 포함)
   maxCost: number;                // 최대 코스트 (1~5)
 }
 
@@ -37,6 +38,7 @@ export interface RegionCoverage {
 export interface WorldRuneResult {
   targetRegions: string[];        // 목표 지역 4개
   champions: Champion[];          // 필요한 챔피언 목록
+  ownedChampionNames: string[];   // 보유 챔피언 이름 목록 (구분 표시용)
   championCount: number;          // 필요 기물 수
   totalCost: number;              // 덱 총 코스트
   regionCoverages: RegionCoverage[];  // 지역별 커버 정보

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { REGIONS, REGION_SYMBOLS } from "@/data/regions";
+import { REGION_SYMBOLS, CALCULABLE_REGIONS } from "@/data/regions";
 import { CHAMPIONS } from "@/data/champions";
 import { UNLOCK_CHAMPIONS } from "@/data/unlockChampions";
 
@@ -11,6 +11,7 @@ interface InputFormProps {
     regionSymbols: string[],
     excludedRegions: string[],
     excludedChampions: string[],
+    ownedChampions: string[],
     maxCost: number
   ) => void;
   isCalculating: boolean;
@@ -25,8 +26,10 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
   const [symbolCounts, setSymbolCounts] = useState<Record<string, number>>({});
   const [excludedRegions, setExcludedRegions] = useState<string[]>([]);
   const [excludedChampions, setExcludedChampions] = useState<string[]>([]);
+  const [ownedChampions, setOwnedChampions] = useState<string[]>([]);
   const [excludeUnlockChampions, setExcludeUnlockChampions] = useState(false);
-  const [activeTab, setActiveTab] = useState(5); // 코스트별 탭
+  const [activeTab, setActiveTab] = useState(5); // 코스트별 탭 (제외)
+  const [ownedTab, setOwnedTab] = useState(5); // 코스트별 탭 (보유)
 
   // 총 상징 개수
   const totalSymbolCount = Object.values(symbolCounts).reduce((sum, count) => sum + count, 0);
@@ -62,13 +65,27 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
     );
   };
 
-  // 챔피언 제외 토글
+  // 챔피언 제외 토글 (보유 챔피언과 상호 배제)
   const toggleExcludeChampion = (championName: string) => {
+    if (ownedChampions.includes(championName)) return; // 보유 중이면 제외 불가
     setExcludedChampions(prev =>
       prev.includes(championName)
         ? prev.filter(c => c !== championName)
         : [...prev, championName]
     );
+  };
+
+  // 보유 챔피언 토글 (제외 챔피언과 상호 배제, 레벨 제한)
+  const toggleOwnedChampion = (championName: string) => {
+    if (excludedChampions.includes(championName)) return; // 제외 중이면 보유 불가
+    setOwnedChampions(prev => {
+      if (prev.includes(championName)) {
+        return prev.filter(c => c !== championName);
+      }
+      // 레벨 수 제한
+      if (prev.length >= level) return prev;
+      return [...prev, championName];
+    });
   };
 
   // 해금 챔피언 제외 토글
@@ -94,7 +111,7 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
         symbolsArray.push(region);
       }
     }
-    onCalculate(level, symbolsArray, excludedRegions, excludedChampions, maxCost);
+    onCalculate(level, symbolsArray, excludedRegions, excludedChampions, ownedChampions, maxCost);
   };
 
   // 전체 초기화
@@ -102,11 +119,15 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
     setSymbolCounts({});
     setExcludedRegions([]);
     setExcludedChampions([]);
+    setOwnedChampions([]);
     setExcludeUnlockChampions(false);
   };
 
-  // 코스트별 챔피언 필터링
+  // 코스트별 챔피언 필터링 (제외용)
   const championsByCost = CHAMPIONS.filter(c => c.cost === activeTab && c.cost <= maxCost);
+
+  // 코스트별 챔피언 필터링 (보유용)
+  const championsByOwnedTab = CHAMPIONS.filter(c => c.cost === ownedTab && c.cost <= maxCost);
 
   return (
     <div className="space-y-6">
@@ -237,7 +258,8 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
           제외할 지역 (선택)
         </label>
         <div className="flex flex-wrap gap-2">
-          {REGIONS.map(region => {
+          {/* 타곤은 상징이 없어서 제외할 이유가 없으므로 REGION_SYMBOLS 사용 */}
+          {REGION_SYMBOLS.map(region => {
             const isExcluded = excludedRegions.includes(region);
             return (
               <button
@@ -258,7 +280,7 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
         </div>
         {excludedRegions.length > 0 && (
           <p className="mt-2 text-xs text-red-400">
-            {excludedRegions.length}개 지역 제외됨 (남은 지역: {REGIONS.length - excludedRegions.length}개)
+            {excludedRegions.length}개 지역 제외됨 (남은 지역: {CALCULABLE_REGIONS.length - excludedRegions.length}개)
           </p>
         )}
       </div>
@@ -380,6 +402,116 @@ export default function InputForm({ onCalculate, isCalculating }: InputFormProps
             🔒 = 해금 챔피언
           </p>
         </div>
+      </div>
+
+      {/* 보유 중인 챔피언 */}
+      <div className="bg-background-card rounded-xl p-4 border border-accent-worldrune/30">
+        <div className="flex justify-between items-center mb-3">
+          <div>
+            <label className="block text-sm font-medium text-accent-worldrune">
+              보유 중인 챔피언 ({ownedChampions.length}/{level})
+            </label>
+            <p className="text-xs text-text-muted mt-0.5">
+              선택한 챔피언은 결과에 무조건 포함됩니다
+            </p>
+          </div>
+          {ownedChampions.length > 0 && (
+            <button
+              onClick={() => setOwnedChampions([])}
+              className="text-xs text-accent-pink hover:underline"
+            >
+              전체 해제
+            </button>
+          )}
+        </div>
+
+        {/* 선택된 보유 챔피언 */}
+        {ownedChampions.length > 0 && (
+          <div className="mb-3">
+            <p className="text-xs text-text-muted mb-1">
+              선택된 보유 챔피언 ({ownedChampions.length}개)
+            </p>
+            <div className="flex flex-wrap gap-1 p-2 bg-background rounded-lg max-h-20 overflow-y-auto">
+              {ownedChampions.map(name => {
+                const champion = CHAMPIONS.find(c => c.name === name);
+                return (
+                  <span
+                    key={name}
+                    onClick={() => toggleOwnedChampion(name)}
+                    className="px-2 py-1 bg-accent-worldrune/20 text-accent-worldrune rounded text-xs cursor-pointer hover:bg-accent-worldrune/30 flex items-center gap-1"
+                  >
+                    {champion && <span className="text-text-muted">{champion.cost}코</span>}
+                    {name} ✕
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* 코스트별 탭 */}
+        <div className="flex gap-1 mb-2">
+          {COSTS.filter(c => c <= maxCost).map(c => (
+            <button
+              key={c}
+              onClick={() => setOwnedTab(c)}
+              className={`
+                px-3 py-1 rounded-t-lg text-xs font-medium transition-all
+                ${ownedTab === c
+                  ? "bg-background-header text-accent-worldrune"
+                  : "bg-background text-text-muted hover:text-text-sub"
+                }
+              `}
+            >
+              {c}코
+            </button>
+          ))}
+        </div>
+
+        {/* 챔피언 목록 */}
+        <div className="bg-background-header rounded-lg p-2 max-h-48 overflow-y-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
+            {championsByOwnedTab.map(champion => {
+              const isOwned = ownedChampions.includes(champion.name);
+              const isExcluded = excludedChampions.includes(champion.name);
+              const isMaxReached = ownedChampions.length >= level;
+              const isUnlock = isUnlockChampion(champion.name);
+              return (
+                <button
+                  key={champion.name}
+                  onClick={() => toggleOwnedChampion(champion.name)}
+                  disabled={isExcluded || (isMaxReached && !isOwned)}
+                  className={`
+                    px-2 py-1 rounded text-xs text-left transition-all flex items-center gap-1
+                    ${isOwned
+                      ? "bg-accent-worldrune/20 text-accent-worldrune border border-accent-worldrune/50"
+                      : isExcluded
+                        ? "bg-red-500/10 text-text-muted opacity-50 cursor-not-allowed"
+                        : isMaxReached
+                          ? "bg-background text-text-muted opacity-50 cursor-not-allowed"
+                          : "bg-background text-text-sub hover:bg-background-card"
+                    }
+                  `}
+                >
+                  {isUnlock && <span className="text-yellow-500">🔒</span>}
+                  {champion.name}
+                </button>
+              );
+            })}
+          </div>
+          {championsByOwnedTab.length === 0 && (
+            <p className="text-center text-text-muted text-xs py-4">
+              해당 코스트의 챔피언이 없습니다
+            </p>
+          )}
+        </div>
+
+        {/* 경고 메시지 */}
+        {ownedChampions.length >= level && (
+          <p className="mt-2 text-xs text-yellow-400">
+            레벨 {level}에서 최대 {level}명까지 선택 가능합니다
+          </p>
+        )}
       </div>
 
       {/* 계산 버튼 */}

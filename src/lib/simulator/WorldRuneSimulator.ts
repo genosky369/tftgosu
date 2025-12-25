@@ -22,6 +22,11 @@ export function validateInput(input: WorldRuneInput): WorldRuneValidationResult 
     return { valid: false, error: '최대 코스트는 1~5 사이여야 합니다.' };
   }
 
+  // 보유 챔피언이 레벨 수를 초과하는지 확인
+  if (input.ownedChampions && input.ownedChampions.length > input.level) {
+    return { valid: false, error: `보유 챔피언이 레벨(${input.level})보다 많습니다.` };
+  }
+
   // 제외 후 남은 지역이 4개 이상인지 확인
   const availableRegions = CALCULABLE_REGIONS.filter(r => !input.excludedRegions.includes(r));
   if (availableRegions.length < 4) {
@@ -138,16 +143,12 @@ function findMinimalChampionsGreedy(
   targetRegions: string[],
   symbolCounts: Map<string, number>,
   availableChampions: Champion[],
-  maxChampions: number
+  maxChampions: number,
+  ownedChampions: Champion[] = []
 ): { champions: Champion[]; coverages: RegionCoverage[] } | null {
-  // 남은 필요 카운트 계산
-  const requiredCounts = calculateRequiredCounts(targetRegions, symbolCounts);
-
-  // 상징만으로 이미 모든 지역 활성화 가능
-  const totalRequired = Array.from(requiredCounts.values()).reduce((a, b) => a + b, 0);
-  if (totalRequired === 0) {
-    const { coverages } = calculateCoverage([], targetRegions, symbolCounts);
-    return { champions: [], coverages };
+  // 보유 챔피언이 레벨 초과하면 불가
+  if (ownedChampions.length > maxChampions) {
+    return null;
   }
 
   // 현재 지역별 카운트 (상징 포함)
@@ -156,10 +157,31 @@ function findMinimalChampionsGreedy(
     currentCounts.set(region, symbolCounts.get(region) || 0);
   }
 
-  const selected: Champion[] = [];
+  // 보유 챔피언 먼저 적용
+  const selected: Champion[] = [...ownedChampions];
+  for (const champion of ownedChampions) {
+    const championRegions = getChampionRegions(champion);
+    for (const region of targetRegions) {
+      if (championRegions.some(cr => normalizeRegionName(cr) === normalizeRegionName(region))) {
+        currentCounts.set(region, (currentCounts.get(region) || 0) + 1);
+      }
+    }
+  }
+
+  // 보유 챔피언 + 상징만으로 이미 모든 지역 활성화 가능한지 확인
+  const { coverages: initialCoverages, allCovered: initialAllCovered } = calculateCoverage(
+    selected, targetRegions, symbolCounts
+  );
+  if (initialAllCovered) {
+    return { champions: selected, coverages: initialCoverages };
+  }
+
+  // 남은 슬롯 수
+  const remainingSlots = maxChampions - ownedChampions.length;
 
   // Greedy: 가장 많은 "부족한 지역"을 채우는 챔피언 선택
-  while (selected.length < maxChampions) {
+  let addedCount = 0;
+  while (addedCount < remainingSlots) {
     // 아직 활성화 안 된 지역 확인
     const unactivatedRegions = targetRegions.filter(r => {
       const current = currentCounts.get(r) || 0;
@@ -198,6 +220,7 @@ function findMinimalChampionsGreedy(
     if (!bestChampion || bestScore === 0) break; // 더 이상 진전 불가
 
     selected.push(bestChampion);
+    addedCount++;
 
     // 카운트 업데이트
     const championRegions = getChampionRegions(bestChampion);
@@ -220,30 +243,37 @@ function findMinimalChampionsGreedy(
 
 /** 메인 계산 함수 */
 export function calculate(input: WorldRuneInput): WorldRuneResult[] {
-  const { level, regionSymbols, excludedRegions, excludedChampions, maxCost } = input;
+  const { level, regionSymbols, excludedRegions, excludedChampions, ownedChampions, maxCost } = input;
   const results: WorldRuneResult[] = [];
 
   // 1. 필터링 적용
   const availableRegions = CALCULABLE_REGIONS.filter(r => !excludedRegions.includes(r));
   const availableChampions = CHAMPIONS.filter(c =>
     c.cost <= maxCost &&
-    !excludedChampions.includes(c.name)
+    !excludedChampions.includes(c.name) &&
+    !ownedChampions.includes(c.name) // 보유 챔피언은 추가 탐색에서 제외
   );
 
-  // 2. 모든 4개 지역 조합 생성
+  // 2. 보유 챔피언 객체 배열 생성
+  const ownedChampionObjects = ownedChampions
+    .map(name => CHAMPIONS.find(c => c.name === name))
+    .filter((c): c is Champion => c !== undefined);
+
+  // 3. 모든 4개 지역 조합 생성
   const regionCombinations = Array.from(generateCombinations(availableRegions, 4));
 
-  // 3. 각 조합에 대해 최소 챔피언 찾기 (Greedy 알고리즘)
+  // 4. 각 조합에 대해 최소 챔피언 찾기 (Greedy 알고리즘)
   for (const targetRegions of regionCombinations) {
     // 상징 카운트 계산
     const symbolCounts = countSymbolsByRegion(regionSymbols, targetRegions);
 
-    // Greedy 알고리즘으로 최소 챔피언 조합 찾기
+    // Greedy 알고리즘으로 최소 챔피언 조합 찾기 (보유 챔피언 포함)
     const result = findMinimalChampionsGreedy(
       targetRegions,
       symbolCounts,
       availableChampions,
-      level
+      level,
+      ownedChampionObjects
     );
 
     if (result) {
@@ -253,6 +283,7 @@ export function calculate(input: WorldRuneInput): WorldRuneResult[] {
       results.push({
         targetRegions,
         champions,
+        ownedChampionNames: ownedChampions, // 보유 챔피언 이름 목록
         championCount: champions.length,
         totalCost,
         regionCoverages: coverages,
@@ -261,7 +292,7 @@ export function calculate(input: WorldRuneInput): WorldRuneResult[] {
     }
   }
 
-  // 4. 결과 정렬: 기물 수 오름차순, 코스트 내림차순
+  // 5. 결과 정렬: 기물 수 오름차순, 코스트 내림차순
   results.sort((a, b) => {
     if (a.championCount !== b.championCount) {
       return a.championCount - b.championCount;
@@ -269,7 +300,7 @@ export function calculate(input: WorldRuneInput): WorldRuneResult[] {
     return b.totalCost - a.totalCost;
   });
 
-  // 5. 중복 제거 및 상위 결과 반환
+  // 6. 중복 제거 및 상위 결과 반환
   return deduplicateResults(results).slice(0, 50);
 }
 

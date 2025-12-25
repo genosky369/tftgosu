@@ -18,6 +18,7 @@ export default function WorldRuneSimulatorPage() {
     regionSymbols: string[],
     excludedRegions: string[],
     excludedChampions: string[],
+    ownedChampions: string[],
     maxCost: number
   ) => {
     setError(null);
@@ -28,6 +29,7 @@ export default function WorldRuneSimulatorPage() {
       regionSymbols,
       excludedRegions,
       excludedChampions,
+      ownedChampions,
       maxCost
     });
 
@@ -46,6 +48,7 @@ export default function WorldRuneSimulatorPage() {
           regionSymbols,
           excludedRegions,
           excludedChampions,
+          ownedChampions,
           maxCost
         });
 
