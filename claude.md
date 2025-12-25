@@ -677,7 +677,7 @@ function complexCalculation(champion: Champion, items: Item[]): number {
 ## 현재 구현 상태
 
 > 이 섹션은 개발 진행에 따라 업데이트됩니다.
-> 최종 업데이트: 2024-12-25 (세션 4)
+> 최종 업데이트: 2024-12-26
 
 ### 완료된 기능
 - [x] 프로젝트 문서화 구조 수립
@@ -700,6 +700,9 @@ function complexCalculation(champion: Champion, items: Item[]): number {
   - Greedy 알고리즘 (Set Cover 문제)
   - 지역 제외, 챔피언 제외, 최대 코스트 필터링
   - 해금 챔피언 일괄 제외 기능
+  - **보유 챔피언 기능**: 선택한 챔피언 결과에 무조건 포함
+  - 다르킨 지역 제외 (지역 특성 아님)
+  - 타곤 지역 조합 활성화 (상징은 미존재)
 - [x] **게시판 시스템 구현 완료** (Supabase)
   - 글 CRUD (목록, 상세, 작성, 수정, 삭제)
   - 댓글 CRUD (작성, 삭제)
@@ -721,6 +724,12 @@ function complexCalculation(champion: Champion, items: Item[]): number {
   - Vercel 프로덕션 배포
   - tftgosu.com 도메인 연결 (가비아 DNS)
   - HTTPS 자동 적용
+- [x] **Jest 테스트 환경 구축**
+  - 브론즈 시뮬레이터 테스트 (14개 케이스)
+  - `npm test` 명령어로 실행
+- [x] **파비콘 추가** (챌린저 엠블럼)
+- [x] **게시글 댓글 개수 표시** ([N] 형태)
+
 ### 진행 중
 - (없음)
 
