@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import type { SimulatorResult } from "@/types/simulator";
-import { generateTeamCode } from "@/data/championTeamCodeMap";
 
 interface ResultCardProps {
   result: SimulatorResult;
@@ -20,24 +16,9 @@ const COST_COLORS: Record<number, string> = {
 
 export default function ResultCard({ result, rank }: ResultCardProps) {
   const { champions, activeSynergies, bronzeCount, totalCost } = result;
-  const [copied, setCopied] = useState(false);
 
   // 활성화된 브론즈 시너지만 필터링
   const activeBronze = activeSynergies.filter(s => s.isActive);
-
-  // 팀 코드 복사
-  const handleCopyTeamCode = async () => {
-    const championNames = champions.map(c => c.name);
-    const teamCode = generateTeamCode(championNames);
-
-    try {
-      await navigator.clipboard.writeText(teamCode);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("클립보드 복사 실패:", err);
-    }
-  };
 
   return (
     <div className="bg-background-card rounded-xl p-4 border border-accent-blue/20 hover:border-accent-bronze/50 transition-colors">
@@ -79,7 +60,7 @@ export default function ResultCard({ result, rank }: ResultCardProps) {
       </div>
 
       {/* 활성화된 브론즈 시너지 */}
-      <div className="mb-3">
+      <div>
         <p className="text-xs text-text-sub mb-2">활성화된 브론즈 시너지</p>
         <div className="flex flex-wrap gap-1">
           {activeBronze.map((synergy, idx) => (
@@ -92,20 +73,6 @@ export default function ResultCard({ result, rank }: ResultCardProps) {
           ))}
         </div>
       </div>
-
-      {/* 팀 코드 복사 버튼 */}
-      <button
-        onClick={handleCopyTeamCode}
-        className={`
-          w-full py-2 rounded-lg text-sm font-medium transition-all
-          ${copied
-            ? "bg-green-500/20 text-green-400 border border-green-500/50"
-            : "bg-background-header text-text-sub hover:bg-background hover:text-text border border-transparent"
-          }
-        `}
-      >
-        {copied ? "복사 완료!" : "팀 코드 복사"}
-      </button>
     </div>
   );
 }

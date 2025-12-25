@@ -1,8 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import type { WorldRuneResult } from "@/types/simulator";
-import { generateTeamCode } from "@/data/championTeamCodeMap";
 
 interface ResultCardProps {
   result: WorldRuneResult;
@@ -21,21 +17,6 @@ const COST_COLORS: Record<number, string> = {
 
 export default function ResultCard({ result, rank, isMinimal }: ResultCardProps) {
   const { targetRegions, champions, championCount, totalCost, regionCoverages, remainingSlots } = result;
-  const [copied, setCopied] = useState(false);
-
-  // 팀 코드 복사
-  const handleCopyTeamCode = async () => {
-    const championNames = champions.map(c => c.name);
-    const teamCode = generateTeamCode(championNames);
-
-    try {
-      await navigator.clipboard.writeText(teamCode);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("클립보드 복사 실패:", err);
-    }
-  };
 
   return (
     <div className="bg-background-card rounded-xl p-4 border border-accent-blue/20 hover:border-accent-worldrune/50 transition-colors">
@@ -157,22 +138,6 @@ export default function ResultCard({ result, rank, isMinimal }: ResultCardProps)
             상징만으로 4개 지역 활성화 가능!
           </span>
         </div>
-      )}
-
-      {/* 팀 코드 복사 버튼 - 챔피언이 있을 때만 표시 */}
-      {champions.length > 0 && (
-        <button
-          onClick={handleCopyTeamCode}
-          className={`
-            w-full py-2 mt-3 rounded-lg text-sm font-medium transition-all
-            ${copied
-              ? "bg-green-500/20 text-green-400 border border-green-500/50"
-              : "bg-background-header text-text-sub hover:bg-background hover:text-text border border-transparent"
-            }
-          `}
-        >
-          {copied ? "복사 완료!" : "팀 코드 복사"}
-        </button>
       )}
     </div>
   );
