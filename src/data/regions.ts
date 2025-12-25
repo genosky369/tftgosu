@@ -19,12 +19,11 @@ export const REGIONS: string[] = [
   "필트오버",
 ];
 
-// 상징이 존재하는 지역 목록 (13개) - 타곤은 상징 없음
+// 상징이 존재하는 지역 목록 (12개) - 타곤, 다르킨은 지역 특성 아님
 export const REGION_SYMBOLS: string[] = [
   "공허",
   "그림자군도",
   "녹서스",
-  "다르킨",
   "데마시아",
   "빌지워터",
   "슈리마",
@@ -36,12 +35,11 @@ export const REGION_SYMBOLS: string[] = [
   "필트오버",
 ];
 
-// 지역별 활성화 임계값 (최소 유닛 수)
+// 지역별 활성화 임계값 (최소 유닛 수) - 다르킨은 지역 특성 아님
 export const REGION_THRESHOLDS: Record<string, number> = {
   "공허": 2,
   "그림자군도": 2,
   "녹서스": 3,
-  "다르킨": 1,
   "데마시아": 3,
   "빌지워터": 3,
   "슈리마": 2,
