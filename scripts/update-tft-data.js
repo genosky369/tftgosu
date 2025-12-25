@@ -23,6 +23,59 @@ const OUTPUT_DIR = path.join(__dirname, '..', 'src', 'data');
 const CURRENT_SET = '16';
 
 /**
+ * 역할군(Role) → 마나 시스템 매핑
+ *
+ * Community Dragon의 상세 역할군을 게임 내 마나 시스템 역할군으로 변환
+ *
+ * 마나 시스템 (Set 15+):
+ * - Tank: 공격당 5마나, 피격시 마나 획득
+ * - Fighter: 공격당 10마나, 흡혈 10%
+ * - Assassin: 공격당 10마나, 타겟팅 우선순위 낮음
+ * - Marksman: 공격당 10마나
+ * - Mage: 공격당 7마나, 초당 마나재생 2
+ * - Specialist: 특수 마나 시스템
+ */
+const ROLE_TO_MANA_CLASS = {
+  // 탱커 계열 → Tank
+  'APTank': 'Tank',
+  'ADTank': 'Tank',
+
+  // 전사 계열 → Fighter
+  'ADFighter': 'Fighter',
+  'APFighter': 'Fighter',
+  'HFighter': 'Fighter',  // 하이브리드 전사 (Yone, Viego)
+
+  // 암살자 계열 → Assassin
+  'ADReaper': 'Assassin',
+  'APReaper': 'Assassin',
+
+  // 원거리 딜러 계열 → Marksman
+  'ADCarry': 'Marksman',
+
+  // 마법사 계열 → Mage
+  'APCaster': 'Mage',
+  'ADCaster': 'Mage',
+  'APCarry': 'Mage',
+
+  // 전문가 계열 → Specialist
+  'ADSpecialist': 'Specialist',
+  'APSpecialist': 'Specialist',
+  'ADCasterFormSwapper': 'Specialist'  // 카이사 등 변신 챔피언
+};
+
+/**
+ * 마나 시스템 역할군별 스탯
+ */
+const MANA_CLASS_STATS = {
+  'Tank': { manaPerAttack: 5, manaOnHit: true, manaRegen: 0, bonusEffect: '타겟팅 우선순위 높음' },
+  'Fighter': { manaPerAttack: 10, manaOnHit: false, manaRegen: 0, bonusEffect: '모든 피해 흡혈 10%' },
+  'Assassin': { manaPerAttack: 10, manaOnHit: false, manaRegen: 0, bonusEffect: '타겟팅 우선순위 낮음, 비대상 피해 -15%' },
+  'Marksman': { manaPerAttack: 10, manaOnHit: false, manaRegen: 0, bonusEffect: null },
+  'Mage': { manaPerAttack: 7, manaOnHit: false, manaRegen: 2, bonusEffect: null },
+  'Specialist': { manaPerAttack: 0, manaOnHit: false, manaRegen: 0, bonusEffect: '특수 마나 시스템' }
+};
+
+/**
  * HTTPS로 파일 다운로드
  */
 function downloadFile(url, dest) {
@@ -78,29 +131,36 @@ function parseChampions(data) {
 
   const champions = set.champions
     .filter(c => c.cost >= 1 && c.cost <= 5 && c.traits && c.traits.length > 0)
-    .map(c => ({
-      name: c.name.trim(),
-      apiName: c.apiName,
-      cost: c.cost,
-      traits: c.traits,
-      stats: {
-        hp: c.stats.hp,
-        damage: c.stats.damage,
-        armor: c.stats.armor,
-        magicResist: c.stats.magicResist,
-        attackSpeed: parseFloat((c.stats.attackSpeed || 0).toFixed(2)),
-        critChance: c.stats.critChance,
-        critMultiplier: parseFloat((c.stats.critMultiplier || 0).toFixed(2)),
-        mana: c.stats.mana,
-        initialMana: c.stats.initialMana,
-        range: c.stats.range
-      },
-      ability: {
-        name: c.ability?.name || '',
-        desc: c.ability?.desc || '',
-        variables: c.ability?.variables || []
-      }
-    }))
+    .map(c => {
+      const role = c.role || 'Unknown';
+      const manaClass = ROLE_TO_MANA_CLASS[role] || 'Unknown';
+
+      return {
+        name: c.name.trim(),
+        apiName: c.apiName,
+        cost: c.cost,
+        traits: c.traits,
+        role: role,           // Community Dragon 원본 역할 (ADCaster, APTank 등)
+        manaClass: manaClass, // 마나 시스템 역할군 (Tank, Fighter, Mage 등)
+        stats: {
+          hp: c.stats.hp,
+          damage: c.stats.damage,
+          armor: c.stats.armor,
+          magicResist: c.stats.magicResist,
+          attackSpeed: parseFloat((c.stats.attackSpeed || 0).toFixed(2)),
+          critChance: c.stats.critChance,
+          critMultiplier: parseFloat((c.stats.critMultiplier || 0).toFixed(2)),
+          mana: c.stats.mana,
+          initialMana: c.stats.initialMana,
+          range: c.stats.range
+        },
+        ability: {
+          name: c.ability?.name || '',
+          desc: c.ability?.desc || '',
+          variables: c.ability?.variables || []
+        }
+      };
+    })
     .sort((a, b) => a.cost - b.cost || a.name.localeCompare(b.name));
 
   return champions;
@@ -237,6 +297,7 @@ async function main() {
     saveJson('set16-champions.json', champions);
     saveJson('set16-traits.json', traits);
     saveJson('set16-items.json', items);
+    saveJson('mana-class-stats.json', MANA_CLASS_STATS);
 
     // 4. 임시 파일 삭제
     fs.unlinkSync(TEMP_FILE);

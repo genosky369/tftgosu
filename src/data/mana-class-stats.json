@@ -1,0 +1,38 @@
+{
+  "Tank": {
+    "manaPerAttack": 5,
+    "manaOnHit": true,
+    "manaRegen": 0,
+    "bonusEffect": "타겟팅 우선순위 높음"
+  },
+  "Fighter": {
+    "manaPerAttack": 10,
+    "manaOnHit": false,
+    "manaRegen": 0,
+    "bonusEffect": "모든 피해 흡혈 10%"
+  },
+  "Assassin": {
+    "manaPerAttack": 10,
+    "manaOnHit": false,
+    "manaRegen": 0,
+    "bonusEffect": "타겟팅 우선순위 낮음, 비대상 피해 -15%"
+  },
+  "Marksman": {
+    "manaPerAttack": 10,
+    "manaOnHit": false,
+    "manaRegen": 0,
+    "bonusEffect": null
+  },
+  "Mage": {
+    "manaPerAttack": 7,
+    "manaOnHit": false,
+    "manaRegen": 2,
+    "bonusEffect": null
+  },
+  "Specialist": {
+    "manaPerAttack": 0,
+    "manaOnHit": false,
+    "manaRegen": 0,
+    "bonusEffect": "특수 마나 시스템"
+  }
+}

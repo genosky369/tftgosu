@@ -7,6 +7,8 @@
       "Freljord",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 500,
       "damage": 30,
@@ -58,6 +60,8 @@
       "Zaun",
       "Juggernaut"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 700,
       "damage": 50,
@@ -134,6 +138,8 @@
       "Slayer",
       "Juggernaut"
     ],
+    "role": "ADReaper",
+    "manaClass": "Assassin",
     "stats": {
       "hp": 650,
       "damage": 42,
@@ -209,6 +215,8 @@
       "Piltover",
       "Longshot"
     ],
+    "role": "ADCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 500,
       "damage": 45,
@@ -260,6 +268,8 @@
       "Bilgewater",
       "Bruiser"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 700,
       "damage": 50,
@@ -323,6 +333,8 @@
       "Demacia",
       "Defender"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 700,
       "damage": 55,
@@ -398,6 +410,8 @@
       "Ionia",
       "Gunslinger"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 444,
       "damage": 48,
@@ -466,6 +480,8 @@
       "Arcanist",
       "Longshot"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 500,
       "damage": 20,
@@ -529,6 +545,8 @@
       "Yordle",
       "Arcanist"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 500,
       "damage": 25,
@@ -592,6 +610,8 @@
       "Ixtal",
       "Slayer"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 650,
       "damage": 42,
@@ -667,6 +687,8 @@
       "Yordle",
       "Defender"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 700,
       "damage": 45,
@@ -734,6 +756,8 @@
       "Ionia",
       "Bruiser"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 700,
       "damage": 65,
@@ -785,6 +809,8 @@
       "Demacia",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 500,
       "damage": 20,
@@ -848,6 +874,8 @@
       "Shadow Isles",
       "Quickstriker"
     ],
+    "role": "HFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 650,
       "damage": 40,
@@ -934,6 +962,8 @@
     "traits": [
       "Targon"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 650,
       "damage": 20,
@@ -1045,6 +1075,8 @@
       "Freljord",
       "Quickstriker"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 550,
       "damage": 53,
@@ -1155,6 +1187,8 @@
     "traits": [
       "Caretaker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 750,
       "damage": 30,
@@ -1230,6 +1264,8 @@
       "Void",
       "Juggernaut"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 850,
       "damage": 50,
@@ -1317,6 +1353,8 @@
       "Zaun",
       "Disruptor"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 750,
       "damage": 35,
@@ -1404,6 +1442,8 @@
       "Bilgewater",
       "Gunslinger"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 750,
       "damage": 55,
@@ -1492,6 +1532,8 @@
       "Arcanist",
       "Defender"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 850,
       "damage": 50,
@@ -1567,6 +1609,8 @@
       "Piltover",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 550,
       "damage": 30,
@@ -1655,6 +1699,8 @@
       "Yordle",
       "Juggernaut"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 850,
       "damage": 50,
@@ -1766,6 +1812,8 @@
       "Void",
       "Vanquisher"
     ],
+    "role": "ADReaper",
+    "manaClass": "Assassin",
     "stats": {
       "hp": 750,
       "damage": 50,
@@ -1853,6 +1901,8 @@
       "Noxus",
       "Bruiser"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 650,
       "damage": 50,
@@ -1940,6 +1990,8 @@
       "Yordle",
       "Longshot"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 550,
       "damage": 35,
@@ -2003,6 +2055,8 @@
       "Yordle",
       "Gunslinger"
     ],
+    "role": "ADCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 550,
       "damage": 55,
@@ -2090,6 +2144,8 @@
       "Freljord",
       "Slayer"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 750,
       "damage": 60,
@@ -2189,6 +2245,8 @@
       "Bilgewater",
       "Quickstriker"
     ],
+    "role": "APSpecialist",
+    "manaClass": "Specialist",
     "stats": {
       "hp": 550,
       "damage": null,
@@ -2313,6 +2371,8 @@
       "Zaun",
       "Defender"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 700,
       "damage": 60,
@@ -2425,6 +2485,8 @@
       "Ionia",
       "Warden"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 850,
       "damage": 50,
@@ -2488,6 +2550,8 @@
       "Ionia",
       "Slayer"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 750,
       "damage": 45,
@@ -2563,6 +2627,8 @@
       "Shadow Isles",
       "Warden"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 850,
       "damage": 60,
@@ -2686,6 +2752,8 @@
       "Ionia",
       "Arcanist"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 650,
       "damage": 30,
@@ -2797,6 +2865,8 @@
       "Noxus",
       "Defender"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 900,
       "damage": 50,
@@ -2912,6 +2982,8 @@
       "Zaun",
       "Bruiser"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 900,
       "damage": 50,
@@ -3011,6 +3083,8 @@
       "Noxus",
       "Quickstriker"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 650,
       "damage": 45,
@@ -3091,6 +3165,8 @@
       "Slayer",
       "Vanquisher"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 850,
       "damage": 45,
@@ -3190,6 +3266,8 @@
       "Shadow Isles",
       "Disruptor"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 850,
       "damage": 40,
@@ -3301,6 +3379,8 @@
       "Zaun",
       "Gunslinger"
     ],
+    "role": "ADSpecialist",
+    "manaClass": "Specialist",
     "stats": {
       "hp": 650,
       "damage": 50,
@@ -3401,6 +3481,8 @@
       "Yordle",
       "Defender"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 900,
       "damage": 50,
@@ -3537,6 +3619,8 @@
       "Bruiser",
       "Invoker"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 950,
       "damage": 20,
@@ -3660,6 +3744,8 @@
       "Noxus",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 650,
       "damage": 35,
@@ -3746,6 +3832,8 @@
     "traits": [
       "Targon"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1000,
       "damage": 50,
@@ -3845,6 +3933,8 @@
       "Piltover",
       "Warden"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 950,
       "damage": 60,
@@ -3920,6 +4010,8 @@
       "Void",
       "Disruptor"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 650,
       "damage": 30,
@@ -4007,6 +4099,8 @@
       "Ixtal",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 650,
       "damage": 30,
@@ -4095,6 +4189,8 @@
       "Juggernaut",
       "Warden"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 900,
       "damage": 50,
@@ -4182,6 +4278,8 @@
       "Freljord",
       "Defender"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 900,
       "damage": 60,
@@ -4321,6 +4419,8 @@
       "Demacia",
       "Longshot"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 650,
       "damage": 70,
@@ -4383,6 +4483,8 @@
     "traits": [
       "Targon"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 35,
@@ -4458,6 +4560,8 @@
       "Noxus",
       "Vanquisher"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1100,
       "damage": 50,
@@ -4537,6 +4641,8 @@
       "Void",
       "Slayer"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1000,
       "damage": 65,
@@ -4648,6 +4754,8 @@
       "Freljord",
       "Warden"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1200,
       "damage": 50,
@@ -4794,6 +4902,8 @@
     "traits": [
       "Targon"
     ],
+    "role": "APReaper",
+    "manaClass": "Assassin",
     "stats": {
       "hp": 1300,
       "damage": 45,
@@ -4893,6 +5003,8 @@
       "Bilgewater",
       "Yordle"
     ],
+    "role": "APReaper",
+    "manaClass": "Assassin",
     "stats": {
       "hp": 1000,
       "damage": 30,
@@ -4980,6 +5092,8 @@
       "Demacia",
       "Defender"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1200,
       "damage": 65,
@@ -5092,6 +5206,8 @@
       "Void",
       "Longshot"
     ],
+    "role": "ADCasterFormSwapper",
+    "manaClass": "Specialist",
     "stats": {
       "hp": 850,
       "damage": 50,
@@ -5179,6 +5295,8 @@
       "Shadow Isles",
       "Vanquisher"
     ],
+    "role": "ADCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 50,
@@ -5302,6 +5420,8 @@
       "Freljord",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 30,
@@ -5389,6 +5509,8 @@
       "Demacia",
       "Arcanist"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 30,
@@ -5476,6 +5598,8 @@
       "Bilgewater",
       "Gunslinger"
     ],
+    "role": "ADCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 55,
@@ -5598,6 +5722,8 @@
     "traits": [
       "Shurima"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1500,
       "damage": 60,
@@ -5685,6 +5811,8 @@
       "Ixtal",
       "Huntress"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1100,
       "damage": 45,
@@ -5771,6 +5899,8 @@
     "traits": [
       "Shurima"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1400,
       "damage": 75,
@@ -5906,6 +6036,8 @@
       "Void",
       "Bruiser"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1100,
       "damage": 60,
@@ -6017,6 +6149,8 @@
       "Piltover",
       "Disruptor"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 30,
@@ -6144,6 +6278,8 @@
       "Zaun",
       "Juggernaut"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1100,
       "damage": 15,
@@ -6266,6 +6402,8 @@
     "traits": [
       "Ixtal"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1400,
       "damage": 65,
@@ -6366,6 +6504,8 @@
       "Arcanist",
       "Juggernaut"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1200,
       "damage": 40,
@@ -6488,6 +6628,8 @@
     "traits": [
       "Targon"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1300,
       "damage": 70,
@@ -6635,6 +6777,8 @@
       "Yordle",
       "Arcanist"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 33,
@@ -6734,6 +6878,8 @@
       "Zaun",
       "Quickstriker"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1200,
       "damage": 60,
@@ -6821,6 +6967,8 @@
       "Ionia",
       "Bruiser"
     ],
+    "role": "ADTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1050,
       "damage": 60,
@@ -6908,6 +7056,8 @@
       "Ionia",
       "Slayer"
     ],
+    "role": "HFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1100,
       "damage": 20,
@@ -7067,6 +7217,8 @@
       "Ionia",
       "Quickstriker"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 800,
       "damage": 60,
@@ -7155,6 +7307,8 @@
       "World Ender",
       "Slayer"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 900,
       "damage": 65,
@@ -7266,6 +7420,8 @@
       "Dark Child",
       "Arcanist"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 30,
@@ -7341,6 +7497,8 @@
       "Star Forger",
       "Targon"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 1100,
       "damage": 50,
@@ -7597,6 +7755,8 @@
       "Emperor",
       "Disruptor"
     ],
+    "role": "APCarry",
+    "manaClass": "Mage",
     "stats": {
       "hp": 800,
       "damage": 35,
@@ -7684,6 +7844,8 @@
       "Void",
       "Riftscourge"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 3000,
       "damage": 120,
@@ -7794,6 +7956,8 @@
     "traits": [
       "Ixtal"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1800,
       "damage": 270,
@@ -7929,6 +8093,8 @@
       "Harvester",
       "Vanquisher"
     ],
+    "role": "APReaper",
+    "manaClass": "Assassin",
     "stats": {
       "hp": 1200,
       "damage": 50,
@@ -8040,6 +8206,8 @@
       "Demacia",
       "Heroic"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1100,
       "damage": 50,
@@ -8127,6 +8295,8 @@
       "Eternal",
       "Quickstriker"
     ],
+    "role": "ADCarry",
+    "manaClass": "Marksman",
     "stats": {
       "hp": 900,
       "damage": 73,
@@ -8214,6 +8384,8 @@
       "Soulbound",
       "Gunslinger"
     ],
+    "role": "ADCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 900,
       "damage": 65,
@@ -8325,6 +8497,8 @@
       "Noxus",
       "Disruptor"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 900,
       "damage": 50,
@@ -8436,6 +8610,8 @@
       "Blacksmith",
       "Warden"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 900,
       "damage": 70,
@@ -8502,6 +8678,8 @@
     "traits": [
       "Rune Mage"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 1000,
       "damage": 35,
@@ -8853,6 +9031,8 @@
       "Ionia",
       "The Boss"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1000,
       "damage": 60,
@@ -8952,6 +9132,8 @@
       "Dragonborn",
       "Juggernaut"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1200,
       "damage": 80,
@@ -9052,6 +9234,8 @@
       "Arcanist",
       "Defender"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1600,
       "damage": 65,
@@ -9188,6 +9372,8 @@
       "Piltover",
       "Gunslinger"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1400,
       "damage": 75,
@@ -9384,6 +9570,8 @@
       "Glutton",
       "Bruiser"
     ],
+    "role": "APTank",
+    "manaClass": "Tank",
     "stats": {
       "hp": 1100,
       "damage": 70,
@@ -9483,6 +9671,8 @@
       "Shadow Isles",
       "Warden"
     ],
+    "role": "APFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1200,
       "damage": 60,
@@ -9594,6 +9784,8 @@
       "Freljord",
       "Bruiser"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1200,
       "damage": 55,
@@ -9741,6 +9933,8 @@
       "Shurima",
       "Ascendant"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 900,
       "damage": 40,
@@ -9816,6 +10010,8 @@
       "Darkin",
       "Immortal"
     ],
+    "role": "ADFighter",
+    "manaClass": "Fighter",
     "stats": {
       "hp": 1200,
       "damage": 60,
@@ -9904,6 +10100,8 @@
       "Yordle",
       "Longshot"
     ],
+    "role": "APCarry",
+    "manaClass": "Mage",
     "stats": {
       "hp": 900,
       "damage": null,
@@ -10003,6 +10201,8 @@
       "Chronokeeper",
       "Invoker"
     ],
+    "role": "APCaster",
+    "manaClass": "Mage",
     "stats": {
       "hp": 900,
       "damage": 40,
