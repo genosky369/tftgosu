@@ -8,7 +8,7 @@ import type {
   RegionCoverage
 } from '@/types/simulator';
 import { CHAMPIONS } from '@/data/champions';
-import { REGION_SYMBOLS, REGION_THRESHOLDS, normalizeRegionName, isRegion, getRegionThreshold } from '@/data/regions';
+import { REGION_SYMBOLS, CALCULABLE_REGIONS, REGION_THRESHOLDS, normalizeRegionName, isRegion, getRegionThreshold } from '@/data/regions';
 
 /** 입력 검증 */
 export function validateInput(input: WorldRuneInput): WorldRuneValidationResult {
@@ -23,7 +23,7 @@ export function validateInput(input: WorldRuneInput): WorldRuneValidationResult 
   }
 
   // 제외 후 남은 지역이 4개 이상인지 확인
-  const availableRegions = REGION_SYMBOLS.filter(r => !input.excludedRegions.includes(r));
+  const availableRegions = CALCULABLE_REGIONS.filter(r => !input.excludedRegions.includes(r));
   if (availableRegions.length < 4) {
     return { valid: false, error: '제외 후 남은 지역이 4개 미만입니다.' };
   }
@@ -224,7 +224,7 @@ export function calculate(input: WorldRuneInput): WorldRuneResult[] {
   const results: WorldRuneResult[] = [];
 
   // 1. 필터링 적용
-  const availableRegions = REGION_SYMBOLS.filter(r => !excludedRegions.includes(r));
+  const availableRegions = CALCULABLE_REGIONS.filter(r => !excludedRegions.includes(r));
   const availableChampions = CHAMPIONS.filter(c =>
     c.cost <= maxCost &&
     !excludedChampions.includes(c.name)
