@@ -9,7 +9,8 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "update-tft-data": "node scripts/update-tft-data.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",

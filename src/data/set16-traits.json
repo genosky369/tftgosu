@@ -1,0 +1,1670 @@
+[
+  {
+    "name": "Arcanist",
+    "apiName": "TFT16_Sorcerer",
+    "desc": "Your team gains Ability Power, Arcanists gain more.<br><br><expandRow>(@MinUnits@) @AllyAP@% %i:scaleAP%, @BonusAP@% %i:scaleAP% for Arcanists</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "AllyAP": 18,
+          "BonusAP": 25
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "AllyAP": 25,
+          "BonusAP": 40
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "AllyAP": 40,
+          "BonusAP": 60
+        }
+      }
+    ]
+  },
+  {
+    "name": "Ascendant",
+    "apiName": "TFT16_XerathUnique",
+    "desc": "After each combat, an Ascendant Charm appears in your shop. These are powerful effects that can be bought for gold.@TFTUnitProperty.trait:TFT16_XerathUnique_PurchasedCharmDisplay@",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Assimilator",
+    "apiName": "TFT16_KaisaUnique",
+    "desc": "Kai'Sa has a different Ability depending if her Attack Damage or Ability Power is higher.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Bilgewater",
+    "apiName": "TFT16_Bilgewater",
+    "desc": "Each round, gain Silver Serpents (%i:scaleSerpents%), plus @SerpentsPerTakedown@ additional for each Bilgewater takedown. <br><br>Silver Serpents can be spent in the Black Market to grant Bilgewater champions bonus stats and special loot. Higher tiers unlock rarer&nbsp;loot.<br><br><row>(@MinUnits@) @SerpentsPerRound@ %i:scaleSerpents%</row><br><row>(@MinUnits@) @SerpentsPerRound@ %i:scaleSerpents%, improved&nbsp;loot</row><br><row>(@MinUnits@) @SerpentsPerRound@ %i:scaleSerpents%, superior&nbsp;loot</row><br><row>(@MinUnits@) @SerpentsPerRound@ %i:scaleSerpents%, @StatMult@x&nbsp;stats, FIRE CANNONS!</row><br><br>Current Bonus Stats:<br>@TFTUnitProperty.:TFT16_Bilgewater_BonusAD*100@% %i:scaleAD%%i:scaleAP%, @TFTUnitProperty.:TFT16_Bilgewater_BonusAS*100@%&nbsp;%i:scaleAS%, @TFTUnitProperty.:TFT16_Bilgewater_BonusHealth*100@%&nbsp;%i:scaleHealth%<br><br>Current Serpents: @TFTUnitProperty.:TFT16_Bilgewater_SilverSerpents@&nbsp;%i:scaleSerpents%",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "MaxItems": 8,
+          "SerpentsPerRound": 15,
+          "SerpentsPerTakedown": 2,
+          "StatMult": 1,
+          "{79b25b0f}": 500,
+          "{853eaa6d}": 1.5,
+          "{fb25c87b}": 2
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "MaxItems": 8,
+          "SerpentsPerRound": 35,
+          "SerpentsPerTakedown": 2,
+          "StatMult": 1,
+          "{79b25b0f}": 500,
+          "{853eaa6d}": 1.5,
+          "{fb25c87b}": 2
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 9,
+        "style": 5,
+        "variables": {
+          "MaxItems": 8,
+          "SerpentsPerRound": 65,
+          "SerpentsPerTakedown": 2,
+          "StatMult": 1,
+          "{79b25b0f}": 500,
+          "{853eaa6d}": 1.5,
+          "{fb25c87b}": 2
+        }
+      },
+      {
+        "minUnits": 10,
+        "maxUnits": 25000,
+        "style": 6,
+        "variables": {
+          "MaxItems": 8,
+          "SerpentsPerRound": 150,
+          "SerpentsPerTakedown": 2,
+          "StatMult": 2,
+          "{79b25b0f}": 500,
+          "{853eaa6d}": 1.5,
+          "{fb25c87b}": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Blacksmith",
+    "apiName": "TFT16_Blacksmith",
+    "desc": "After each player combat your strongest Ornn participates in, he makes progress forging an Artifact item.<br><br>Each item he is equipped with grants him @FlatHealthPerItem1Star@/@FlatHealthPerItem2Star@/@FlatHealthPerItem3Star@ max Health. Artifacts grant&nbsp;@ArtifactMult*100@%&nbsp;more.<br><br><rules>Forging Progress: @TFTUnitProperty.:TFT16_OrnnProgress@/@RoundsToCraft@</rules>",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "ArtifactMult": 3,
+          "FlatHealthPerItem1Star": 250,
+          "FlatHealthPerItem2Star": 450,
+          "FlatHealthPerItem3Star": 2000,
+          "RoundsToCraft": 4,
+          "{85699349}": null
+        }
+      }
+    ]
+  },
+  {
+    "name": "Bruiser",
+    "apiName": "TFT16_Brawler",
+    "desc": "Your team gains @TeamFlatHealth@ maximum Health. Bruisers gain more.<br><br><expandRow>(@MinUnits@) @BonusPercentHealth*100@% %i:scaleHealth%</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "BonusPercentHealth": 0.25,
+          "TeamFlatHealth": 150
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "BonusPercentHealth": 0.44999998807907104,
+          "TeamFlatHealth": 150
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BonusPercentHealth": 0.6499999761581421,
+          "TeamFlatHealth": 150
+        }
+      }
+    ]
+  },
+  {
+    "name": "Caretaker",
+    "apiName": "TFT16_Caretaker",
+    "desc": "After winning player combat, gain a random unit from Runeterra. After losing combat, gain free rerolls, with the amount increasing by stage.<br><br><rules>Rerolls on Loss: @TFTUnitProperty.:TFT16_Caretaker_NumRerolls@</rules>",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Chainbreaker",
+    "apiName": "TFT16_SylasTrait",
+    "desc": "Sylas rotates between 3 different Abilities, depending on which one is most useful at the moment. He cannot cast the same one twice in a row.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Chosen Wolves",
+    "apiName": "TFT16_Teamup_AmbessaKindred",
+    "desc": "When Kindred casts, Ambessa always gains their protection against death and gains @AmbessaBonusAD*100@% Attack Damage while protected.<br><br>When Ambessa casts, Wolf strikes all enemies hit, dealing @WolfDamage*100@% damage.",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "AmbessaBonusAD": 0.30000001192092896,
+          "WolfDamage": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "name": "Chronokeeper",
+    "apiName": "TFT16_Chronokeeper",
+    "desc": "Every @CastsToGainXP@ casts, the Chronokeeper stores <TFTBonus>@XPPerCast@</TFTBonus> XP. If he has enough stored for you to level up, he transfers you the required&nbsp;XP. <br><br>If you are level 10, he instead gains <TFTBonus>@DAGainAtMaxLevel@%</TFTBonus>&nbsp;Damage Amp.<br><br><rules>Stored XP: @TFTUnitProperty.trait:TFT16_ChronoKeeperStoredXP@</rules>",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "CastsToGainXP": 2,
+          "CastsToGainXPPAIRS": 2,
+          "DAGainAtMaxLevel": 15,
+          "XPPerCast": 1,
+          "{bffe0f35}": null
+        }
+      }
+    ]
+  },
+  {
+    "name": "Dark Child",
+    "apiName": "TFT16_DarkChild",
+    "desc": "Annie summons Tibbers on your bench. He can be fielded, takes up a team slot, and can be equipped with items separately. His star level is the same as Annie's.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Darkin",
+    "apiName": "TFT16_DarkinWeapon",
+    "desc": "<row>(@MinUnits@) Darkin gain @Vamp*100@% Omnivamp.</row><br><row>(@MinUnits@) AND you heal for @TacticianPercent*100@% of the player damage you deal.</row><br><row>(@MinUnits@) AND whenever Darkin restore @HealThreshold@ Health, they deal @Damage@ magic damage to the @EnemyNum@ closest enemies.</row>",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 1,
+        "style": 1,
+        "variables": {
+          "Damage": 100,
+          "EnemyNum": 2,
+          "HealThreshold": 600,
+          "TacticianPercent": 0.25,
+          "Vamp": 0.15000000596046448
+        }
+      },
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 3,
+        "variables": {
+          "Damage": 100,
+          "EnemyNum": 2,
+          "HealThreshold": 600,
+          "TacticianPercent": 0.25,
+          "Vamp": 0.15000000596046448
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "Damage": 100,
+          "EnemyNum": 2,
+          "HealThreshold": 600,
+          "TacticianPercent": 0.25,
+          "Vamp": 0.15000000596046448
+        }
+      }
+    ]
+  },
+  {
+    "name": "Defender",
+    "apiName": "TFT16_Defender",
+    "desc": "Your team gains @TeamwideArmorMR@ Armor and Magic Resist. Defenders gain more.<br><br><expandRow>(@MinUnits@) @BonusArmorMR@ %i:scaleArmor%%i:scaleMR%</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "BonusArmorMR": 30,
+          "TeamwideArmorMR": 12
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "BonusArmorMR": 55,
+          "TeamwideArmorMR": 12
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BonusArmorMR": 80,
+          "TeamwideArmorMR": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "Demacia",
+    "apiName": "TFT16_Demacia",
+    "desc": "Each time your team loses @MaxHealthLost*100@% max Health, Demacians Rally, reducing their Mana cost by @ManaReductionPct*100@%. Demacians gain Armor and Magic Resist.<br><br><row>(@MinUnits@) @ArmorMR@&nbsp;%i:scaleArmor%%i:scaleMR%</row><br><row>(@MinUnits@) @ArmorMR@&nbsp;%i:scaleArmor%%i:scaleMR%</row><br><row>(@MinUnits@) @ArmorMR@&nbsp;%i:scaleArmor%%i:scaleMR%. On Rally, smite enemies for @EnemyTrueDamage*100@% of their max&nbsp;Health.</row><br><row>(@MinUnits@) @ArmorMR@&nbsp;%i:scaleArmor%%i:scaleMR%. BATTLE FOR&nbsp;DEMACIA!</row><br>",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "ArmorMR": 12,
+          "EnemyTrueDamage": 0.05000000074505806,
+          "ManaReductionPct": 0.10000000149011612,
+          "MaxHealthLost": 0.25,
+          "{050353fe}": 0.25,
+          "{54b32412}": 1500,
+          "{556d8bdf}": 3,
+          "{95d6e9fc}": 0.5
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "ArmorMR": 35,
+          "EnemyTrueDamage": 0.05000000074505806,
+          "ManaReductionPct": 0.10000000149011612,
+          "MaxHealthLost": 0.25,
+          "{050353fe}": 0.25,
+          "{54b32412}": 1500,
+          "{556d8bdf}": 3,
+          "{95d6e9fc}": 0.5
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 10,
+        "style": 5,
+        "variables": {
+          "ArmorMR": 35,
+          "EnemyTrueDamage": 0.05000000074505806,
+          "ManaReductionPct": 0.10000000149011612,
+          "MaxHealthLost": 0.25,
+          "{050353fe}": 0.25,
+          "{54b32412}": 1500,
+          "{556d8bdf}": 3,
+          "{95d6e9fc}": 0.5
+        }
+      },
+      {
+        "minUnits": 11,
+        "maxUnits": 25000,
+        "style": 6,
+        "variables": {
+          "ArmorMR": 150,
+          "EnemyTrueDamage": 0.05000000074505806,
+          "ManaReductionPct": 0.10000000149011612,
+          "MaxHealthLost": 0.25,
+          "{050353fe}": 0.25,
+          "{54b32412}": 1500,
+          "{556d8bdf}": 3,
+          "{95d6e9fc}": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "name": "Disruptor",
+    "apiName": "TFT16_Magus",
+    "desc": "Disruptors' abilities <TFTKeyword>Dazzle</TFTKeyword> enemies hit. Disruptors deal bonus damage to Dazzled enemies.<br><br><expandRow>(@MinUnits@) @DamageAmp*100@% bonus damage</expandRow><br><br><rules>Dazzle: Reduce damage dealt by @DamageReduction*100@%</rules><br><br><br>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "DamageAmp": 0.18000000715255737,
+          "DamageReduction": 0.10000000149011612
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "DamageAmp": 0.4000000059604645,
+          "DamageReduction": 0.10000000149011612
+        }
+      }
+    ]
+  },
+  {
+    "name": "Dragonborn",
+    "apiName": "TFT16_ShyvanaUnique",
+    "desc": "On cast, Shyvana replaces her spell with Flame Breath. While transformed, all allies take @AbilityDamageReduction*100@% less damage from enemy Abilities.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "AbilityDamageReduction": 0.10000000149011612
+        }
+      }
+    ]
+  },
+  {
+    "name": "Dragonguards",
+    "apiName": "TFT16_Teamup_JarvanShyvana",
+    "desc": "When Jarvan casts, Shyvana gains @JarvanShieldShare*100@% of the Shield. When Shyvana casts, Jarvan jumps in and deals @JarvanResistDamage*100@% of his Armor and Magic Resist as magic damage in a 2-hex radius.",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "JarvanResistDamage": 1.850000023841858,
+          "JarvanShieldShare": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Emperor",
+    "apiName": "TFT16_Emperor",
+    "desc": "Azir deploys two Guards who can be placed anywhere on the battlefield. They do not move or attack, and die when Azir does.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Eternal",
+    "apiName": "TFT16_KindredUnique",
+    "desc": "Every 3rd attack from Kindred on the same enemy deals @PercentDamageMult*100@% damage, as Wolf mauls their&nbsp;target.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "PercentDamageMult": 3.5
+        }
+      }
+    ]
+  },
+  {
+    "name": "Freljord",
+    "apiName": "TFT16_Freljord",
+    "desc": "Summon a Frozen Tower. Allies in front of it gain Health and allies behind it gain Damage Amp. <br><br>Freljordians gain @FreljordBonus*100@% more.<br><br><row>(@MinUnits@) @HealthPercent*100@% %i:scaleHealth%, @DA*100@% %i:scaleDA%</row><br><row>(@MinUnits@) Two Towers. @HealthPercent*100@% %i:scaleHealth%, @DA*100@% %i:scaleDA%</row><br><row>(@MinUnits@) Towers stun enemies on death for @StunDuration@&nbsp;seconds. @HealthPercent*100@% %i:scaleHealth%, @DA*100@% %i:scaleDA%.</row>",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "DA": 0.10000000149011612,
+          "FreljordBonus": 1.5,
+          "HealthPercent": 0.07999999821186066,
+          "StunDuration": null,
+          "{03c21e23}": null,
+          "{7dced3cd}": 1
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "DA": 0.1599999964237213,
+          "FreljordBonus": 1.5,
+          "HealthPercent": 0.11999999731779099,
+          "StunDuration": null,
+          "{03c21e23}": 1,
+          "{7dced3cd}": 2
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "DA": 0.2199999988079071,
+          "FreljordBonus": 1.5,
+          "HealthPercent": 0.1599999964237213,
+          "StunDuration": 1.5,
+          "{03c21e23}": 1,
+          "{7dced3cd}": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Glutton",
+    "apiName": "TFT16_Glutton",
+    "desc": "Once per Planning phase, you can feed Tahm Kench a champion, permanently granting him either Health, Attack Speed, or Ability Power based on their role and star level.<br><br><tftitemrules>To feed, hold an ally from the bench over Tahm Kench until his mouth opens, then release.</tftitemrules><br><br>Current Stats: @TFTUnitProperty.:TFT16_GluttonStat_HP@&nbsp;%i:scaleHealth%, @TFTUnitProperty.:TFT16_GluttonStat_AS@%&nbsp;%i:scaleAS%, @TFTUnitProperty.:TFT16_GluttonStat_AP@%&nbsp;%i:scaleAP%",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "{6502b165}": 20,
+          "{72c78315}": 1.25
+        }
+      }
+    ]
+  },
+  {
+    "name": "Gunslinger",
+    "apiName": "TFT16_Gunslinger",
+    "desc": "Gunslingers gain Attack Damage. Every @NumAttacks@th attack from Gunslingers deals bonus physical damage.<br><br><expandRow>(@MinUnits@) @AD*100@%&nbsp;%i:scaleAD%, @BonusDamage@ bonus damage</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "AD": 0.20000000298023224,
+          "BonusDamage": 100,
+          "NumAttacks": 4
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "AD": 0.3499999940395355,
+          "BonusDamage": 200,
+          "NumAttacks": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "Harvester",
+    "apiName": "TFT16_Harvester",
+    "desc": "Each time an enemy champion dies, gain @ManaPerEnemyDeath@ Mana. Casting abilities does not consume Mana. <br><br>All enemies lose @EnemyArmorMRReduction@ Armor and Magic Resist.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "EnemyArmorMRReduction": 10,
+          "ManaPerEnemyDeath": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "Heroic",
+    "apiName": "TFT16_Heroic",
+    "desc": "Galio cannot be fielded in combat. Instead, his traits count from the bench and when Demacians Rally, he joins the fight. <br><br>On landing, he creates a @HexRadius@-hex shockwave that deals @PercentMaxHP*100@% of his max Health as magic damage. Enemies hit are knocked up for @KnockupDuration@ seconds, reduced by distance from the center.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "HexRadius": 3,
+          "KnockupDuration": 1,
+          "PercentMaxHP": 0.10000000149011612
+        }
+      }
+    ]
+  },
+  {
+    "name": "HexMech",
+    "apiName": "TFT16_HexMech",
+    "desc": "Gain a Pilot Hex. Combat Start: the unit within jumps into T-Hex, granting her @PercentHealth*100@% of their Health and bonus stats based on their role and star level.<br><br><TFTBonus>Tank:</TFTBonus> +@Vamp1@/@Vamp2@/@Vamp3@% Omnivamp<br><TFTBonus>Fighter:</TFTBonus> +@AD1@/@AD2@/@AD3@% Attack Damage<br><TFTBonus>Marksman:</TFTBonus> +@Amp1@/@Amp2@/@Amp3@% Damage Amp<br><TFTBonus>Caster:</TFTBonus> +@Mana1@/@Mana2@/@Mana3@ Mana Regen<br><TFTBonus>Assassin:</TFTBonus> +@Crit1@/@Crit2@/@Crit3@% Crit Chance<br><br>On death, the pilot ejects while T-Hex knocks back and Stuns nearby enemies for @StunDuration@ seconds.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "AD1": 15,
+          "AD2": 25,
+          "AD3": 40,
+          "Amp1": 10,
+          "Amp2": 18,
+          "Amp3": 30,
+          "Crit1": 30,
+          "Crit2": 60,
+          "Crit3": 100,
+          "Mana1": 3,
+          "Mana2": 6,
+          "Mana3": 12,
+          "PercentHealth": 0.800000011920929,
+          "StunDuration": 1.5,
+          "Vamp1": 15,
+          "Vamp2": 25,
+          "Vamp3": 40,
+          "{99dbd967}": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "name": "Huntress",
+    "apiName": "TFT16_Huntress",
+    "desc": "While your strongest Neeko is alive, your strongest Nidalee cannot be targeted by basic attacks and gains @Durability*100@%&nbsp;Durability.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "Durability": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "name": "Immortal",
+    "apiName": "TFT16_ZaahenTrait",
+    "desc": "While Xin Zhao is not on your board, Zaahen gains the Ionia, Demacia, and Warden traits.<br><br>On kill, Zaahen gains a stack of Determination for the rest of combat. If he has @FocusNeededToRevive@ or more Determination when dying, he spends it to revive and restore @PercentMaxHealthHeal*100@%&nbsp;max&nbsp;Health.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "FocusNeededToRevive": 3,
+          "PercentMaxHealthHeal": 0.6000000238418579,
+          "ReviveDuration": 0.5,
+          "{54747e02}": null
+        }
+      }
+    ]
+  },
+  {
+    "name": "Invoker",
+    "apiName": "TFT16_Invoker",
+    "desc": "Your team gains @TeamBonusMana@ Mana Regen. Invokers gain more Mana from all sources.<br><br><expandRow>(@MinUnits@) @PercentManaIncrease*100@% more Mana</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "PercentManaIncrease": 0.25,
+          "TeamBonusMana": 1
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "PercentManaIncrease": 0.4000000059604645,
+          "TeamBonusMana": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Ionia",
+    "apiName": "TFT16_Ionia",
+    "desc": "Ionians gain Shield, Attack Damage, and Ability Power. Each game, they walk a different path. <br><br>@TFTUnitProperty.trait:TFT16_Ionia_PathTooltip@<br><br><row>(@MinUnits@) @ShieldAmount*100@%&nbsp;%i:scaleHealth%&nbsp;Shield, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) @ShieldAmount*100@%&nbsp;%i:scaleHealth%&nbsp;Shield, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) @ShieldAmount*100@%&nbsp;%i:scaleHealth%&nbsp;Shield, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row>",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "BladesFlatDamage": 3,
+          "BladesPercentChance": 30,
+          "DeterminationFlatDamage": 20,
+          "DeterminationResists": 15,
+          "EnlightenmentADAP": 10,
+          "EnlightenmentADAPPerLevel": 2,
+          "EnlightenmentXP": 1,
+          "GenerosityADAP": 18,
+          "GenerosityIncreasePerGold": 0.019999999552965164,
+          "SpiritADAP": 4,
+          "SpiritHealth": 0.20000000298023224,
+          "Transcendence3StarBuff": 0.5,
+          "TranscendenceHealth": 0.10000000149011612,
+          "TranscendenceMagicDamage": 0.2199999988079071,
+          "{11fa863c}": 5
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "BladesFlatDamage": 8,
+          "BladesPercentChance": 35,
+          "DeterminationFlatDamage": 40,
+          "DeterminationResists": 25,
+          "EnlightenmentADAP": 15,
+          "EnlightenmentADAPPerLevel": 3,
+          "EnlightenmentXP": 2,
+          "GenerosityADAP": 30,
+          "GenerosityIncreasePerGold": 0.019999999552965164,
+          "SpiritADAP": 4,
+          "SpiritHealth": 0.25,
+          "Transcendence3StarBuff": 0.5,
+          "TranscendenceHealth": 0.15000000596046448,
+          "TranscendenceMagicDamage": 0.2800000011920929,
+          "{11fa863c}": 4
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BladesFlatDamage": 15,
+          "BladesPercentChance": 40,
+          "DeterminationFlatDamage": 60,
+          "DeterminationResists": 40,
+          "EnlightenmentADAP": 20,
+          "EnlightenmentADAPPerLevel": 4,
+          "EnlightenmentXP": 4,
+          "GenerosityADAP": 40,
+          "GenerosityIncreasePerGold": 0.019999999552965164,
+          "SpiritADAP": 4,
+          "SpiritHealth": 0.3499999940395355,
+          "Transcendence3StarBuff": 0.5,
+          "TranscendenceHealth": 0.20000000298023224,
+          "TranscendenceMagicDamage": 0.33000001311302185,
+          "{11fa863c}": 3
+        }
+      },
+      {
+        "minUnits": 10,
+        "maxUnits": 25000,
+        "style": 6,
+        "variables": {
+          "BladesFlatDamage": 25,
+          "BladesPercentChance": 70,
+          "DeterminationFlatDamage": 100,
+          "DeterminationResists": 75,
+          "EnlightenmentADAP": 100,
+          "EnlightenmentADAPPerLevel": null,
+          "EnlightenmentXP": null,
+          "GenerosityADAP": 50,
+          "GenerosityIncreasePerGold": 0.019999999552965164,
+          "SpiritADAP": 7,
+          "SpiritHealth": 0.75,
+          "Transcendence3StarBuff": 0.5,
+          "TranscendenceHealth": 0.30000001192092896,
+          "TranscendenceMagicDamage": 0.699999988079071,
+          "{0c4f63cb}": 0.05000000074505806,
+          "{11fa863c}": 1,
+          "{ab6ec39e}": 1,
+          "{cf068040}": 0.4000000059604645,
+          "{ec4adf8d}": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "Ixtal",
+    "apiName": "TFT16_Explorer",
+    "desc": "<row>(@MinUnits@) Complete Quests to earn Sunshards (%i:Set16Ixtal%) and spend them for&nbsp;loot!</row><br><row>(@MinUnits@) Heal 2 player health at the start of each player combat.</row><br><row>(@MinUnits@) After winning combat, find @BonusClues@ %i:Set16Ixtal% and unearth bonus loot.</row><br><br><rules>Completing a Quest before combat ends grants you a new one at the start of next round.</rules>",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "BonusHealth_Pairs": null,
+          "Heal": null
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "BonusHealth_Pairs": 250,
+          "Heal": 2
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BonusClues": 50,
+          "BonusHealth_Pairs": 250,
+          "Heal": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Juggernaut",
+    "apiName": "TFT16_Juggernaut",
+    "desc": "Juggernauts gain Durability, increased while above @HealthBreakpoint*100@% health. When a Juggernaut dies, other Juggernauts heal for @HealRatio*100@% of their max Health.<br><br><expandRow>(@MinUnits@) @BaseDR*100@% or @IncreasedDR*100@%&nbsp;%i:scaleDR%</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "BaseDR": 0.18000000715255737,
+          "HealRatio": 0.05000000074505806,
+          "HealthBreakpoint": 0.5,
+          "IncreasedDR": 0.25
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "BaseDR": 0.20000000298023224,
+          "HealRatio": 0.05000000074505806,
+          "HealthBreakpoint": 0.5,
+          "IncreasedDR": 0.30000001192092896
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BaseDR": 0.25,
+          "HealRatio": 0.05000000074505806,
+          "HealthBreakpoint": 0.5,
+          "IncreasedDR": 0.33000001311302185
+        }
+      }
+    ]
+  },
+  {
+    "name": "Longshot",
+    "apiName": "TFT16_Longshot",
+    "desc": "Longshots gain Damage Amp and deal more damage to targets farther away.<br><br><expandRow>(@MinUnits@) @BaseDamageAmp*100@%&nbsp;%i:scaleDA% + @PercentDamageIncrease*100@% per Hex</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 1,
+        "variables": {
+          "BaseDamageAmp": 0.18000000715255737,
+          "PercentDamageIncrease": 0.019999999552965164
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": 3,
+        "variables": {
+          "BaseDamageAmp": 0.23999999463558197,
+          "PercentDamageIncrease": 0.029999999329447746
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": 5,
+        "variables": {
+          "BaseDamageAmp": 0.2800000011920929,
+          "PercentDamageIncrease": 0.03999999910593033
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BaseDamageAmp": 0.3199999928474426,
+          "PercentDamageIncrease": 0.05000000074505806
+        }
+      }
+    ]
+  },
+  {
+    "name": "Noxus",
+    "apiName": "TFT16_Noxus",
+    "desc": "After the enemy team has lost @HPLostTrigger*100@% of their Health, summon Atakhan, Bringer of Ruin. Each Noxian champion's star level increases his power.<br><br><row>(@MinUnits@) He slashes enemies, dealing magic&nbsp;damage.</row> <br><row>(@MinUnits@) Noxians get more powerful the longer he&nbsp;is&nbsp;alive.</row> <br><row>(@MinUnits@) He drains the souls of enemies&nbsp;on&nbsp;cast.</row><br><row>(@MinUnits@) After @RuinTimer@ seconds, BRING RUIN.</row>",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "HPLostTrigger": 0.15000000596046448,
+          "RuinTimer": 10
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "HPLostTrigger": 0.15000000596046448,
+          "RuinTimer": 10
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 9,
+        "style": 5,
+        "variables": {
+          "HPLostTrigger": 0.15000000596046448,
+          "RuinTimer": 10
+        }
+      },
+      {
+        "minUnits": 10,
+        "maxUnits": 25000,
+        "style": 6,
+        "variables": {
+          "HPLostTrigger": 0.15000000596046448,
+          "RuinTimer": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "Piltover",
+    "apiName": "TFT16_Piltover",
+    "desc": "Build an invention on the right side of the board. After @InventionFireTime@ seconds, the invention activates, triggering each of its Modules.<br><br><row>(@MinUnits@) Choose a Module</row><br><row>(@MinUnits@) Choose a Second Module</row><br><row>(@MinUnits@) Choose a Third Module</row>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "InventionFireTime": 8
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "InventionFireTime": 8
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "InventionFireTime": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "Poison Pals",
+    "apiName": "TFT16_Teamup_SingedTeemo",
+    "desc": "Every @FireInterval@ seconds, Teemo fires a dart at Singed's current target, dealing @TeemoEffectiveness*100@% damage.<br><br>When an enemy poisoned by Teemo dies, Singed gains Move Speed and @SingedAP@% Ability Power.",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "FireInterval": 3,
+          "SingedAP": 40,
+          "TeemoEffectiveness": 0.5,
+          "{85281eea}": 50
+        }
+      }
+    ]
+  },
+  {
+    "name": "Quickstriker",
+    "apiName": "TFT16_Rapidfire",
+    "desc": "Your team gains @TeamwideAS*100@% Attack Speed. Quickstrikers gain bonus Attack Speed based on their target's missing Health.<br><br><row>(@MinUnits@) @MinBonusAS*100@-@MaxBonusAS*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @MinBonusAS*100@-@MaxBonusAS*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @MinBonusAS*100@-@MaxBonusAS*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @MinBonusAS*100@-@MaxBonusAS*100@%&nbsp;%i:scaleAS%</row>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 1,
+        "variables": {
+          "MaxBonusAS": 0.30000001192092896,
+          "MinBonusAS": 0.10000000149011612,
+          "TeamwideAS": 0.15000000596046448
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": 3,
+        "variables": {
+          "MaxBonusAS": 0.44999998807907104,
+          "MinBonusAS": 0.20000000298023224,
+          "TeamwideAS": 0.15000000596046448
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": 3,
+        "variables": {
+          "MaxBonusAS": 0.6000000238418579,
+          "MinBonusAS": 0.30000001192092896,
+          "TeamwideAS": 0.15000000596046448
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "MaxBonusAS": 0.800000011920929,
+          "MinBonusAS": 0.4000000059604645,
+          "TeamwideAS": 0.15000000596046448
+        }
+      }
+    ]
+  },
+  {
+    "name": "Riftscourge",
+    "apiName": "TFT16_BaronUnique",
+    "desc": "Baron Nashor takes up 2 team slots and grants +2 to the Void trait.<br><br>After @VoidTime@ seconds, the board enters a Void Rift. The Rift grants Void units @DamageAmp*100@% Damage Amp and constantly strikes enemies with bolts of plasma, dealing @LightningPercentHealth*100@% max Health as magic damage.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "DamageAmp": 0.30000001192092896,
+          "LightningPercentHealth": 0.05000000074505806,
+          "VoidTime": 8,
+          "{79ea70c9}": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "name": "Rune Mage",
+    "apiName": "TFT16_RuneMage",
+    "desc": "The Rune Mage benefits from all active Region traits, but contributes to none.<br><br>He harnesses the Runic power from active Region traits to modify his Ability, enhancing it in unique ways.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "Sentinels of Light",
+    "apiName": "TFT16_Teamup_LucianVayne",
+    "desc": "When Vayne casts on an enemy afflicted with Black Mist, she fires @NumBonusBolts@ extra bolts at @BoltEffectiveness*100@% effectiveness. When she gets a takedown, Lucian and Senna gain @LucianSennaAS*100@% Attack Speed.",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "BoltEffectiveness": 0.25,
+          "LucianSennaAS": 0.5,
+          "NumBonusBolts": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Shadow Isles",
+    "apiName": "TFT16_ShadowIsles",
+    "desc": "Whenever ANY champion dies, gain Souls (%i:scaleSouls%). Shadow Isles champions' Abilities are uniquely empowered based on the number of Souls you have.<br><br>Shadow Isles champions gain Attack Damage and Ability Power.<br><br><row>(@MinUnits@) @SoulMult@x&nbsp;%i:scaleSouls%, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) @SoulMult@x&nbsp;%i:scaleSouls%, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) @SoulMult@x&nbsp;%i:scaleSouls%, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row><br><row>(@MinUnits@) @SoulMult@x&nbsp;%i:scaleSouls%, @ADAP*100@%&nbsp;%i:scaleAD%%i:scaleAP%</row><br><br><rules>Souls Collected: @TFTUnitProperty.trait:TFT16_ShadowIsles_SoulsPlayerFacing@&nbsp;%i:scaleSouls%</rules>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 1,
+        "variables": {
+          "ADAP": 0.18000000715255737,
+          "SoulMult": 1,
+          "{1e24d16e}": 135,
+          "{263593f9}": 65,
+          "{2c785ea4}": null,
+          "{30214014}": 25,
+          "{570dee69}": 1,
+          "{689e69ab}": 160,
+          "{b3900e2d}": 215,
+          "{cd71fc1d}": 255,
+          "{e99a6f18}": 185
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": 3,
+        "variables": {
+          "ADAP": 0.20000000298023224,
+          "SoulMult": 1.2999999523162842,
+          "{1e24d16e}": 135,
+          "{263593f9}": 65,
+          "{2c785ea4}": null,
+          "{30214014}": 25,
+          "{570dee69}": 1,
+          "{689e69ab}": 160,
+          "{b3900e2d}": 215,
+          "{cd71fc1d}": 255,
+          "{e99a6f18}": 185
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": 3,
+        "variables": {
+          "ADAP": 0.2199999988079071,
+          "SoulMult": 1.600000023841858,
+          "{1e24d16e}": 135,
+          "{263593f9}": 65,
+          "{2c785ea4}": null,
+          "{30214014}": 25,
+          "{570dee69}": 1,
+          "{689e69ab}": 160,
+          "{b3900e2d}": 215,
+          "{cd71fc1d}": 255,
+          "{e99a6f18}": 185
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "ADAP": 0.25,
+          "SoulMult": 1.899999976158142,
+          "{1e24d16e}": 135,
+          "{263593f9}": 65,
+          "{2c785ea4}": null,
+          "{30214014}": 25,
+          "{570dee69}": 1,
+          "{689e69ab}": 160,
+          "{b3900e2d}": 215,
+          "{cd71fc1d}": 255,
+          "{e99a6f18}": 185
+        }
+      }
+    ]
+  },
+  {
+    "name": "Shurima",
+    "apiName": "TFT16_Shurima",
+    "desc": "Each second, Shurimans gain @ASPerSecond*100@% Attack Speed and restore @HealthRestorePerSecond@ Health. At combat start, they gain additional effects.<br><br><row>(@MinUnits@) @BonusHealth*100@% max Health</row><br><row>(@MinUnits@) @ArmorMR@ Armor and Magic Resist</row><br><row>(@MinUnits@) A Shuriman ascends to GODHOOD every @GodhoodCadence@ seconds.</row>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 1,
+        "variables": {
+          "ASPerSecond": 0.019999999552965164,
+          "ArmorMR": null,
+          "BonusHealth": 0.20000000298023224,
+          "GodhoodCadence": null,
+          "HealthRestorePerSecond": 20,
+          "{2b696a57}": null,
+          "{a1f805da}": 0.07999999821186066
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": 5,
+        "variables": {
+          "ASPerSecond": 0.019999999552965164,
+          "ArmorMR": 50,
+          "BonusHealth": 0.20000000298023224,
+          "GodhoodCadence": null,
+          "HealthRestorePerSecond": 20,
+          "{2b696a57}": null,
+          "{a1f805da}": 0.07999999821186066
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 25000,
+        "style": 6,
+        "variables": {
+          "ASPerSecond": 0.019999999552965164,
+          "ArmorMR": 50,
+          "BonusHealth": 0.20000000298023224,
+          "GodhoodCadence": 3,
+          "HealthRestorePerSecond": 20,
+          "{2b696a57}": 1,
+          "{a1f805da}": 0.07999999821186066
+        }
+      }
+    ]
+  },
+  {
+    "name": "Slayer",
+    "apiName": "TFT16_Slayer",
+    "desc": "Slayers gain Omnivamp and Attack Damage. They increase the bonus Attack Damage by up to @AmountIncrease*100@% based on their missing Health.<br><br><expandRow>(@MinUnits@) @BonusAD*100@% %i:scaleAD%, @BonusOmnivamp*100@% %i:scaleSV%</expandRow><br>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "AmountIncrease": 0.5,
+          "BonusAD": 0.2199999988079071,
+          "BonusOmnivamp": 0.10000000149011612
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "AmountIncrease": 0.5,
+          "BonusAD": 0.33000001311302185,
+          "BonusOmnivamp": 0.1599999964237213
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "AmountIncrease": 0.5,
+          "BonusAD": 0.4399999976158142,
+          "BonusOmnivamp": 0.20000000298023224
+        }
+      }
+    ]
+  },
+  {
+    "name": "Soulbound",
+    "apiName": "TFT16_Soulbound",
+    "desc": "Lucian and Senna fight together, swapping when either casts. Each champion has a unique ability.<br><br>Your strongest Soulbound pair grants bonuses to your team. While Senna is out, all allies gain @SennaDR*100@% Damage Reduction. While Lucian is out, all allies gain @LucianDA*100@% Damage Amp.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "LucianDA": 0.07000000029802322,
+          "SennaDR": 0.07000000029802322
+        }
+      }
+    ]
+  },
+  {
+    "name": "Star Forger",
+    "apiName": "TFT16_AurelionSolUnique",
+    "desc": "Aurelion Sol gains @BonusStardustPerOneStar*100@/@BonusStardustPerTwoStar*100@/@BonusStardustPerThreeStar*100@% increased Stardust for each other unique Targonian fielded in combat.<br><br><rules>Current Bonus:&nbsp;@TFTUnitProperty.:TFT16_AurelionSol_StarMod@%</rules>",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "BonusStardustPerOneStar": 0.20000000298023224,
+          "BonusStardustPerThreeStar": 1,
+          "BonusStardustPerTwoStar": 0.6000000238418579
+        }
+      }
+    ]
+  },
+  {
+    "name": "Targon",
+    "apiName": "TFT16_Targon",
+    "desc": "Targonians are forged by the stars. They are traitless, but stronger than the average champion.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {}
+      }
+    ]
+  },
+  {
+    "name": "The Boss",
+    "apiName": "TFT16_TheBoss",
+    "desc": "When Sett first drops below @MaxHealthThreshold*100@% max Health, he leaves combat to start doing sit-ups. Each sit-up restores @HealPercent@% max Health and gives him @AttackSpeedPercent@% Attack and Move Speed.<br><br>If he reaches full Health, he returns to combat Pumped Up, converting all damage from his attacks and Ability to true damage. If all of his allies die, he immediately returns to combat.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "AttackSpeedPercent": 60,
+          "HealPercent": 15,
+          "MaxHealthThreshold": 0.44999998807907104
+        }
+      }
+    ]
+  },
+  {
+    "name": "Timewinders",
+    "apiName": "TFT16_Teamup_EkkoZilean",
+    "desc": "<row>(@MinUnits@) Every @EkkoCastsToGainXP@ casts, Ekko stores @EkkoXPGain@ XP for the Chronokeeper trait.</row><br><row>(@MinUnits@) AND enemies within Ekko's Parallel Convergence zone take damage from Zilean's Time Bombs @ZileanSpeedUp*100@% faster.</row><br><br><rules>Total Chronokeeper Stored XP: @TFTUnitProperty.trait:TFT16_ChronoKeeperStoredXP@</rules>",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 1,
+        "style": 4,
+        "variables": {
+          "EkkoCastsToGainXP": 2,
+          "EkkoXPGain": 1,
+          "ZileanSpeedUp": 2
+        }
+      },
+      {
+        "minUnits": 2,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "EkkoCastsToGainXP": 2,
+          "EkkoXPGain": 1,
+          "ZileanSpeedUp": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "Vanquisher",
+    "apiName": "TFT16_Vanquisher",
+    "desc": "Vanquishers' abilities can critically strike. They also gain Critical Strike Chance and Critical Strike Damage.<br><br><expandRow>(@MinUnits@) @BaseCritChance@% %i:scaleCrit% , @CritDmg@% %i:scaleCritMult%</expandRow><br>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 1,
+        "variables": {
+          "BaseCritChance": 15,
+          "CritDmg": 15
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": 3,
+        "variables": {
+          "BaseCritChance": 20,
+          "CritDmg": 20
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": 3,
+        "variables": {
+          "BaseCritChance": 25,
+          "CritDmg": 25
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BaseCritChance": 30,
+          "CritDmg": 30
+        }
+      }
+    ]
+  },
+  {
+    "name": "Void",
+    "apiName": "TFT16_Void",
+    "desc": "Gain Mutations that only Void champions can use. Void champions gain Attack&nbsp;Speed.<br><br><row>(@MinUnits@) @NumMutations@ Mutation, @BonusAS*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @NumMutations@ Mutations, @BonusAS*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) @NumMutations@ Mutations, @BonusAS*100@%&nbsp;%i:scaleAS%</row><br><row>(@MinUnits@) Mutations become supercharged, increasing their power by @SuperchargedMult*100@%. @BonusAS*100@%&nbsp;%i:scaleAS%</row><br><br><rules>Champions can only have one Mutation at a time. Benching a champion removes their&nbsp;Mutation.</rules><br>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "BonusAS": 0.07999999821186066,
+          "NumMutations": 1,
+          "SuperchargedMult": null
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "BonusAS": 0.18000000715255737,
+          "NumMutations": 2,
+          "{12afd090}": null
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 8,
+        "style": 5,
+        "variables": {
+          "BonusAS": 0.33000001311302185,
+          "NumMutations": 3,
+          "SuperchargedMult": null
+        }
+      },
+      {
+        "minUnits": 9,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "BonusAS": 0.4000000059604645,
+          "NumMutations": 3,
+          "SuperchargedMult": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Warden",
+    "apiName": "TFT16_Warden",
+    "desc": "When Wardens first drop below @FirstShieldPercentHealth*100@% and @SecondShieldPercentHealth*100@% Health, they gain a&nbsp;Shield based on their max Health.<br><br><expandRow>(@MinUnits@) @PercentHealthShield*100@% %i:scaleHealth%</expandRow>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 2,
+        "style": 1,
+        "variables": {
+          "FirstShieldPercentHealth": 0.75,
+          "PercentHealthShield": 0.1599999964237213,
+          "SecondShieldPercentHealth": 0.25
+        }
+      },
+      {
+        "minUnits": 3,
+        "maxUnits": 3,
+        "style": 3,
+        "variables": {
+          "FirstShieldPercentHealth": 0.75,
+          "PercentHealthShield": 0.20000000298023224,
+          "SecondShieldPercentHealth": 0.25
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 4,
+        "style": 3,
+        "variables": {
+          "FirstShieldPercentHealth": 0.75,
+          "PercentHealthShield": 0.25999999046325684,
+          "SecondShieldPercentHealth": 0.25
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "FirstShieldPercentHealth": 0.75,
+          "PercentHealthShield": 0.33000001311302185,
+          "SecondShieldPercentHealth": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "name": "World Ender",
+    "apiName": "TFT16_AatroxUnique",
+    "desc": "Aatrox gains Attack Damage equal to his Omnivamp.<br><br>On first death, he becomes briefly untargetable and heals back to full Health over @HealDuration@ seconds. Afterwards, he reduces his maximum Mana by @ManaReduction@ and gains @Durability*100@% Durability.",
+    "effects": [
+      {
+        "minUnits": 1,
+        "maxUnits": 25000,
+        "style": 4,
+        "variables": {
+          "Durability": 0.20000000298023224,
+          "HealDuration": 2,
+          "ManaReduction": 20,
+          "{63ed7d87}": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Yordle",
+    "apiName": "TFT16_Yordle",
+    "desc": "<row>(@MinUnits@) Yordles gain @BonusHealth@ Health and @AS*100@% Attack Speed for each unique Yordle fielded. 3&nbsp;star Yordles grant @BonusMultiplier*100@%&nbsp;more!</row><br><row>(@MinUnits@) AND your first shop each round has a Yordle&nbsp;in&nbsp;it!</row><br><row>(@MinUnits@) AND get @FreeRerolls@ free rerolls each&nbsp;round!</row><br><row>(@MinUnits@) AND get a Yordle Grab Bag each&nbsp;round!</row>",
+    "effects": [
+      {
+        "minUnits": 2,
+        "maxUnits": 3,
+        "style": 1,
+        "variables": {
+          "AS": 0.05000000074505806,
+          "BonusHealth": 40,
+          "BonusMultiplier": 1,
+          "BonusStatMultiplier": 1,
+          "FreeRerolls": null,
+          "{12cd8d20}": null,
+          "{94706038}": null,
+          "{9f843340}": 700,
+          "{a90bd1e4}": 1.5,
+          "{ada76fc3}": 800,
+          "{b46678c7}": 200,
+          "{fe25b795}": null
+        }
+      },
+      {
+        "minUnits": 4,
+        "maxUnits": 5,
+        "style": 3,
+        "variables": {
+          "AS": 0.05000000074505806,
+          "BonusHealth": 40,
+          "BonusMultiplier": 1,
+          "BonusStatMultiplier": 1,
+          "FreeRerolls": null,
+          "{12cd8d20}": 1,
+          "{94706038}": null,
+          "{9f843340}": 700,
+          "{a90bd1e4}": 1.5,
+          "{ada76fc3}": 800,
+          "{b46678c7}": 200,
+          "{fe25b795}": null
+        }
+      },
+      {
+        "minUnits": 6,
+        "maxUnits": 7,
+        "style": 3,
+        "variables": {
+          "AS": 0.05000000074505806,
+          "BonusHealth": 40,
+          "BonusMultiplier": 1,
+          "BonusStatMultiplier": 1,
+          "FreeRerolls": 1,
+          "{12cd8d20}": 1,
+          "{94706038}": null,
+          "{9f843340}": 700,
+          "{a90bd1e4}": 1.5,
+          "{ada76fc3}": 800,
+          "{b46678c7}": 200,
+          "{fe25b795}": null
+        }
+      },
+      {
+        "minUnits": 8,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "AS": 0.05000000074505806,
+          "BonusHealth": 40,
+          "BonusMultiplier": 1,
+          "BonusStatMultiplier": 1,
+          "FreeRerolls": 1,
+          "{12cd8d20}": 1,
+          "{94706038}": 1,
+          "{9f843340}": 700,
+          "{a90bd1e4}": 1.5,
+          "{ada76fc3}": 800,
+          "{b46678c7}": 200,
+          "{fe25b795}": null
+        }
+      },
+      {
+        "minUnits": 10,
+        "maxUnits": 25000,
+        "style": 6,
+        "variables": {
+          "AS": 0.05000000074505806,
+          "BonusHealth": 40,
+          "BonusMultiplier": 1,
+          "BonusStatMultiplier": 1,
+          "FreeRerolls": 1,
+          "{12cd8d20}": 1,
+          "{94706038}": 1,
+          "{9f843340}": 700,
+          "{a90bd1e4}": 1.5,
+          "{ada76fc3}": 800,
+          "{b46678c7}": 200,
+          "{fe25b795}": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "Zaun",
+    "apiName": "TFT16_Zaun",
+    "desc": "After @InitialDelay@ seconds, Zaunites become <TFTKeyword>Shimmer-Fused</TFTKeyword>, granting them @ShimmerFuseDurability*100@% Durability and @ShimmerFuseAttackSpeed*100@% decaying Attack Speed for @ShimmerFuseDuration@ seconds. <br><br>After a short cooldown, they become Shimmer-Fused again.<br><br><row>(@MinUnits@) Refresh after @RefreshSeconds@ seconds. </row><br><row>(@MinUnits@) At @HealThreshold*100@% Health, Zaunites restore @MaxHealthHeal*100@% Health over @HealDuration@ seconds and instantly become Shimmer-Fused.</row><br><row>(@MinUnits@) Shimmer-Fused bonuses are increased by @ShimmerFustMult*100@%. Refresh after @RefreshSeconds@ seconds instead.</row>",
+    "effects": [
+      {
+        "minUnits": 3,
+        "maxUnits": 4,
+        "style": 1,
+        "variables": {
+          "HealDuration": 3,
+          "HealThreshold": 0.6000000238418579,
+          "InitialDelay": 4,
+          "MaxHealthHeal": null,
+          "RefreshSeconds": 4,
+          "ReviveDuration": 3,
+          "ShimmerFuseAttackSpeed": 0.8999999761581421,
+          "ShimmerFuseDurability": 0.10000000149011612,
+          "ShimmerFuseDuration": 4,
+          "ShimmerFustMult": null,
+          "{19b47e58}": 0.3499999940395355
+        }
+      },
+      {
+        "minUnits": 5,
+        "maxUnits": 6,
+        "style": 3,
+        "variables": {
+          "HealDuration": 3,
+          "HealThreshold": 0.6000000238418579,
+          "InitialDelay": 4,
+          "MaxHealthHeal": 0.25,
+          "RefreshSeconds": 4,
+          "ReviveDuration": 3,
+          "ShimmerFuseAttackSpeed": 0.8999999761581421,
+          "ShimmerFuseDurability": 0.10000000149011612,
+          "ShimmerFuseDuration": 4,
+          "ShimmerFustMult": null,
+          "{19b47e58}": 0.3499999940395355
+        }
+      },
+      {
+        "minUnits": 7,
+        "maxUnits": 25000,
+        "style": 5,
+        "variables": {
+          "HealDuration": 3,
+          "HealThreshold": 0.6000000238418579,
+          "InitialDelay": 4,
+          "MaxHealthHeal": 0.25,
+          "RefreshSeconds": 3,
+          "ReviveDuration": 3,
+          "ShimmerFuseAttackSpeed": 0.8999999761581421,
+          "ShimmerFuseDurability": 0.10000000149011612,
+          "ShimmerFuseDuration": 4,
+          "ShimmerFustMult": 0.5,
+          "{19b47e58}": 0.3499999940395355
+        }
+      }
+    ]
+  }
+]

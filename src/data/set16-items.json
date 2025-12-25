@@ -1,0 +1,1581 @@
+{
+  "base": [
+    {
+      "name": "B.F. Sword",
+      "apiName": "TFTTutorial_Item_BFSword",
+      "desc": "%i:scaleAD% +@AD@ Attack Damage",
+      "effects": {
+        "AD": 10
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/BF_Sword.tex"
+    },
+    {
+      "name": "Chain Vest",
+      "apiName": "TFTTutorial_Item_ChainVest",
+      "desc": "%i:scaleArmor% +@Armor@ Armor",
+      "effects": {
+        "Armor": 20
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Chain_Vest.tex"
+    },
+    {
+      "name": "Frying Pan",
+      "apiName": "TFT_Item_FryingPan",
+      "desc": "<tftitemrules>...why else would it be here?</tftitemrules>",
+      "effects": {},
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_FryingPan.TFT_Set13.tex"
+    },
+    {
+      "name": "Giant's Belt",
+      "apiName": "TFT_Item_GiantsBelt",
+      "desc": "%i:scaleHealth% +@Health@ Health",
+      "effects": {
+        "Health": 150
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GiantsBelt.TFT_Set13.tex"
+    },
+    {
+      "name": "Needlessly Large Rod",
+      "apiName": "TFTTutorial_Item_NeedlesslyLargeRod",
+      "desc": "%i:scaleAP% +@AP@ Ability Power",
+      "effects": {
+        "AP": 10
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Needlessly_Large_Rod.tex"
+    },
+    {
+      "name": "Negatron Cloak",
+      "apiName": "TFT_Item_NegatronCloak",
+      "desc": "%i:scaleMR% +@MagicResist@ Magic Resist",
+      "effects": {
+        "MagicResist": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_NegatronCloak.TFT_Set13.tex"
+    },
+    {
+      "name": "Recurve Bow",
+      "apiName": "TFTTutorial_Item_RecurveBow",
+      "desc": "%i:scaleAS% +@AS@% Attack Speed",
+      "effects": {
+        "AS": 10
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Standard/Recurve_Bow.tex"
+    },
+    {
+      "name": "Sparring Gloves",
+      "apiName": "TFT_Item_SparringGloves",
+      "desc": "+@CritChance@ Critical Strike Chance",
+      "effects": {
+        "CritChance": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SparringGloves.TFT_Set13.tex"
+    },
+    {
+      "name": "Spatula",
+      "apiName": "TFT_Item_Spatula",
+      "desc": "<tftitemrules>It must do something...</tftitemrules>",
+      "effects": {
+        "{fe9818ef}": 5
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Spatula.TFT_Set13.tex"
+    },
+    {
+      "name": "Tear of the Goddess",
+      "apiName": "TFT_Item_TearOfTheGoddess",
+      "desc": "%i:TFTManaRegen% +@ManaRegen@ Mana Regen",
+      "effects": {
+        "ManaRegen": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_TearOfTheGoddess.TFT_Set13.tex"
+    }
+  ],
+  "combined": [
+    {
+      "name": "Adaptive Helm",
+      "apiName": "TFT_Item_AdaptiveHelm",
+      "desc": "Gain an additional @ManaPercIncrease*100@% Mana from all sources. The holder gains an additional bonus based on their Role:<br><br>Tanks and Fighters: Gain @FrontlineResists@ Armor and Magic Resistance.<br><br>Other Roles: Gain @BacklineADAP@% Attack Damage and Ability Power. ",
+      "composition": [
+        "NegatronCloak",
+        "TearOfTheGoddess"
+      ],
+      "effects": {
+        "BacklineADAP": 10,
+        "FrontlineResists": 45,
+        "MagicResist": 20,
+        "ManaPercIncrease": 0.15000000596046448,
+        "ManaRegen": 3
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_AdaptiveHelm.TFT_Set13.tex"
+    },
+    {
+      "name": "Archangel's Staff",
+      "apiName": "TFT_Item_ArchangelsStaff",
+      "desc": "Combat start: Gain @APPerInterval@% Ability Power every @IntervalSeconds@ seconds in combat.",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "TearOfTheGoddess"
+      ],
+      "effects": {
+        "AP": 30,
+        "APPerInterval": 20,
+        "IntervalSeconds": 5,
+        "ManaRegen": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_ArchangelsStaff.TFT_Set13.tex"
+    },
+    {
+      "name": "Bloodthirster",
+      "apiName": "TFT_Item_Bloodthirster",
+      "desc": "Once per combat at @HealthThreshold@% Health, gain a @ShieldHealthPercent@% max Health Shield that lasts up to @ShieldDuration@ seconds.",
+      "composition": [
+        "BFSword",
+        "NegatronCloak"
+      ],
+      "effects": {
+        "AD": 0.15000000596046448,
+        "AP": 15,
+        "HealthThreshold": 40,
+        "LifeSteal": 20,
+        "MagicResist": 20,
+        "ShieldDuration": 5,
+        "ShieldHealthPercent": 25,
+        "StatOmnivamp": 0.20000000298023224
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Bloodthirster.TFT_Set13.tex"
+    },
+    {
+      "name": "Blue Buff",
+      "apiName": "TFT_Item_BlueBuff",
+      "desc": "Gain @ModifiedADAP*100@% additional Attack Damage and Ability Power from all sources.",
+      "composition": [
+        "TearOfTheGoddess",
+        "TearOfTheGoddess"
+      ],
+      "effects": {
+        "AD": 0.15000000596046448,
+        "AP": 15,
+        "ManaRegen": 5,
+        "ModifiedADAP": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_BlueBuff.TFT_Set13.tex"
+    },
+    {
+      "name": "Bramble Vest",
+      "apiName": "TFT_Item_BrambleVest",
+      "desc": "Gain @PercentMaxHP*100@% max health.<br><br>Take @AutoDamageReduction*100@% reduced damage from attacks. When struck by any attack, deal <magicDamage>@1StarAoEDamage@ magic damage</magicDamage> to all adjacent enemies.<br><br><tftitemrules>Cooldown: @ICD@ seconds</tftitemrules>",
+      "composition": [
+        "ChainVest",
+        "ChainVest"
+      ],
+      "effects": {
+        "1StarAoEDamage": 100,
+        "2StarAoEDamage": 100,
+        "3StarAoEDamage": 100,
+        "4StarAoEDamage": 100,
+        "Armor": 65,
+        "AutoDamageReduction": 0.05000000074505806,
+        "ICD": 2,
+        "PercentMaxHP": 0.09000000357627869,
+        "{6688a0d5}": 100
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_BrambleVest.TFT_Set13.tex"
+    },
+    {
+      "name": "Crownguard",
+      "apiName": "TFT_Item_Crownguard",
+      "desc": "Combat Start: Gain a @ShieldSize@% max Health Shield for @ShieldDuration@ seconds.<br><br>When the Shield expires, gain @ShieldBonusAP@% Ability Power.<br>",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "ChainVest"
+      ],
+      "effects": {
+        "AP": 20,
+        "Armor": 20,
+        "Health": 100,
+        "ShieldBonusAP": 25,
+        "ShieldDuration": 8,
+        "ShieldSize": 25
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Crownguard.TFT_Set13.tex"
+    },
+    {
+      "name": "Deathblade",
+      "apiName": "TFT_Item_Deathblade",
+      "desc": "<tftitemrules>Perfect peace and calm for the holder - and all who face it.</tftitemrules><br><br>@TFTUnitProperty.:TFT_Augment_TragicalBlade_TRAKey@",
+      "composition": [
+        "BFSword",
+        "BFSword"
+      ],
+      "effects": {
+        "AD": 0.550000011920929,
+        "BonusDamage": 0.10000000149011612,
+        "{1543aa48}": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Deathblade.TFT_Set13.tex"
+    },
+    {
+      "name": "Deathblade",
+      "apiName": "TFT_Item_CorruptedDeathblade",
+      "desc": "<tftitemrules>Perfect peace and calm for the holder - and all who face it.</tftitemrules><br><br>@TFTUnitProperty.:TFT_Augment_TragicalBlade_TRAKey@",
+      "composition": [
+        "BFSword",
+        "BFSword"
+      ],
+      "effects": {
+        "AD": 0.550000011920929,
+        "BonusDamage": 0.10000000149011612,
+        "{1543aa48}": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Deathblade.TFT_Set13.tex"
+    },
+    {
+      "name": "Dragon's Claw",
+      "apiName": "TFT_Item_DragonsClaw",
+      "desc": "Gain @PercentMaxHP*100@% max health.<br><br>Every @HealthRegenInterval@ seconds, heal @PercentHealthDamage@% max Health.",
+      "composition": [
+        "NegatronCloak",
+        "NegatronCloak"
+      ],
+      "effects": {
+        "HealthRegenInterval": 2,
+        "ICD": 0.5,
+        "MagicResist": 75,
+        "PercentHealthDamage": 2.5,
+        "PercentMaxHP": 0.09000000357627869
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_DragonsClaw.TFT_Set13.tex"
+    },
+    {
+      "name": "Edge of Night",
+      "apiName": "TFT_Item_GuardianAngel",
+      "desc": "At @HealthThreshold@% Health, briefly become untargetable and shed negative effects.",
+      "composition": [
+        "BFSword",
+        "ChainVest"
+      ],
+      "effects": {
+        "AD": 0.10000000149011612,
+        "AP": 10,
+        "AS": 15,
+        "Armor": 20,
+        "DamageReduction": 100,
+        "HealthThreshold": 60,
+        "StealthDuration": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GuardianAngel.TFT_Set13.tex"
+    },
+    {
+      "name": "Evenshroud",
+      "apiName": "TFT_Item_SpectralGauntlet",
+      "desc": "@ARReductionAmount@% <TFTKeyword>Sunder</TFTKeyword> enemies within @HexRange@ hexes. Gain @BonusResists@ Armor and Magic Resist for the first @BonusResistDuration@ seconds of combat.<br><br><tftitemrules><tftbold>Sunder</tftbold>: Reduce Armor</tftitemrules>",
+      "composition": [
+        "NegatronCloak",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "ARReductionAmount": 30,
+        "BonusResistDuration": 15,
+        "BonusResists": 25,
+        "Health": 250,
+        "HexRange": 2,
+        "MagicResist": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SpectralGauntlet.TFT_Set13.tex"
+    },
+    {
+      "name": "Gargoyle Stoneplate",
+      "apiName": "TFT_Item_GargoyleStoneplate",
+      "desc": "Gain @ArmorPerEnemy@ Armor and @MRPerEnemy@ Magic Resist for each enemy targeting the holder.",
+      "composition": [
+        "ChainVest",
+        "NegatronCloak"
+      ],
+      "effects": {
+        "Armor": 25,
+        "ArmorPerEnemy": 10,
+        "Health": 100,
+        "MRPerEnemy": 10,
+        "MagicResist": 25,
+        "SizeIncrease": 0.07500000298023224,
+        "{4dc0582f}": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GargoyleStoneplate.TFT_Set13.tex"
+    },
+    {
+      "name": "Gargoyle Stoneplate",
+      "apiName": "TFT_Item_CorruptedGargoyleStoneplate",
+      "desc": "Gain @ArmorPerEnemy@ Armor and @MRPerEnemy@ Magic Resist for each enemy targeting the holder.",
+      "composition": [
+        "ChainVest",
+        "NegatronCloak"
+      ],
+      "effects": {
+        "Armor": 25,
+        "ArmorPerEnemy": 10,
+        "Health": 100,
+        "MRPerEnemy": 10,
+        "MagicResist": 25,
+        "SizeIncrease": 0.07500000298023224,
+        "{4dc0582f}": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GargoyleStoneplate.TFT_Set13.tex"
+    },
+    {
+      "name": "Giant Slayer",
+      "apiName": "TFT_Item_MadredsBloodrazor",
+      "desc": "Gain @DamageAmp*100@% additional Damage Amp against Tanks.",
+      "composition": [
+        "BFSword",
+        "RecurveBow"
+      ],
+      "effects": {
+        "AD": 0.15000000596046448,
+        "AP": 15,
+        "AS": 15,
+        "DamageAmp": 0.15000000596046448,
+        "{1543aa48}": 0.15000000596046448,
+        "{abb9f4ce}": 25
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_MadredsBloodrazor.TFT_Set13.tex"
+    },
+    {
+      "name": "Guinsoo's Rageblade",
+      "apiName": "TFT_Item_GuinsoosRageblade",
+      "desc": "Gain @AttackSpeedPerStack@% stacking Attack Speed every second.",
+      "composition": [
+        "RecurveBow",
+        "NeedlesslyLargeRod"
+      ],
+      "effects": {
+        "AP": 10,
+        "AS": 10,
+        "AttackSpeedPerStack": 7
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GuinsoosRageblade.TFT_Set13.tex"
+    },
+    {
+      "name": "Guinsoo's Rageblade",
+      "apiName": "TFT_Item_CorruptedGuinsoosRageblade",
+      "desc": "Gain @AttackSpeedPerStack@% stacking Attack Speed every second.",
+      "composition": [
+        "RecurveBow",
+        "NeedlesslyLargeRod"
+      ],
+      "effects": {
+        "AP": 10,
+        "AS": 10,
+        "AttackSpeedPerStack": 7
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_GuinsoosRageblade.TFT_Set13.tex"
+    },
+    {
+      "name": "Hand Of Justice",
+      "apiName": "TFT_Item_UnstableConcoction",
+      "desc": "Gain 2 effects:<li>@AD_NotStatBar*100@% Attack Damage and @AP_NotStatBar@% Ability Power.<li>@StatOmnivamp_NotStatBar*100@% Omnivamp.<br><br>While above @HealthThreshold*100@% health, double the Attack Damage and Ability Power. While below @HealthThreshold*100@% Health, double the Omnivamp.",
+      "composition": [
+        "TearOfTheGoddess",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AD_NotStatBar": 0.15000000596046448,
+        "AP_NotStatBar": 15,
+        "CritChance": 20,
+        "HealthThreshold": 0.5,
+        "ManaRegen": 1,
+        "StatOmnivamp_NotStatBar": 0.11999999731779099,
+        "{f23e83fc}": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_UnstableConcoction.TFT_Set13.tex"
+    },
+    {
+      "name": "Hand Of Justice",
+      "apiName": "TFT_Item_CorruptedHandOfJustice",
+      "desc": "Gain 2 effects:<li>@AD_NotStatBar*100@% Attack Damage and @AP_NotStatBar@% Ability Power.<li>@StatOmnivamp_NotStatBar*100@% Omnivamp.<br><br>While above @HealthThreshold*100@% health, double the Attack Damage and Ability Power. While below @HealthThreshold*100@% Health, double the Omnivamp.",
+      "composition": [
+        "TearOfTheGoddess",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AD_NotStatBar": 0.15000000596046448,
+        "AP_NotStatBar": 15,
+        "CritChance": 20,
+        "HealthThreshold": 0.5,
+        "ManaRegen": 1,
+        "StatOmnivamp_NotStatBar": 0.11999999731779099,
+        "{f23e83fc}": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_UnstableConcoction.TFT_Set13.tex"
+    },
+    {
+      "name": "Hextech Gunblade",
+      "apiName": "TFT_Item_HextechGunblade",
+      "desc": "Heal the lowest percent Health ally for @AllyHealing*100@% of damage dealt.<br><br><TFTTrackerLabel>Ally Healing:</TFTTrackerLabel> <TFTHighlight>@TFTUnitProperty.item:TFT_Tracker_Value1@</TFTHighlight>",
+      "composition": [
+        "BFSword",
+        "NeedlesslyLargeRod"
+      ],
+      "effects": {
+        "AD": 0.20000000298023224,
+        "AP": 20,
+        "AllyHealing": 0.20000000298023224,
+        "ManaRegen": 1,
+        "Omnivamp": 18,
+        "StatOmnivamp": 0.15000000596046448
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_HextechGunblade.TFT_Set13.tex"
+    },
+    {
+      "name": "Infinity Edge",
+      "apiName": "TFT_Item_InfinityEdge",
+      "desc": "Abilities can critically strike.<br><br>If the holder's abilities can already critically strike, gain @CritDamageToGive*100@% Critical Strike Damage instead.",
+      "composition": [
+        "BFSword",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AD": 0.3499999940395355,
+        "CritChance": 35,
+        "CritDamageToGive": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_InfinityEdge.TFT_Set13.tex"
+    },
+    {
+      "name": "Infinity Edge",
+      "apiName": "TFT_Item_CorruptedInfinityEdge",
+      "desc": "Abilities can critically strike.<br><br>If the holder's abilities can already critically strike, gain @CritDamageToGive*100@% Critical Strike Damage instead.",
+      "composition": [
+        "BFSword",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AD": 0.3499999940395355,
+        "CritChance": 35,
+        "CritDamageToGive": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_InfinityEdge.TFT_Set13.tex"
+    },
+    {
+      "name": "Ionic Spark",
+      "apiName": "TFT_Item_IonicSpark",
+      "desc": "@MRShred@% <TFTKeyword>Shred</TFTKeyword> enemies within @HexRange@ hexes. When enemies cast an Ability, deal magic damage equal to @ManaRatio@% of the Mana spent<br><br><tftitemrules><tftbold>Shred</tftbold>: Reduce Magic Resist</tftitemrules>",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "NegatronCloak"
+      ],
+      "effects": {
+        "AP": 15,
+        "Damage": 250,
+        "Health": 250,
+        "HexRange": 2,
+        "MRShred": 30,
+        "MagicResist": 35,
+        "ManaRatio": 150
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_IonicSpark.TFT_Set13.tex"
+    },
+    {
+      "name": "Jeweled Gauntlet",
+      "apiName": "TFT_Item_JeweledGauntlet",
+      "desc": "Abilities can critically strike.<br><br>If the holder's abilities can already critically strike, gain @CritDamageToGive*100@% Critical Strike Damage instead.",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AP": 35,
+        "CritChance": 35,
+        "CritDamageToGive": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_JeweledGauntlet.TFT_Set13.tex"
+    },
+    {
+      "name": "Jeweled Gauntlet",
+      "apiName": "TFT_Item_CorruptedJeweledGauntlet",
+      "desc": "Abilities can critically strike.<br><br>If the holder's abilities can already critically strike, gain @CritDamageToGive*100@% Critical Strike Damage instead.",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AP": 35,
+        "CritChance": 35,
+        "CritDamageToGive": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_JeweledGauntlet.TFT_Set13.tex"
+    },
+    {
+      "name": "Kraken's Fury",
+      "apiName": "TFT_Item_RunaansHurricane",
+      "desc": "Attacks grant @ADOnAttack*100@% stacking Attack Damage, up to @MaxStacks@ attacks. After @MaxStacks@ attacks, gain @ASCapstone*100@% Attack Speed.",
+      "composition": [
+        "NegatronCloak",
+        "RecurveBow"
+      ],
+      "effects": {
+        "AD": 0.10000000149011612,
+        "ADOnAttack": 0.03500000014901161,
+        "AS": 10,
+        "ASCapstone": 0.30000001192092896,
+        "MagicResist": 20,
+        "MaxStacks": 15
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_KrakenSlayer.TFT_TFT14_5.tex"
+    },
+    {
+      "name": "Last Whisper",
+      "apiName": "TFT_Item_LastWhisper",
+      "desc": "Damage from attacks and Abilities @ArmorReductionPercent@% <TFTKeyword>Sunder</TFTKeyword> the target for @ArmorBreakDuration@ seconds. This effect does not stack.<br><br><tftitemrules><tftbold>Sunder</tftbold>: Reduce Armor</tftitemrules>",
+      "composition": [
+        "RecurveBow",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AD": 0.15000000596046448,
+        "AS": 20,
+        "ArmorBreakDuration": 3,
+        "ArmorReductionPercent": 30,
+        "CritChance": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_LastWhisper.TFT_Set13.tex"
+    },
+    {
+      "name": "Morellonomicon",
+      "apiName": "TFT_Item_Morellonomicon",
+      "desc": "Attacks and Abilities deal @BurnPercent@% <TFTKeyword>Burn</TFTKeyword> and @GrievousWoundsPercent@% <TFTKeyword>Wound</TFTKeyword> to enemies for @BurnDuration@ seconds.<br><br><tftitemrules><tftbold>Burn</tftbold>: Deals a percent of the target's max Health as true damage every second<br><tftbold>Wound</tftbold>: Reduces healing received</tftitemrules>",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "AP": 20,
+        "BurnDuration": 10,
+        "BurnPercent": 1,
+        "GrievousWoundsPercent": 33,
+        "Health": 150,
+        "ManaRegen": 1,
+        "MonsterCap": 100,
+        "TicksPerSecond": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Morellonomicon.TFT_Set13.tex"
+    },
+    {
+      "name": "Nashor's Tooth",
+      "apiName": "TFT_Item_Leviathan",
+      "desc": "Attacks grant @BaseManaOnHit@ bonus Mana, increased to @ManaOnCrit@ if they critically strike.",
+      "composition": [
+        "RecurveBow",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "AP": 15,
+        "AS": 10,
+        "BaseManaOnHit": 2,
+        "CritChance": 20,
+        "Health": 150,
+        "ManaOnCrit": 4
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Leviathan.TFT_Set13.tex"
+    },
+    {
+      "name": "Protector's Vow",
+      "apiName": "TFT_Item_FrozenHeart",
+      "desc": "Combat Start: Gain @CombatStartMana@ Mana.<br><br>At @HealthThreshold@% Health, gain @TriggerMana@ Mana and a Shield equal to @ShieldHealthPercent@% max Health.",
+      "composition": [
+        "TearOfTheGoddess",
+        "ChainVest"
+      ],
+      "effects": {
+        "Armor": 25,
+        "CombatStartMana": 20,
+        "HealthThreshold": 40,
+        "MagicResist": 25,
+        "ManaRegen": 1,
+        "ShieldDuration": 60,
+        "ShieldHealthPercent": 20,
+        "TriggerMana": 15
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_FrozenHeart.TFT_Set13.tex"
+    },
+    {
+      "name": "Quicksilver",
+      "apiName": "TFT_Item_Quicksilver",
+      "desc": "Combat Start: Gain immunity to crowd control for @SpellShieldDuration@ seconds.<br><br>Gain @ProcAttackSpeed*100@% stacking Attack Speed every second.",
+      "composition": [
+        "SparringGloves",
+        "NegatronCloak"
+      ],
+      "effects": {
+        "AS": 15,
+        "CritChance": 20,
+        "MagicResist": 20,
+        "ProcAttackSpeed": 0.029999999329447746,
+        "SpellShieldDuration": 18
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_Quicksilver.TFT_Set13.tex"
+    },
+    {
+      "name": "Rabadon's Deathcap",
+      "apiName": "TFT_Item_RabadonsDeathcap",
+      "desc": "<tftitemrules>This humble hat can help you make, or unmake, the world itself.</tftitemrules><br><br>@TFTUnitProperty.:TFT_Augment_DeadlierCaps_TRAKey@",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "NeedlesslyLargeRod"
+      ],
+      "effects": {
+        "AP": 50,
+        "BonusDamage": 0.15000000596046448,
+        "{1543aa48}": 0.15000000596046448
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_RabadonsDeathcap.TFT_Set13.tex"
+    },
+    {
+      "name": "Rabadon's Deathcap",
+      "apiName": "TFT_Item_CorruptedRabadonsDeathcap",
+      "desc": "<tftitemrules>This humble hat can help you make, or unmake, the world itself.</tftitemrules><br><br>@TFTUnitProperty.:TFT_Augment_DeadlierCaps_TRAKey@",
+      "composition": [
+        "NeedlesslyLargeRod",
+        "NeedlesslyLargeRod"
+      ],
+      "effects": {
+        "AP": 50,
+        "BonusDamage": 0.15000000596046448,
+        "{1543aa48}": 0.15000000596046448
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_RabadonsDeathcap.TFT_Set13.tex"
+    },
+    {
+      "name": "Red Buff",
+      "apiName": "TFT_Item_RapidFireCannon",
+      "desc": "Attacks and Abilities @BurnPercent@% <TFTKeyword>Burn</TFTKeyword> and @HealingReductionPct@% <TFTKeyword>Wound</TFTKeyword> enemies for @Duration@ seconds.<br><br><tftitemrules><tftbold>Burn</tftbold>: Deals a percent of the target's max Health as true damage every second<br><tftbold>Wound</tftbold>: Reduces healing received</tftitemrules>",
+      "composition": [
+        "RecurveBow",
+        "RecurveBow"
+      ],
+      "effects": {
+        "AS": 45,
+        "BonusDamage": 0.05999999865889549,
+        "BurnPercent": 1,
+        "Duration": 5,
+        "HealingReductionPct": 33,
+        "HexRangeIncrease": 1,
+        "{1543aa48}": 0.029999999329447746,
+        "{9f5117db}": 100
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_RapidFireCannon.TFT_Set13.tex"
+    },
+    {
+      "name": "Spear of Shojin",
+      "apiName": "TFT_Item_SpearOfShojin",
+      "desc": "Attacks grant @FlatManaRestore@ bonus Mana.",
+      "composition": [
+        "BFSword",
+        "TearOfTheGoddess"
+      ],
+      "effects": {
+        "AD": 0.15000000596046448,
+        "AP": 15,
+        "FlatManaRestore": 5,
+        "ManaRegen": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SpearOfShojin.TFT_Set13.tex"
+    },
+    {
+      "name": "Spear of Shojin",
+      "apiName": "TFT_Item_CorruptedSpearOfShojin",
+      "desc": "Attacks grant @FlatManaRestore@ bonus Mana.",
+      "composition": [
+        "BFSword",
+        "TearOfTheGoddess"
+      ],
+      "effects": {
+        "AD": 0.15000000596046448,
+        "AP": 15,
+        "FlatManaRestore": 5,
+        "ManaRegen": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SpearOfShojin.TFT_Set13.tex"
+    },
+    {
+      "name": "Spirit Visage",
+      "apiName": "TFT_Item_Redemption",
+      "desc": "Regenerate @MissingHealthHeal*100@% of missing Health each second.",
+      "composition": [
+        "TearOfTheGoddess",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "HealTickRate": 1,
+        "Health": 300,
+        "ManaRegen": 2,
+        "MaxHeal": 250,
+        "MissingHealthHeal": 0.02500000037252903,
+        "{cd951938}": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SpiritVisageRR.TFT_TFT14_5.tex"
+    },
+    {
+      "name": "Spirit Visage",
+      "apiName": "TFT_Item_CorruptedRedemption",
+      "desc": "Regenerate @MissingHealthHeal*100@% of missing Health each second.",
+      "composition": [
+        "TearOfTheGoddess",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "HealTickRate": 1,
+        "Health": 300,
+        "ManaRegen": 2,
+        "MaxHeal": 250,
+        "MissingHealthHeal": 0.02500000037252903,
+        "{cd951938}": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SpiritVisageRR.TFT_TFT14_5.tex"
+    },
+    {
+      "name": "Steadfast Heart",
+      "apiName": "TFT_Item_NightHarvester",
+      "desc": "Gain @BaseDurability*100@% Durability. While above @ThresholdForEmpower*100@% Health, instead gain @EmpoweredDurability*100@% Durability.<br><br>@TFTUnitProperty.:TFT_Augment_WarmogsBuckle_TRAKey@",
+      "composition": [
+        "ChainVest",
+        "SparringGloves"
+      ],
+      "effects": {
+        "Armor": 20,
+        "BaseDurability": 0.10000000149011612,
+        "CritChance": 20,
+        "EmpoweredDurability": 0.18000000715255737,
+        "Health": 250,
+        "ThresholdForEmpower": 0.5
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_NightHarvester.TFT_Set13.tex"
+    },
+    {
+      "name": "Sterak's Gage",
+      "apiName": "TFT_Item_SteraksGage",
+      "desc": "At @HealthThreshold@% Health, gain a Shield equal to @PercentHealthShield*100@% of the wearer's maximum Health that rapidly decays over @ShieldDuration@ seconds.",
+      "composition": [
+        "BFSword",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "AD": 0.4000000059604645,
+        "Health": 300,
+        "HealthThreshold": 60,
+        "PercentHealthShield": 0.5,
+        "ShieldDuration": 4
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SteraksGage.TFT_Set13.tex"
+    },
+    {
+      "name": "Striker's Flail",
+      "apiName": "TFT_Item_PowerGauntlet",
+      "desc": "Critical Strikes grant @BuffDamageAmp*100@% Damage Amp for @Duration@ seconds, stacking up to @MaxStacks@ times.",
+      "composition": [
+        "GiantsBelt",
+        "SparringGloves"
+      ],
+      "effects": {
+        "AS": 10,
+        "BuffDamageAmp": 0.05000000074505806,
+        "CritChance": 20,
+        "Duration": 5,
+        "Health": 150,
+        "MaxStacks": 4,
+        "{1543aa48}": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_PowerGauntlet.TFT_Set13.tex"
+    },
+    {
+      "name": "Sunfire Cape",
+      "apiName": "TFT_Item_RedBuff",
+      "desc": "Gain @BonusPercentHP*100@% max Health. <br><br>Every @ICD@ seconds, deal @BurnPercent@% <TFTKeyword>Burn</TFTKeyword> and @GrievousWoundsPercent@% <TFTKeyword>Wound</TFTKeyword> to an enemy within @HexRange@ hexes for @BurnDuration@ seconds.<br><br><tftitemrules><tftbold>Burn</tftbold>: Deals a percent of the target�s max Health as true damage every second<br><tftbold>Wound</tftbold>: Reduces healing received</tftitemrules>",
+      "composition": [
+        "ChainVest",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "Armor": 20,
+        "BonusPercentHP": 0.07999999821186066,
+        "BurnDuration": 10,
+        "BurnPercent": 1,
+        "GrievousWoundsPercent": 33,
+        "Health": 150,
+        "HexRange": 2,
+        "ICD": 2,
+        "MonsterCap": 100
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_RedBuff.TFT_Set13.tex"
+    },
+    {
+      "name": "Tactician's Cape",
+      "apiName": "TFT_Item_TacticiansRing",
+      "desc": "Your team gains +@MaxArmySizeIncrease@ max team size.<br><br>@PercentGoldChance@% chance to drop 1 gold after @Timer@ seconds of combat.<br><br><tftitemrules>\"...and a bit of Luck.\"</tftitemrules>",
+      "composition": [
+        "Spatula",
+        "FryingPan"
+      ],
+      "effects": {
+        "MaxArmySizeIncrease": 1,
+        "PercentGoldChance": 10,
+        "Timer": 10
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_TacticiansRing.TFT_Set13.tex"
+    },
+    {
+      "name": "Tactician's Crown",
+      "apiName": "TFT_Item_ForceOfNature",
+      "desc": "Your team gains +@MaxArmySizeIncrease@ max team size.<br><br>@PercentGoldChance@% chance to drop 1 gold when you win combat.<br><br><tftitemrules>\"...the Heart of a hero...\"</tftitemrules>",
+      "composition": [
+        "Spatula",
+        "Spatula"
+      ],
+      "effects": {
+        "MaxArmySizeIncrease": 1,
+        "PercentGoldChance": 10
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_ForceOfNature.TFT_Set13.tex"
+    },
+    {
+      "name": "Tactician's Shield",
+      "apiName": "TFT_Item_TacticiansScepter",
+      "desc": "Your team gains +@MaxArmySizeIncrease@ max team size.<br><br>@PercentGoldChance@% chance to drop 1 gold when the holder dies.<br><br><tftitemrules>\"Imbued with a Philosopher's wisdom...\"</tftitemrules>",
+      "composition": [
+        "FryingPan",
+        "FryingPan"
+      ],
+      "effects": {
+        "MaxArmySizeIncrease": 1,
+        "PercentGoldChance": 10
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_TacticiansScepter.TFT_Set13.tex"
+    },
+    {
+      "name": "tft_item_name_CursedBlade",
+      "apiName": "TFT_Item_CursedBlade",
+      "desc": "TFT_item_description_CursedBlade",
+      "composition": [
+        "CursedBlade",
+        "CursedBlade"
+      ],
+      "effects": {
+        "AS": 15,
+        "MagicResist": 25,
+        "{a56e0a21}": 20
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/TFT_Item_CursedBlade.tex"
+    },
+    {
+      "name": "tft_item_name_HextechChestguard",
+      "apiName": "TFT_Item_HextechChestguard",
+      "desc": "tft_item_description_HextechChestguard",
+      "composition": [
+        "HextechChestguard",
+        "HextechChestguard"
+      ],
+      "effects": {},
+      "icon": "ASSETS/Maps/Particles/TFT/TFT_Item_HextechChestguard.tex"
+    },
+    {
+      "name": "Thief's Gloves",
+      "apiName": "TFT_Item_ThiefsGloves",
+      "desc": "Each round: Equip 2 random items.<br><br><tftitemrules>[Consumes 3 item slots.]</tftitemrules><br>@TFTUnitProperty.:TFT_BindOnEquipTRA@",
+      "composition": [
+        "SparringGloves",
+        "SparringGloves"
+      ],
+      "effects": {
+        "CritChance": 20,
+        "Health": 150
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_ThiefsGloves.TFT_Set13.tex"
+    },
+    {
+      "name": "Titan's Resolve",
+      "apiName": "TFT_Item_TitansResolve",
+      "desc": "Gain @StackingAD*100@% Attack Damage and @StackingSP@% Ability Power when attacking or taking damage, stacking up to @StackCap@ times.  <br><br>At full stacks, gain @StackedAmp*100@% Damage Amp and gain immunity to crowd control.",
+      "composition": [
+        "ChainVest",
+        "RecurveBow"
+      ],
+      "effects": {
+        "AS": 10,
+        "Armor": 20,
+        "StackCap": 25,
+        "StackedAmp": 0.10000000149011612,
+        "StackingAD": 0.019999999552965164,
+        "StackingSP": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_TitansResolve.TFT_Set13.tex"
+    },
+    {
+      "name": "Void Staff",
+      "apiName": "TFT_Item_StatikkShiv",
+      "desc": "Damage from attacks and Abilities @MRShred@% <TFTKeyword>Shred</TFTKeyword> the target for @MRShredDuration@ seconds. This effect does not stack.<br><br><tftitemrules><tftbold>Shred</tftbold>: Reduce Magic Resist</tftitemrules>",
+      "composition": [
+        "RecurveBow",
+        "TearOfTheGoddess"
+      ],
+      "effects": {
+        "AP": 35,
+        "AS": 15,
+        "MRShred": 30,
+        "MRShredDuration": 5,
+        "ManaRegen": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_VoidStaff.TFT_TFT14_5.tex"
+    },
+    {
+      "name": "Warmog's Armor",
+      "apiName": "TFT_Item_WarmogsArmor",
+      "desc": "Gain @BonusPercentHP*100@% max Health.<br>",
+      "composition": [
+        "GiantsBelt",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "BonusPercentHP": 0.15000000596046448,
+        "Health": 500
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_WarmogsArmor.TFT_Set13.tex"
+    },
+    {
+      "name": "Warmog's Armor",
+      "apiName": "TFT_Item_CorruptedWarmogsArmor",
+      "desc": "Gain @BonusPercentHP*100@% max Health.<br>",
+      "composition": [
+        "GiantsBelt",
+        "GiantsBelt"
+      ],
+      "effects": {
+        "BonusPercentHP": 0.15000000596046448,
+        "Health": 500
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_WarmogsArmor.TFT_Set13.tex"
+    }
+  ],
+  "radiant": [
+    {
+      "name": "Radiant Adaptive Helm",
+      "apiName": "TFT5_Item_AdaptiveHelmRadiant",
+      "desc": "Gain an additional <TFTRadiantItemBonus>@ManaPercIncrease*100@%</TFTRadiantItemBonus> Mana from all sources. The wearer gains an additional bonus based on their Role:<br><br>Tank/Fighter: Gain <TFTRadiantItemBonus>@FrontlineResists@</TFTRadiantItemBonus> Armor and Magic Resistance.<br><br>Marksman/Caster: Gain <TFTRadiantItemBonus>@BacklineADAP@%</TFTRadiantItemBonus> Attack Damage and Ability Power. ",
+      "effects": {
+        "BacklineADAP": 20,
+        "FrontlineResists": 90,
+        "MagicResist": 40,
+        "ManaPercIncrease": 0.30000001192092896,
+        "ManaRegen": 6
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_AdaptiveHelmRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Archangel's Staff",
+      "apiName": "TFT5_Item_ArchangelsStaffRadiant",
+      "desc": "Combat start: Gain <TFTRadiantItemBonus>@APPerInterval@%</TFTRadiantItemBonus> Ability Power every @IntervalSeconds@ seconds in combat.",
+      "effects": {
+        "AP": 60,
+        "APPerInterval": 40,
+        "IntervalSeconds": 5,
+        "ManaRegen": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_ArchangelsStaffRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Bloodthirster",
+      "apiName": "TFT5_Item_BloodthirsterRadiant",
+      "desc": "Once per combat: At @HealthThreshold@% Health, gain a <TFTRadiantItemBonus>@ShieldHealthPercent@%</TFTRadiantItemBonus> max Health Shield that lasts up to @ShieldDuration@ seconds.",
+      "effects": {
+        "AD": 0.30000001192092896,
+        "AP": 30,
+        "HealthThreshold": 40,
+        "LifeSteal": 40,
+        "MagicResist": 40,
+        "ShieldDuration": 5,
+        "ShieldHealthPercent": 50,
+        "StatOmnivamp": 0.4000000059604645
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_BloodthirsterRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Blue Buff",
+      "apiName": "TFT5_Item_BlueBuffRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@ModifiedADAP*100@%</TFTRadiantItemBonus> additional Attack Damage and Ability Power from all sources.",
+      "effects": {
+        "AD": 0.30000001192092896,
+        "AP": 30,
+        "ManaRegen": 10,
+        "ModifiedADAP": 0.20000000298023224
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_BlueBuffRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Bramble Vest",
+      "apiName": "TFT5_Item_BrambleVestRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@PercentMaxHP*100@%</TFTRadiantItemBonus> max health.<br><br>Take <TFTRadiantItemBonus>@AutoDamageReduction*100@%</TFTRadiantItemBonus> reduced damage from attacks. When struck by any attack, deal <TFTRadiantItemBonus>@1StarAoEDamage@</TFTRadiantItemBonus> magic damage to all adjacent enemies.<br><br><tftitemrules>Cooldown: @ICD@ seconds</tftitemrules>",
+      "effects": {
+        "1StarAoEDamage": 200,
+        "2StarAoEDamage": 200,
+        "3StarAoEDamage": 200,
+        "4StarAoEDamage": 200,
+        "Armor": 130,
+        "AutoDamageReduction": 0.10000000149011612,
+        "ICD": 2,
+        "PercentMaxHP": 0.18000000715255737
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_BrambleVestRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Crown of Champions",
+      "apiName": "TFT7_Item_ShimmerscaleCrownOfChampions_Radiant",
+      "desc": "Every <TFTRadiantItemBonus>@SecondsForEmpoweredAttack@</TFTRadiantItemBonus> seconds, the next attack deals @AttackGoldMultiplier@x the amount of %i:goldCoins% gold in your bank in true damage.",
+      "effects": {
+        "AttackGoldMultiplier": 9001,
+        "Health": 500,
+        "SecondsForEmpoweredAttack": 3
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_CrownOfChampions_Radiant.tex"
+    },
+    {
+      "name": "Radiant Crownguard",
+      "apiName": "TFT5_Item_CrownguardRadiant",
+      "desc": "Combat Start: Gain a <TFTRadiantItemBonus>@ShieldSize@%</TFTRadiantItemBonus> max Health Shield for @ShieldDuration@ seconds.<br><br>When the Shield expires, gain <TFTRadiantItemBonus>@ShieldBonusAP@% Ability Power</TFTRadiantItemBonus>.",
+      "effects": {
+        "AP": 40,
+        "Armor": 40,
+        "Health": 200,
+        "ShieldBonusAP": 50,
+        "ShieldDuration": 8,
+        "ShieldSize": 50
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_CrownguardRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Deathblade",
+      "apiName": "TFT5_Item_DeathbladeRadiant",
+      "desc": "<tftitemrules>It glows in the presence of enemies. Or friends. Or anything alive, really.</tftitemrules><br><br>@TFTUnitProperty.:TFT_Augment_TragicalBlade_TRAKey@",
+      "effects": {
+        "AD": 1.100000023841858,
+        "BonusDamage": 0.20000000298023224,
+        "{1543aa48}": 0.20000000298023224
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_DeathbladeRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Determined Investor",
+      "apiName": "TFT7_Item_ShimmerscaleDeterminedInvestor_Radiant",
+      "desc": "After dying during combat @StackLimit@ times, this item is destroyed. Upon destruction, grant the item Radiant Diamond Hands, 1 Champion Duplicator, and %i:goldCoins% <TFTRadiantItemBonus>@GoldGranted@</TFTRadiantItemBonus> gold.",
+      "effects": {
+        "GoldGranted": 30,
+        "Health": 450,
+        "StackLimit": 8
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_DeterminedInvestor_Radiant.tex"
+    },
+    {
+      "name": "Radiant Diamond Hands",
+      "apiName": "TFT7_Item_ShimmerscaleDiamondHands_Radiant",
+      "desc": "Once per combat: At @HPThreshold1*100@% Health and @HPThreshold2*100@% Health, become invulnerable for @BaseDamageImmunityTime@ second and grant %i:goldCoins% <TFTRadiantItemBonus>@GoldPerImmunityProc@</TFTRadiantItemBonus> gold.",
+      "effects": {
+        "AP": 75,
+        "BaseDamageImmunityTime": 1,
+        "GoldPerImmunityProc": 3,
+        "HPThreshold1": 0.6600000262260437,
+        "HPThreshold2": 0.33000001311302185,
+        "Health": 1200
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_DiamondHands_Radiant.tex"
+    },
+    {
+      "name": "Radiant Dragon's Claw",
+      "apiName": "TFT5_Item_DragonsClawRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@PercentMaxHP*100@%</TFTRadiantItemBonus> max health.<br><br>Every @HealthRegenInterval@ seconds, heal <TFTRadiantItemBonus>@PercentHealthDamage@%</TFTRadiantItemBonus> max Health.<br>",
+      "effects": {
+        "HealthRegenInterval": 2,
+        "ICD": 0.5,
+        "MagicResist": 150,
+        "MaxHealthRegen": 2,
+        "PercentHealthDamage": 5,
+        "PercentMaxHP": 0.18000000715255737
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_DragonsClawRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Draven's Axe",
+      "apiName": "TFT7_Item_ShimmerscaleDravensAxe_Radiant",
+      "desc": "Gain %i:scaleAD% <TFTRadiantItemBonus>@AttackDamagePerGold@%</TFTRadiantItemBonus> Attack Damage per %i:goldCoins% gold in your bank (up to %i:goldCoins% @AttackDamageGoldLimit@ gold).<br><br>Attacks grant @StacksPerAttack@ stack, up to @CashoutStacks@ times. At full stacks, grant %i:goldCoins% <TFTRadiantItemBonus>@CashoutGold@</TFTRadiantItemBonus> gold and <TFTRadiantItemBonus>@CashoutComponents@</TFTRadiantItemBonus> item component(s).<br><br><tftitemrules>Gold generated this game: @TFTUnitProperty.item:TFT_Item_GoldGenerated@</tftitemrules>",
+      "effects": {
+        "AD": 0.44999998807907104,
+        "AS": 30,
+        "AttackDamageGoldLimit": 60,
+        "AttackDamagePerGold": 3,
+        "CashoutComponents": 2,
+        "CashoutGold": 20,
+        "CashoutStacks": 100,
+        "StacksPerAttack": 1,
+        "{fd493b8a}": 2
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_DravensAxe_Radiant.tex"
+    },
+    {
+      "name": "Radiant Edge of Night",
+      "apiName": "TFT5_Item_GuardianAngelRadiant",
+      "desc": "At @HealthThreshold@% Health, briefly become untargetable, shed negative effects, and <TFTRadiantItemBonus>heal all missing health</TFTRadiantItemBonus>.",
+      "effects": {
+        "AD": 0.30000001192092896,
+        "AP": 30,
+        "AS": 30,
+        "Armor": 40,
+        "DamageReduction": 100,
+        "HealthThreshold": 60,
+        "MissingHealthRestore": 1,
+        "StealthDuration": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_GuardianAngelRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Evenshroud",
+      "apiName": "TFT5_Item_SpectralGauntletRadiant",
+      "desc": "@ARReductionAmount@% <TFTKeyword>Sunder</TFTKeyword> enemies within @HexRange@ hexes. Gain <TFTRadiantItemBonus>@BonusResists@ Armor and Magic Resist</TFTRadiantItemBonus> for the first <TFTRadiantItemBonus>@BonusResistDuration@ seconds</TFTRadiantItemBonus> of combat.<br><br><tftitemrules><tftbold>Sunder</tftbold>: Reduce Armor</tftitemrules>",
+      "effects": {
+        "ARReductionAmount": 30,
+        "BonusResistDuration": 20,
+        "BonusResists": 50,
+        "Health": 500,
+        "HexRange": 3,
+        "MagicResist": 40
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_SpectralGauntletRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Gambler's Blade",
+      "apiName": "TFT7_Item_ShimmerscaleGamblersBlade_Radiant",
+      "desc": "Grant %i:scaleAS% <TFTRadiantItemBonus>@AttackSpeedPerGold*100@%</TFTRadiantItemBonus> bonus Attack Speed per %i:goldCoins% gold in your bank (up to %i:goldCoins% @AttackSpeedGoldLimit@ gold). Each attack has a @ChanceToProc*100@% chance to drop %i:goldCoins% <TFTRadiantItemBonus>@GoldPerProc@</TFTRadiantItemBonus> gold.<br><br><tftitemrules>Gold generated this game: @TFTUnitProperty.item:TFT_Item_GoldGenerated@</tftitemrules>",
+      "effects": {
+        "AP": 60,
+        "AS": 30,
+        "AttackSpeedGoldLimit": 30,
+        "AttackSpeedPerGold": 0.009999999776482582,
+        "ChanceToProc": 0.07000000029802322,
+        "GoldPerProc": 3,
+        "{46736b3f}": 4,
+        "{b38e1643}": 20
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_GoldCollector_Radiant.tex"
+    },
+    {
+      "name": "Radiant Gargoyle Stoneplate",
+      "apiName": "TFT5_Item_GargoyleStoneplateRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@ArmorPerEnemy@</TFTRadiantItemBonus> Armor and <TFTRadiantItemBonus>@MRPerEnemy@</TFTRadiantItemBonus> Magic Resist for each enemy targeting the holder.",
+      "effects": {
+        "Armor": 50,
+        "ArmorPerEnemy": 20,
+        "Health": 200,
+        "HealthRegenInterval": null,
+        "MRPerEnemy": 20,
+        "MagicResist": 50,
+        "MaxHealthRegen": null,
+        "SizeIncrease": 0.07500000298023224,
+        "{4dc0582f}": 20
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_GargoyleStoneplateRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Giant Slayer",
+      "apiName": "TFT5_Item_GiantSlayerRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@DamageAmp*100@%</TFTRadiantItemBonus> additional Damage Amp against Tanks.",
+      "effects": {
+        "AD": 0.30000001192092896,
+        "AP": 30,
+        "AS": 30,
+        "DamageAmp": 0.30000001192092896,
+        "{1543aa48}": 0.30000001192092896,
+        "{abb9f4ce}": 25
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_GiantSlayerRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Goldmancer's Staff",
+      "apiName": "TFT7_Item_ShimmerscaleGoldmancersStaff_Radiant",
+      "desc": "Grant %i:scaleAP% <TFTRadiantItemBonus>@AbilityPowerPerGold@</TFTRadiantItemBonus> Ability Power per %i:goldCoins% gold in your bank (up to %i:goldCoins% @AbilityPowerGoldMax@ gold) and a @OnKillProcChance*100@% chance to drop %i:goldCoins% <TFTRadiantItemBonus>@OnKillProcGold@</TFTRadiantItemBonus> gold on enemy kill.<br><br><tftitemrules>Gold generated this game: @TFTUnitProperty.item:TFT_Item_GoldGenerated@</tftitemrules>",
+      "effects": {
+        "AP": 60,
+        "AbilityPowerGoldMax": 60,
+        "AbilityPowerPerGold": 2,
+        "ManaRegen": 9,
+        "OnKillProcChance": 0.6000000238418579,
+        "OnKillProcGold": 6
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_GoldmancersStaff_Radiant.tex"
+    },
+    {
+      "name": "Radiant Guinsoo's Rageblade",
+      "apiName": "TFT5_Item_GuinsoosRagebladeRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@AttackSpeedPerStack@%</TFTRadiantItemBonus> stacking Attack Speed every second.",
+      "effects": {
+        "AP": 20,
+        "AS": 20,
+        "AttackSpeedPerStack": 14
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_GuinsoosRagebladeRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Hand of Justice",
+      "apiName": "TFT5_Item_HandOfJusticeRadiant",
+      "desc": "Gain 2 effects:<li><TFTRadiantItemBonus>@AD_NotStatBar*100@%</TFTRadiantItemBonus> Attack Damage and <TFTRadiantItemBonus>@AP_NotStatBar@%</TFTRadiantItemBonus> Ability Power.<li><TFTRadiantItemBonus>@StatOmnivamp_NotStatBar*100@%</TFTRadiantItemBonus> Omnivamp.<br><br>While above @HealthThreshold*100@% health, double the Attack Damage and Ability Power. While below @HealthThreshold*100@% Health, double the Omnivamp.",
+      "effects": {
+        "AD_NotStatBar": 0.30000001192092896,
+        "AP_NotStatBar": 30,
+        "CritChance": 40,
+        "HealthThreshold": 0.5,
+        "ManaRegen": 2,
+        "StatOmnivamp_NotStatBar": 0.23999999463558197,
+        "{f23e83fc}": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_HandOfJusticeRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Hextech Gunblade",
+      "apiName": "TFT5_Item_HextechGunbladeRadiant",
+      "desc": "Heal the lowest percent Health ally for <TFTRadiantItemBonus>@AllyHealing*100@%</TFTRadiantItemBonus> of damage dealt.<br><br><TFTTrackerLabel>Ally Healing:</TFTTrackerLabel> <TFTHighlight>@TFTUnitProperty.item:TFT_Tracker_Value1@</TFTHighlight>",
+      "effects": {
+        "AD": 0.4000000059604645,
+        "AP": 40,
+        "AllyHealing": 0.4000000059604645,
+        "ManaRegen": 2,
+        "Omnivamp": 35,
+        "StatOmnivamp": 0.30000001192092896
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_HextechGunbladeRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Infinity Edge",
+      "apiName": "TFT5_Item_InfinityEdgeRadiant",
+      "desc": "Abilities can critically strike.<br><br>If the holder's abilities can already critically strike, gain @CritDamageToGive*100@% Critical Strike Damage instead.",
+      "effects": {
+        "AD": 0.75,
+        "CritChance": 75,
+        "CritDamageToGive": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_InfinityEdgeRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Ionic Spark",
+      "apiName": "TFT5_Item_IonicSparkRadiant",
+      "desc": "@MRShred@% <TFTKeyword>Shred</TFTKeyword> enemies within @HexRange@ hexes. When enemies cast an Ability, deal magic damage equal to <TFTRadiantItemBonus>@ManaRatio@%</TFTRadiantItemBonus> of the Mana spent.<br><br><tftitemrules>[Direct damage item]<br><tftbold>Shred</tftbold>: Reduce Magic Resist</tftitemrules>",
+      "effects": {
+        "AP": 30,
+        "Health": 500,
+        "HealthRegenInterval": null,
+        "HexRange": 2,
+        "MRShred": 30,
+        "MagicResist": 70,
+        "ManaRatio": 300,
+        "MaxHealthRegen": null
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_IonicSparkRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Jeweled Gauntlet",
+      "apiName": "TFT5_Item_JeweledGauntletRadiant",
+      "desc": "Abilities can critically strike.<br><br>If the holder's abilities can already critically strike, gain @CritDamageToGive*100@% Critical Strike Damage instead.",
+      "effects": {
+        "AP": 75,
+        "CritChance": 75,
+        "CritDamageToGive": 0.10000000149011612
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_JeweledGauntletRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Kraken's Fury",
+      "apiName": "TFT5_Item_RunaansHurricaneRadiant",
+      "desc": "Attacks grant <TFTRadiantItemBonus>@ADOnAttack*100@%</TFTRadiantItemBonus> stacking Attack Damage, up to @MaxStacks@ attacks. After @MaxStacks@ attacks, gain <TFTRadiantItemBonus>@ASCapstone*100@%</TFTRadiantItemBonus> Attack Speed.",
+      "effects": {
+        "AD": 0.20000000298023224,
+        "ADOnAttack": 0.07000000029802322,
+        "AS": 20,
+        "ASCapstone": 0.6000000238418579,
+        "MagicResist": 40,
+        "MaxStacks": 15
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_KrakenSlayerRadiant.TFT_TFT14_5.tex"
+    },
+    {
+      "name": "Radiant Last Whisper",
+      "apiName": "TFT5_Item_LastWhisperRadiant",
+      "desc": "Damage from attacks and Abilities @ArmorReductionPercent@% <TFTKeyword>Sunder</TFTKeyword> the target for <TFTRadiantItemBonus>the rest of combat.</TFTRadiantItemBonus> This effect does not stack.<br><br><tftitemrules><tftbold>Sunder</tftbold>: Reduce Armor</tftitemrules>",
+      "effects": {
+        "AD": 0.44999998807907104,
+        "AS": 40,
+        "ArmorBreakDuration": 50,
+        "ArmorReductionPercent": 30,
+        "CritChance": 40
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_LastWhisperRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Mogul's Mail",
+      "apiName": "TFT7_Item_ShimmerscaleMogulsMail_Radiant",
+      "desc": "Grants <TFTRadiantItemBonus>@BaseResistsPerStack@</TFTRadiantItemBonus> Armor, <TFTRadiantItemBonus>@BaseResistsPerStack@</TFTRadiantItemBonus> Magic Resist, and <TFTRadiantItemBonus>@BaseHealthPerStack@</TFTRadiantItemBonus> Health when taking damage, stacking up to @StackCap@ times.<br><br>At full stacks, grant %i:goldCoins% <TFTRadiantItemBonus>@GoldAtFullStacks@</TFTRadiantItemBonus> gold.<br><br><tftitemrules>Gold generated this game: @TFTUnitProperty.item:TFT_Item_GoldGenerated@</tftitemrules>",
+      "effects": {
+        "BaseHealthPerStack": 50,
+        "BaseResistsPerStack": 5,
+        "GoldAtFullStacks": 6,
+        "GoldInterval": 4,
+        "Health": 600,
+        "StackCap": 35
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_MogulsMail_Radiant.tex"
+    },
+    {
+      "name": "Radiant Morellonomicon",
+      "apiName": "TFT5_Item_MorellonomiconRadiant",
+      "desc": "Attacks and Abilities deal <TFTRadiantItemBonus>@BurnPercent@%</TFTRadiantItemBonus> <TFTKeyword>Burn</TFTKeyword> and @GrievousWoundsPercent@% <TFTKeyword>Wound</TFTKeyword> to enemies for @BurnDuration@ seconds.<br><br><tftitemrules><tftbold>Burn</tftbold>: Deals a percent of the target's max Health as true damage every second<br><tftbold>Wound</tftbold>: Reduces healing received</tftitemrules>",
+      "effects": {
+        "AP": 40,
+        "BurnDuration": 10,
+        "BurnPercent": 2,
+        "GrievousWoundsPercent": 33,
+        "Health": 300,
+        "ManaRegen": 2,
+        "MonsterCap": 150,
+        "TicksPerSecond": 1
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_MorellonomiconRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Nashor's Tooth",
+      "apiName": "TFT5_Item_LeviathanRadiant",
+      "desc": "Attacks grant <TFTRadiantItemBonus>@BaseManaOnHit@</TFTRadiantItemBonus> bonus Mana, increased to <TFTRadiantItemBonus>@ManaOnCrit@</TFTRadiantItemBonus> if they critically strike.",
+      "effects": {
+        "AP": 30,
+        "AS": 20,
+        "BaseManaOnHit": 4,
+        "CritChance": 40,
+        "Health": 300,
+        "ManaOnCrit": 8
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_LeviathanRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Needlessly Big Gem",
+      "apiName": "TFT7_Item_ShimmerscaleHeartOfGold_Radiant",
+      "desc": "If the holder is alive after @ProcTimeInSeconds@ seconds, your team deals <TFTRadiantItemBonus>@BonusDamagePerGold*100@%</TFTRadiantItemBonus> more damage per %i:goldCoins% gold in your bank (up to %i:goldCoins% @GoldLimit@ gold). For every @UnitsPerGold@ units alive when this happens, gain <TFTRadiantItemBonus>@GoldAmount@</TFTRadiantItemBonus> gold.<br><br><tftitemrules>Gold generated this game: @TFTUnitProperty.item:TFT_Item_GoldGenerated@</tftitemrules>",
+      "effects": {
+        "AmpPerSec": 0.009999999776482582,
+        "BaseBonusDamage": 0.05000000074505806,
+        "BonusDamagePerGold": 0.019999999552965164,
+        "GoldAmount": 3,
+        "GoldLimit": 60,
+        "Health": 1500,
+        "MaxDamageAmp": 0.20000000298023224,
+        "ProcTimeInSeconds": 15,
+        "UnitsPerGold": 2
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_HeartOfGold_Radiant.tex"
+    },
+    {
+      "name": "Radiant Orb of Greed",
+      "apiName": "TFT7_Item_ShimmerscaleHighStakes_Radiant",
+      "desc": "Risky! Summon the Golden Dragon Bank. Losing combat stores gold in the bank based on your loss streak. Win to convert it into loot and gold.<br><br>Gold generated by Shimmerscale items gets stored in the Golden Dragon Bank with a @BonusGoldRatio*100@% conversion rate.<br><br>The equipped unit has a @GoldChance@% chance to grant <TFTRadiantItemBonus>@PointsPerKill@</TFTRadiantItemBonus> gold on takedowns.",
+      "effects": {
+        "AS": 90,
+        "BonusGoldRatio": 2,
+        "GoldChance": 15,
+        "PointsPerKill": 3
+      },
+      "icon": "ASSETS/Maps/Particles/TFT/Item_Icons/Traits/Set7_Shimmerscale/Shimmerscale_AmuletOfGreed_Radiant.tex"
+    },
+    {
+      "name": "Radiant Protector's Vow",
+      "apiName": "TFT5_Item_FrozenHeartRadiant",
+      "desc": "Combat Start: Gain <TFTRadiantItemBonus>@CombatStartMana@</TFTRadiantItemBonus> Mana.<br><br>At @HealthThreshold@% Health, gain <TFTRadiantItemBonus>@TriggerMana@ Mana</TFTRadiantItemBonus> and a Shield equal to <TFTRadiantItemBonus>@ShieldHealthPercent@% max Health</TFTRadiantItemBonus>.",
+      "effects": {
+        "Armor": 50,
+        "CombatStartMana": 40,
+        "HealthThreshold": 40,
+        "MagicResist": 50,
+        "ManaRegen": 2,
+        "ShieldDuration": 60,
+        "ShieldHealthPercent": 40,
+        "TriggerMana": 30
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_FrozenHeartRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Quicksilver",
+      "apiName": "TFT5_Item_QuicksilverRadiant",
+      "desc": "Combat Start: Gain immunity to crowd control for <TFTRadiantItemBonus>@SpellShieldDuration@</TFTRadiantItemBonus> seconds.<br><br>Gain <TFTRadiantItemBonus>@ProcAttackSpeed*100@%</TFTRadiantItemBonus> stacking Attack Speed every second.",
+      "effects": {
+        "AS": 30,
+        "CritChance": 40,
+        "MagicResist": 40,
+        "ProcAttackSpeed": 0.05999999865889549,
+        "SpellShieldDuration": 45
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_QuicksilverRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Rabadon's Deathcap",
+      "apiName": "TFT5_Item_RabadonsDeathcapRadiant",
+      "desc": "<tftitemrules>It's witnessed - and unleashed - miracles and calamities both.</tftitemrules><br><br>@TFTUnitProperty.:TFT_Augment_DeadlierCaps_TRAKey@",
+      "effects": {
+        "AP": 100,
+        "BonusDamage": 0.5,
+        "{1543aa48}": 0.30000001192092896
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_RabadonsDeathcapRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Red Buff",
+      "apiName": "TFT5_Item_RapidFirecannonRadiant",
+      "desc": "Attacks and Abilities <TFTRadiantItemBonus>@BurnPercent@%</TFTRadiantItemBonus> <TFTKeyword>Burn</TFTKeyword> and @HealingReductionPct@% <TFTKeyword>Wound</TFTKeyword> enemies for @Duration@ seconds.<br><br><tftitemrules><tftbold>Burn</tftbold>: Deals a percent of the target's max Health as true damage every second<br><tftbold>Wound</tftbold>: Reduces healing received</tftitemrules><br>",
+      "effects": {
+        "AS": 90,
+        "BonusDamage": 0.05999999865889549,
+        "BurnPercent": 2,
+        "Duration": 5,
+        "HealingReductionPct": 33,
+        "HexRangeIncrease": 2,
+        "{1543aa48}": 0.05999999865889549
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_RapidFirecannonRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Spear of Shojin",
+      "apiName": "TFT5_Item_SpearOfShojinRadiant",
+      "desc": "Attacks grant <TFTRadiantItemBonus>@FlatManaRestore@ bonus Mana</TFTRadiantItemBonus>.",
+      "effects": {
+        "AD": 0.30000001192092896,
+        "AP": 30,
+        "FlatManaRestore": 10,
+        "ManaRegen": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_SpearOfShojinRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Spirit Visage",
+      "apiName": "TFT5_Item_RedemptionRadiant",
+      "desc": "Regenerate <TFTRadiantItemBonus>@MissingHealthHeal*100@%</TFTRadiantItemBonus> of missing Health each second.",
+      "effects": {
+        "HealTickRate": 1,
+        "Health": 600,
+        "ManaRegen": 4,
+        "MaxHeal": 2000,
+        "MissingHealthHeal": 0.05000000074505806,
+        "{cd951938}": 0.20000000298023224
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT_Item_SpiritVisageRR.TFT_TFT14_5.tex"
+    },
+    {
+      "name": "Radiant Steadfast Heart",
+      "apiName": "TFT5_Item_NightHarvesterRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@BaseDurability*100@%</TFTRadiantItemBonus> durability. While above @ThresholdForEmpower*100@% Health, instead gain <TFTRadiantItemBonus>@EmpoweredDurability*100@%</TFTRadiantItemBonus> Durability.<br><br>@TFTUnitProperty.:TFT_Augment_WarmogsBuckle_TRAKey@",
+      "effects": {
+        "Armor": 40,
+        "BaseDamageReduction": 20,
+        "BaseDurability": 0.20000000298023224,
+        "CritChance": 40,
+        "EmpowerDamageReduction": 36,
+        "EmpoweredDurability": 0.36000001430511475,
+        "Health": 500,
+        "ThresholdForEmpower": 0.5
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_NightHarvesterRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Sterak's Gage",
+      "apiName": "TFT5_Item_SteraksGageRadiant",
+      "desc": "At @HealthThreshold@% Health, gain a Shield equal to <TFTRadiantItemBonus>@PercentHealthShield*100@%</TFTRadiantItemBonus> of the wearer's maximum Health that rapidly decays over <TFTRadiantItemBonus>@ShieldDuration@</TFTRadiantItemBonus> seconds.",
+      "effects": {
+        "AD": 0.800000011920929,
+        "Health": 600,
+        "HealthThreshold": 60,
+        "PercentHealthShield": 1,
+        "ShieldDuration": 6
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_SteraksGageRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Striker's Flail",
+      "apiName": "TFT5_Item_TrapClawRadiant",
+      "desc": "Critical Strikes grant <TFTRadiantItemBonus>@BuffDamageAmp*100@%</TFTRadiantItemBonus> Damage Amp for @Duration@ seconds, stacking up to @MaxStacks@ times.",
+      "effects": {
+        "AS": 20,
+        "BuffDamageAmp": 0.10000000149011612,
+        "CritChance": 40,
+        "Duration": 5,
+        "Health": 300,
+        "MaxStacks": 4,
+        "{1543aa48}": 0.20000000298023224
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_TrapClawRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Sunfire Cape",
+      "apiName": "TFT5_Item_SunfireCapeRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@BonusPercentHP*100@%</TFTRadiantItemBonus> max Health.<br><br>Every @ICD@ seconds, deal <TFTRadiantItemBonus>@BurnPercent@%</TFTRadiantItemBonus> <TFTKeyword>Burn</TFTKeyword> and @GrievousWoundsPercent@% <TFTKeyword>Wound</TFTKeyword> to an enemy within @HexRange@ hexes for @BurnDuration@ seconds.<br><br><tftitemrules><tftbold>Burn</tftbold>: Deals a percent of the target's max Health as true damage every second<br><tftbold>Wound</tftbold>: reduces healing received</tftitemrules>",
+      "effects": {
+        "Armor": 40,
+        "BonusPercentHP": 0.1599999964237213,
+        "BurnDuration": 10,
+        "BurnPercent": 2,
+        "GrievousWoundsPercent": 33,
+        "Health": 300,
+        "HealthRegenInterval": null,
+        "HexRange": 2,
+        "ICD": 2,
+        "MaxHealthRegen": null,
+        "MonsterCap": 150
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_SunfireCapeRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Thief's Gloves",
+      "apiName": "TFT5_Item_ThiefsGlovesRadiant",
+      "desc": "Each round: Equip 2 random <TFTRadiantItemBonus>Radiant</TFTRadiantItemBonus> items.<br><br><tftitemrules>[Consumes 3 item slots.]</tftitemrules><br>@TFTUnitProperty.:TFT_BindOnEquipTRA@",
+      "effects": {
+        "CritChance": 20,
+        "Health": 150
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_ThiefsGlovesRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Titan's Resolve",
+      "apiName": "TFT5_Item_TitansResolveRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@StackingAD*100@%</TFTRadiantItemBonus> Attack Damage and <TFTRadiantItemBonus>@StackingSP@%</TFTRadiantItemBonus> Ability Power when attacking or taking damage, stacking up to @StackCap@ times.<br><br>At full stacks, gain <TFTRadiantItemBonus>@StackedAmp*100@%</TFTRadiantItemBonus> Damage Amp and gain immunity to crowd control.",
+      "effects": {
+        "AS": 20,
+        "Armor": 40,
+        "StackCap": 25,
+        "StackedAmp": 0.20000000298023224,
+        "StackingAD": 0.03999999910593033,
+        "StackingSP": 4
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_TitansResolveRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Void Staff",
+      "apiName": "TFT5_Item_StatikkShivRadiant",
+      "desc": "Damage from attacks and Abilities @MRShred@% <TFTKeyword>Shred</TFTKeyword> the target for <TFTRadiantItemBonus>the rest of combat</TFTRadiantItemBonus>. This effect does not stack.<br><br><tftitemrules><tftbold>Shred</tftbold>: Reduce Magic Resist</tftitemrules>",
+      "effects": {
+        "AP": 75,
+        "AS": 30,
+        "MRShred": 30,
+        "MRShredDuration": 90,
+        "ManaRegen": 2
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_StatikkShivRadiant.TFT_Set13.tex"
+    },
+    {
+      "name": "Radiant Warmog's Armor",
+      "apiName": "TFT5_Item_WarmogsArmorRadiant",
+      "desc": "Gain <TFTRadiantItemBonus>@BonusPercentHP*100@%</TFTRadiantItemBonus> max Health.<br>",
+      "effects": {
+        "BonusPercentHP": 0.30000001192092896,
+        "Health": 1000,
+        "HealthRegenInterval": null,
+        "MaxHealthRegen": null
+      },
+      "icon": "ASSETS/Maps/TFT/Icons/Items/Hexcore/TFT5_Item_WarmogsArmorRadiant.TFT_Set13.tex"
+    }
+  ]
+}
