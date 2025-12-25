@@ -17,12 +17,12 @@ export function validateInput(input: SimulatorInput): ValidationResult {
 }
 
 /** 시너지 이름 정규화 (띄어쓰기 무시 비교용) */
-function normalizeTraitName(name: string): string {
+export function normalizeTraitName(name: string): string {
   return name.replace(/\s/g, '').toLowerCase();
 }
 
 /** 챔피언 조합의 시너지 카운트 계산 */
-function countSynergies(champions: Champion[], symbols: string[]): Map<string, number> {
+export function countSynergies(champions: Champion[], symbols: string[]): Map<string, number> {
   const counts = new Map<string, number>();
 
   // 챔피언들의 시너지 카운트
@@ -46,7 +46,7 @@ function countSynergies(champions: Champion[], symbols: string[]): Map<string, n
 }
 
 /** 브론즈 시너지 활성화 여부 체크 */
-function getActiveBronzeSynergies(synergyCounts: Map<string, number>): ActiveSynergy[] {
+export function getActiveBronzeSynergies(synergyCounts: Map<string, number>): ActiveSynergy[] {
   const activeSynergies: ActiveSynergy[] = [];
 
   for (const synergyName of SYNERGY_NAMES) {
@@ -68,7 +68,7 @@ function getActiveBronzeSynergies(synergyCounts: Map<string, number>): ActiveSyn
 }
 
 /** 브론즈 시너지 개수 계산 */
-function countBronzeSynergies(synergyCounts: Map<string, number>): number {
+export function countBronzeSynergies(synergyCounts: Map<string, number>): number {
   let count = 0;
 
   for (const synergyName of SYNERGY_NAMES) {
