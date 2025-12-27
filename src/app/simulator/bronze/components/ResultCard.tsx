@@ -1,17 +1,20 @@
 import type { SimulatorResult } from "@/types/simulator";
+import { getChampionImageUrl } from "@/lib/championImage";
+import Image from "next/image";
 
 interface ResultCardProps {
   result: SimulatorResult;
   rank: number;
 }
 
-// 코스트별 색상
-const COST_COLORS: Record<number, string> = {
+// 코스트별 테두리 색상
+const COST_BORDER_COLORS: Record<number, string> = {
   1: "#9ca3af", // 회색
   2: "#22c55e", // 초록
   3: "#3b82f6", // 파랑
   4: "#a855f7", // 보라
   5: "#eab308", // 골드
+  7: "#ef4444", // 빨강 (특수 유닛)
 };
 
 export default function ResultCard({ result, rank }: ResultCardProps) {
@@ -37,25 +40,55 @@ export default function ResultCard({ result, rank }: ResultCardProps) {
         </div>
       </div>
 
-      {/* 챔피언 목록 */}
+      {/* 챔피언 목록 (이미지 + 이름) */}
       <div className="mb-3">
         <p className="text-xs text-text-sub mb-2">챔피언 구성</p>
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-2">
           {champions
             .sort((a, b) => b.cost - a.cost) // 코스트 높은 순 정렬
-            .map((champion, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-1 rounded text-xs font-medium"
-                style={{
-                  backgroundColor: `${COST_COLORS[champion.cost]}20`,
-                  color: COST_COLORS[champion.cost],
-                  border: `1px solid ${COST_COLORS[champion.cost]}40`,
-                }}
-              >
-                {champion.name}
-              </span>
-            ))}
+            .map((champion, idx) => {
+              const imageUrl = getChampionImageUrl(champion.apiName);
+              const borderColor = COST_BORDER_COLORS[champion.cost] || COST_BORDER_COLORS[5];
+
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center gap-1"
+                  title={champion.name}
+                >
+                  <div
+                    className="relative w-12 h-12 rounded-md overflow-hidden"
+                    style={{ border: `2px solid ${borderColor}` }}
+                  >
+                    {imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={champion.name}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center text-xs"
+                        style={{ backgroundColor: `${borderColor}30`, color: borderColor }}
+                      >
+                        {champion.name.slice(0, 2)}
+                      </div>
+                    )}
+                  </div>
+                  <span
+                    className="text-center leading-tight"
+                    style={{
+                      color: borderColor,
+                      fontSize: champion.name.length > 6 ? '8px' : champion.name.length > 4 ? '9px' : '10px'
+                    }}
+                  >
+                    {champion.name}
+                  </span>
+                </div>
+              );
+            })}
         </div>
       </div>
 

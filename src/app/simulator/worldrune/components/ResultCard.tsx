@@ -1,4 +1,6 @@
 import type { WorldRuneResult } from "@/types/simulator";
+import { getChampionImageUrl } from "@/lib/championImage";
+import Image from "next/image";
 
 interface ResultCardProps {
   result: WorldRuneResult;
@@ -18,6 +20,7 @@ const COST_COLORS: Record<number, string> = {
   3: "#3b82f6",
   4: "#a855f7",
   5: "#eab308",
+  7: "#ef4444", // 빨강 (특수 유닛)
 };
 
 export default function ResultCard({ result, rank, isMinimal }: ResultCardProps) {
@@ -112,7 +115,7 @@ export default function ResultCard({ result, rank, isMinimal }: ResultCardProps)
         </div>
       </div>
 
-      {/* 챔피언 목록 */}
+      {/* 챔피언 목록 (이미지 + 이름) */}
       {champions.length > 0 && (
         <div>
           <p className="text-xs text-text-sub mb-1">
@@ -123,7 +126,7 @@ export default function ResultCard({ result, rank, isMinimal }: ResultCardProps)
               </span>
             )}
           </p>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-2">
             {champions
               .sort((a, b) => {
                 // 보유 챔피언을 먼저 표시
@@ -134,19 +137,51 @@ export default function ResultCard({ result, rank, isMinimal }: ResultCardProps)
               })
               .map((champion, idx) => {
                 const owned = isOwnedChampion(champion.name, ownedChampionNames);
+                const imageUrl = getChampionImageUrl(champion.apiName);
+                const borderColor = owned ? '#10b981' : (COST_COLORS[champion.cost] || COST_COLORS[5]);
+
                 return (
-                  <span
+                  <div
                     key={idx}
-                    className={`px-2 py-1 rounded text-xs font-medium ${owned ? 'ring-2 ring-accent-worldrune' : ''}`}
-                    style={{
-                      backgroundColor: owned ? '#10b98130' : `${COST_COLORS[champion.cost]}20`,
-                      color: owned ? '#10b981' : COST_COLORS[champion.cost],
-                      border: `1px solid ${owned ? '#10b98150' : `${COST_COLORS[champion.cost]}40`}`,
-                    }}
+                    className="flex flex-col items-center gap-1"
+                    title={champion.name}
                   >
-                    {owned && <span className="mr-1">★</span>}
-                    {champion.name}
-                  </span>
+                    <div
+                      className={`relative w-12 h-12 rounded-md overflow-hidden ${owned ? 'ring-2 ring-accent-worldrune' : ''}`}
+                      style={{ border: `2px solid ${borderColor}` }}
+                    >
+                      {imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={champion.name}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                        />
+                      ) : (
+                        <div
+                          className="w-full h-full flex items-center justify-center text-xs"
+                          style={{ backgroundColor: `${borderColor}30`, color: borderColor }}
+                        >
+                          {champion.name.slice(0, 2)}
+                        </div>
+                      )}
+                      {owned && (
+                        <div className="absolute top-0 right-0 bg-accent-worldrune text-white text-[8px] px-1 rounded-bl">
+                          ★
+                        </div>
+                      )}
+                    </div>
+                    <span
+                      className="text-center leading-tight"
+                      style={{
+                        color: borderColor,
+                        fontSize: champion.name.length > 6 ? '8px' : champion.name.length > 4 ? '9px' : '10px'
+                      }}
+                    >
+                      {champion.name}
+                    </span>
+                  </div>
                 );
               })}
           </div>

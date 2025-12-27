@@ -3,6 +3,7 @@
 /** 챔피언 정보 */
 export interface Champion {
   name: string;
+  apiName: string;    // API 이름 (예: TFT16_Leona) - 이미지 URL 생성용
   cost: number;
   traits: string[];   // 지역 특성 (데마시아, 필트오버 등)
   classes: string[];  // 직업 특성 (총잡이, 엄호대 등)

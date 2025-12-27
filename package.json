@@ -10,11 +10,13 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "update-tft-data": "node scripts/update-tft-data.js"
+    "update-tft-data": "node scripts/update-tft-data.js",
+    "collect-tft": "node scripts/collect-tft-data.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
     "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
     "jsonwebtoken": "^9.0.3",
     "next": "14.2.21",
     "react": "^18",

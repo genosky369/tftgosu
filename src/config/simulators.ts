@@ -35,6 +35,16 @@ export const SIMULATORS: Simulator[] = [
     path: '/simulator/worldrune',
     status: 'active',
   },
+  {
+    id: 'item-analysis',
+    name: '아이템 분석기',
+    description: '조합 아이템별 승률 통계',
+    icon: '🎰',
+    iconType: 'emoji',
+    color: '#eab308',
+    path: '/simulator/item-analysis',
+    status: 'active',
+  },
   // 새 시뮬레이터 추가 예시:
   // {
   //   id: 'new-simulator',
