@@ -2,19 +2,28 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { COMPONENT_LIST } from "@/data/item-components";
+import { getComponentImageUrl, getItemImageUrl } from "@/lib/itemImage";
+import { getChampionImageUrl } from "@/lib/championImage";
+
+interface ChampionUnit {
+  apiName: string;
+  name: string;
+  items: string[];
+  itemNames: string[];
+}
 
 interface SampleGame {
   placement: number;
-  champions: string[];
-  championNames: string[];
-  allItems: string[];
-  allItemNames: string[];
+  units: ChampionUnit[];
 }
 
 interface CombinationResult {
   mainItem: string;
   mainItemName: string;
+  secondItem?: string;           // 두 번째 완성 아이템 (4개 선택 시)
+  secondItemName?: string;
   usedComponents: string[];
   remainingComponents: string[];
   remainingComponentNames: string[];
@@ -25,11 +34,53 @@ interface CombinationResult {
 }
 
 interface AnalysisResult {
-  totalGames: number;
+  totalRecords: number;
   inputComponents: string[];
   inputComponentNames: string[];
   combinations: CombinationResult[];
   message?: string;
+}
+
+// 이미지 로드 실패 시 fallback 처리하는 컴포넌트
+function ItemImage({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    // 이미지 로드 실패 시 회색 박스로 대체
+    return (
+      <div
+        className={`bg-gray-600 flex items-center justify-center text-[8px] text-gray-400 ${className || ""}`}
+        style={{ width, height }}
+        title={alt}
+      >
+        ?
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      unoptimized
+      onError={() => setHasError(true)}
+    />
+  );
 }
 
 // 조합 결과 카드 컴포넌트
@@ -57,23 +108,54 @@ function CombinationCard({ combo, rank }: { combo: CombinationResult; rank: numb
               `}>
                 #{rank}
               </span>
-              <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded font-medium">
-                {combo.mainItemName}
-              </span>
+              <div className="flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-400 rounded font-medium">
+                <ItemImage
+                  src={getItemImageUrl(combo.mainItem)}
+                  alt={combo.mainItemName}
+                  width={28}
+                  height={28}
+                  className="rounded"
+                />
+                <span>{combo.mainItemName}</span>
+              </div>
+
+              {/* 두 번째 완성 아이템 (있는 경우) */}
+              {combo.secondItem && combo.secondItemName && (
+                <>
+                  <span className="text-green-400 font-bold">+</span>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-green-500/20 text-green-400 rounded font-medium">
+                    <ItemImage
+                      src={getItemImageUrl(combo.secondItem)}
+                      alt={combo.secondItemName}
+                      width={28}
+                      height={28}
+                      className="rounded"
+                    />
+                    <span>{combo.secondItemName}</span>
+                  </div>
+                </>
+              )}
             </div>
 
-            {/* 남은 조합 아이템 */}
-            {combo.remainingComponentNames.length > 0 && (
+            {/* 남은 조합 아이템 (두 번째 아이템이 없는 경우만) */}
+            {!combo.secondItem && combo.remainingComponents.length > 0 && (
               <div className="flex items-center gap-2 text-sm text-text-sub">
                 <span>+</span>
                 <div className="flex flex-wrap gap-1">
-                  {combo.remainingComponentNames.map((name, i) => (
-                    <span
+                  {combo.remainingComponents.map((compId, i) => (
+                    <div
                       key={i}
-                      className="px-2 py-0.5 bg-gray-600/50 text-gray-300 rounded text-xs"
+                      className="flex items-center gap-1 px-2 py-0.5 bg-gray-600/50 text-gray-300 rounded"
                     >
-                      {name}
-                    </span>
+                      <ItemImage
+                        src={getComponentImageUrl(compId)}
+                        alt={combo.remainingComponentNames[i]}
+                        width={20}
+                        height={20}
+                        className="rounded opacity-80"
+                      />
+                      <span className="text-xs">{combo.remainingComponentNames[i]}</span>
+                    </div>
                   ))}
                 </div>
                 <span className="text-text-muted">남음</span>
@@ -121,50 +203,85 @@ function CombinationCard({ combo, rank }: { combo: CombinationResult; rank: numb
       {isExpanded && combo.sampleGames.length > 0 && (
         <div className="border-t border-gray-700 bg-background/50">
           <div className="p-3 space-y-2">
-            {combo.sampleGames.map((game, i) => (
-              <div
-                key={i}
-                className="p-3 bg-background/50 rounded-lg border border-gray-700/50"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={`
-                    px-2 py-0.5 rounded text-sm font-bold
-                    ${game.placement <= 4 ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}
-                  `}>
-                    {game.placement}등
-                  </span>
-                </div>
+            {combo.sampleGames.map((game, i) => {
+              // 대상 아이템 목록 (강조할 아이템)
+              const targetItems = [combo.mainItem];
+              if (combo.secondItem) targetItems.push(combo.secondItem);
 
-                {/* 챔피언 구성 */}
-                <div className="mb-2">
-                  <span className="text-xs text-text-muted">덱 구성: </span>
-                  <span className="text-sm text-text-sub">
-                    {game.championNames.slice(0, 8).join(", ")}
-                    {game.championNames.length > 8 && ` 외 ${game.championNames.length - 8}명`}
-                  </span>
-                </div>
+              return (
+                <div
+                  key={i}
+                  className="p-3 bg-background/50 rounded-lg border border-gray-700/50"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className={`
+                      px-2 py-0.5 rounded text-sm font-bold
+                      ${game.placement <= 4 ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}
+                    `}>
+                      {game.placement}등
+                    </span>
+                  </div>
 
-                {/* 아이템 구성 */}
-                <div>
-                  <span className="text-xs text-text-muted">아이템: </span>
-                  <div className="flex flex-wrap gap-1 mt-1">
-                    {game.allItemNames.slice(0, 9).map((itemName, j) => (
-                      <span
-                        key={j}
-                        className="px-1.5 py-0.5 bg-purple-500/20 text-purple-300 rounded text-xs"
-                      >
-                        {itemName}
-                      </span>
-                    ))}
-                    {game.allItemNames.length > 9 && (
-                      <span className="text-xs text-text-muted">
-                        +{game.allItemNames.length - 9}
-                      </span>
-                    )}
+                  {/* 챔피언 구성 (아이템 포함) */}
+                  <div>
+                    <span className="text-xs text-text-muted block mb-2">덱 구성:</span>
+                    <div className="flex flex-wrap gap-2">
+                      {game.units.slice(0, 10).map((unit, j) => {
+                        // 대상 아이템을 가진 챔피언인지 확인
+                        const hasTargetItem = unit.items.some(item => targetItems.includes(item));
+
+                        return (
+                          <div
+                            key={j}
+                            className={`
+                              flex flex-col items-center p-1 rounded
+                              ${hasTargetItem ? "bg-yellow-400/20 ring-2 ring-yellow-400/50" : ""}
+                            `}
+                            title={unit.name}
+                          >
+                            <ItemImage
+                              src={getChampionImageUrl(unit.apiName)}
+                              alt={unit.name}
+                              width={40}
+                              height={40}
+                              className={`rounded border ${hasTargetItem ? "border-yellow-400" : "border-gray-600"}`}
+                            />
+                            {/* 챔피언 아이템 표시 */}
+                            {unit.items.length > 0 && (
+                              <div className="flex gap-0.5 mt-1">
+                                {unit.items.slice(0, 3).map((itemApiName, k) => {
+                                  const isTarget = targetItems.includes(itemApiName);
+                                  return (
+                                    <div
+                                      key={k}
+                                      className={`${isTarget ? "ring-1 ring-yellow-400 rounded" : ""}`}
+                                      title={unit.itemNames[k]}
+                                    >
+                                      <ItemImage
+                                        src={getItemImageUrl(itemApiName)}
+                                        alt={unit.itemNames[k]}
+                                        width={16}
+                                        height={16}
+                                        className="rounded"
+                                      />
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                      {game.units.length > 10 && (
+                        <span className="text-xs text-text-muted flex items-center">
+                          +{game.units.length - 10}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
@@ -187,9 +304,9 @@ export default function ItemAnalysisPage() {
       .catch(() => setDataStatus(null));
   }, []);
 
-  // 조합 아이템 추가 (같은 아이템 여러 개 가능)
+  // 조합 아이템 추가 (같은 아이템 여러 개 가능, 최대 4개)
   const addComponent = (id: string) => {
-    if (selectedComponents.length >= 6) return;
+    if (selectedComponents.length >= 4) return;
     setSelectedComponents(prev => [...prev, id]);
   };
 
@@ -204,8 +321,8 @@ export default function ItemAnalysisPage() {
 
   // 분석 실행
   const analyze = async () => {
-    if (selectedComponents.length === 0) {
-      setError("조합 아이템을 1개 이상 선택해주세요");
+    if (selectedComponents.length < 2) {
+      setError("조합 아이템을 2개 이상 선택해주세요");
       return;
     }
 
@@ -278,7 +395,7 @@ export default function ItemAnalysisPage() {
 
         {/* 조합 아이템 선택 */}
         <div className="bg-background-card rounded-xl p-6 border border-accent-blue/20 mb-6">
-          <h2 className="text-lg font-bold mb-4">조합 아이템 선택 (최대 6개)</h2>
+          <h2 className="text-lg font-bold mb-4">조합 아이템 선택 (최대 4개)</h2>
           <p className="text-sm text-text-sub mb-4">
             1라운드에서 받은 조합 아이템을 선택하세요. 같은 아이템 여러 개도 가능합니다.
           </p>
@@ -288,7 +405,7 @@ export default function ItemAnalysisPage() {
               <button
                 key={comp.id}
                 onClick={() => addComponent(comp.id)}
-                disabled={selectedComponents.length >= 6}
+                disabled={selectedComponents.length >= 4}
                 className={`
                   p-4 rounded-lg border-2 transition-all
                   flex flex-col items-center gap-2
@@ -296,7 +413,13 @@ export default function ItemAnalysisPage() {
                   disabled:opacity-50 disabled:cursor-not-allowed
                 `}
               >
-                <span className="text-2xl">{comp.icon}</span>
+                <ItemImage
+                  src={getComponentImageUrl(comp.id)}
+                  alt={comp.nameKo}
+                  width={32}
+                  height={32}
+                  className="rounded"
+                />
                 <span className="text-sm">{comp.nameKo}</span>
               </button>
             ))}
@@ -305,16 +428,23 @@ export default function ItemAnalysisPage() {
           {/* 선택된 아이템 표시 */}
           {selectedComponents.length > 0 && (
             <div className="bg-background/50 rounded-lg p-4 mb-4">
-              <p className="text-sm text-text-sub mb-2">선택된 아이템 ({selectedComponents.length}/6):</p>
+              <p className="text-sm text-text-sub mb-2">선택된 아이템 ({selectedComponents.length}/4):</p>
               <div className="flex flex-wrap gap-2">
                 {selectedComponents.map((id, idx) => {
                   const comp = COMPONENT_LIST.find(c => c.id === id);
                   return (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-yellow-400/20 text-yellow-400 rounded-full text-sm flex items-center gap-1"
+                      className="px-3 py-1.5 bg-yellow-400/20 text-yellow-400 rounded-full text-sm flex items-center gap-2"
                     >
-                      {comp?.icon} {comp?.nameKo}
+                      <ItemImage
+                        src={getComponentImageUrl(id)}
+                        alt={comp?.nameKo || id}
+                        width={24}
+                        height={24}
+                        className="rounded"
+                      />
+                      {comp?.nameKo}
                       <button
                         onClick={() => removeComponent(idx)}
                         className="ml-1 hover:text-red-400"
@@ -328,11 +458,18 @@ export default function ItemAnalysisPage() {
             </div>
           )}
 
+          {/* 최소 선택 안내 */}
+          {selectedComponents.length > 0 && selectedComponents.length < 2 && (
+            <p className="text-sm text-yellow-400 mb-2">
+              ⚠️ 조합 아이템을 2개 이상 선택해야 분석할 수 있습니다
+            </p>
+          )}
+
           {/* 버튼 */}
           <div className="flex gap-3">
             <button
               onClick={analyze}
-              disabled={isLoading || selectedComponents.length === 0}
+              disabled={isLoading || selectedComponents.length < 2}
               className="flex-1 py-3 bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg font-bold transition-colors"
             >
               {isLoading ? "분석 중..." : "🔍 분석하기"}
@@ -359,7 +496,7 @@ export default function ItemAnalysisPage() {
             <h2 className="text-lg font-bold mb-4">
               분석 결과
               <span className="text-sm font-normal text-text-sub ml-2">
-                (총 {result.totalGames}게임 분석)
+                ({result.totalRecords.toLocaleString()}개 플레이어 데이터 기반)
               </span>
             </h2>
 

@@ -144,3 +144,24 @@ export function containsAllComponents(
 
   return true;
 }
+
+// 특정 조합 아이템이 포함된 완성 아이템 목록 반환
+export function getItemsFromComponent(componentId: string): string[] {
+  const items: string[] = [];
+  for (const [itemApiName, recipe] of Object.entries(ITEM_RECIPES)) {
+    if (recipe.components.includes(componentId)) {
+      items.push(itemApiName);
+    }
+  }
+  return items;
+}
+
+// 남은 조합 아이템들로 만들 수 있는 모든 완성 아이템 목록 반환
+export function getItemsFromComponents(componentIds: string[]): string[] {
+  const itemSet = new Set<string>();
+  for (const compId of componentIds) {
+    const items = getItemsFromComponent(compId);
+    items.forEach(item => itemSet.add(item));
+  }
+  return Array.from(itemSet);
+}
