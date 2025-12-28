@@ -410,10 +410,7 @@ function ResultCard({ item, rank }: { item: CombinationResult; rank: number }) {
           <div className="text-right">
             {item.gameCount > 0 ? (
               <>
-                <p className={`
-                  text-2xl font-bold
-                  ${item.avgPlacement < 4.5 ? "text-green-400" : "text-red-400"}
-                `}>
+                <p className="text-2xl font-bold text-text">
                   {item.avgPlacement}등
                 </p>
                 <p className="text-sm text-text-sub">
