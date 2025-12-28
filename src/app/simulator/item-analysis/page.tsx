@@ -404,9 +404,6 @@ function ResultCard({ item, rank }: { item: CombinationResult; rank: number }) {
               </>
             )}
 
-            <p className="text-xs text-text-sub mt-2">
-              {item.gameCount.toLocaleString()}게임 데이터
-            </p>
           </div>
 
           {/* 통계 */}
@@ -415,12 +412,12 @@ function ResultCard({ item, rank }: { item: CombinationResult; rank: number }) {
               <>
                 <p className={`
                   text-2xl font-bold
-                  ${item.normalizedScore <= 0 ? "text-green-400" : "text-red-400"}
+                  ${item.avgPlacement < 4.5 ? "text-green-400" : "text-red-400"}
                 `}>
-                  {item.normalizedScore <= 0 ? "" : "+"}{item.normalizedScore}등
+                  {item.avgPlacement}등
                 </p>
                 <p className="text-sm text-text-sub">
-                  평균 {item.avgPlacement}등 · 상위4 {item.topFourRate}%
+                  상위4 {item.topFourRate}% · {item.gameCount}게임
                 </p>
               </>
             ) : (
