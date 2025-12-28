@@ -50,6 +50,7 @@ interface CombinationResult {
   item2ComponentNames?: string[];
   // 공통 통계
   avgPlacement: number;
+  normalizedScore: number; // 기준 대비 점수 (음수 = 좋음)
   gameCount: number;
   topFourRate: number;
   sampleGames: SampleGame[];
@@ -414,12 +415,12 @@ function ResultCard({ item, rank }: { item: CombinationResult; rank: number }) {
               <>
                 <p className={`
                   text-2xl font-bold
-                  ${item.avgPlacement <= 4 ? "text-green-400" : "text-red-400"}
+                  ${item.normalizedScore <= 0 ? "text-green-400" : "text-red-400"}
                 `}>
-                  {item.avgPlacement}등
+                  {item.normalizedScore <= 0 ? "" : "+"}{item.normalizedScore}등
                 </p>
                 <p className="text-sm text-text-sub">
-                  상위4 {item.topFourRate}%
+                  평균 {item.avgPlacement}등 · 상위4 {item.topFourRate}%
                 </p>
               </>
             ) : (

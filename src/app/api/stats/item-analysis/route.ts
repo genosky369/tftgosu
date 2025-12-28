@@ -184,6 +184,7 @@ interface CombinationResult {
   item2ComponentNames?: string[];
   // 공통 통계
   avgPlacement: number;
+  normalizedScore: number; // 기준 대비 점수 (음수 = 좋음, 양수 = 나쁨)
   gameCount: number;
   topFourRate: number;
   sampleGames: SampleGame[];
@@ -214,14 +215,47 @@ function hasItem(units: Unit[], itemApiName: string): boolean {
   return false;
 }
 
-// 플레이어의 완성 아이템 개수 (가중치 계산용)
+// 플레이어의 완성 아이템 개수 (고유 아이템 기준)
 function countCompletedItems(units: Unit[]): number {
-  let count = 0;
+  const itemSet = new Set<string>();
   for (const unit of units) {
     if (!unit.itemNames || !Array.isArray(unit.itemNames)) continue;
-    count += unit.itemNames.filter(name => name.startsWith("TFT_Item_") || name.startsWith("TFT16_Item_")).length;
+    for (const name of unit.itemNames) {
+      if (name.startsWith("TFT_Item_") || name.startsWith("TFT16_Item_")) {
+        itemSet.add(name);
+      }
+    }
   }
-  return Math.max(count, 1);
+  return itemSet.size;
+}
+
+// 아이템 개수별 기준 평균 계산 (정규화용)
+interface ItemCountBaseline {
+  [count: number]: { total: number; playerCount: number; avgPlacement: number };
+}
+
+function calculateBaselines(players: PlayerData[]): ItemCountBaseline {
+  const baselines: ItemCountBaseline = {};
+
+  for (const p of players) {
+    if (!p.units) continue;
+    const itemCount = countCompletedItems(p.units);
+    if (itemCount < 1) continue;
+
+    if (!baselines[itemCount]) {
+      baselines[itemCount] = { total: 0, playerCount: 0, avgPlacement: 0 };
+    }
+    baselines[itemCount].total += p.placement;
+    baselines[itemCount].playerCount++;
+  }
+
+  // 평균 계산
+  for (const count in baselines) {
+    const b = baselines[count];
+    b.avgPlacement = b.total / b.playerCount;
+  }
+
+  return baselines;
 }
 
 // 페이지네이션으로 전체 데이터 가져오기
@@ -311,48 +345,70 @@ function createSampleGames(matchingPlayers: { player: PlayerData; weight: number
   });
 }
 
-// 통계 계산 (가중 평균)
-function calculateStats(matchingPlayers: { player: PlayerData; weight: number }[], targetItems: string[]): {
+// 통계 계산 (정규화 방식)
+function calculateStats(
+  matchingPlayers: { player: PlayerData; itemCount: number }[],
+  targetItems: string[],
+  baselines: ItemCountBaseline
+): {
   avgPlacement: number;
+  normalizedScore: number;
   topFourRate: number;
   sampleGames: SampleGame[];
 } {
   if (matchingPlayers.length === 0) {
-    return { avgPlacement: 0, topFourRate: 0, sampleGames: [] };
+    return { avgPlacement: 0, normalizedScore: 0, topFourRate: 0, sampleGames: [] };
   }
 
-  const totalWeight = matchingPlayers.reduce((sum, m) => sum + m.weight, 0);
-  const weightedSum = matchingPlayers.reduce((sum, m) => sum + m.player.placement * m.weight, 0);
-  const avgPlacement = weightedSum / totalWeight;
+  // 단순 평균 (각 플레이어 1회씩)
+  const totalPlacement = matchingPlayers.reduce((sum, m) => sum + m.player.placement, 0);
+  const avgPlacement = totalPlacement / matchingPlayers.length;
 
-  const topFourWeight = matchingPlayers.filter(m => m.player.placement <= 4).reduce((sum, m) => sum + m.weight, 0);
-  const topFourRate = Math.round((topFourWeight / totalWeight) * 100);
+  // 정규화 점수 계산: 각 플레이어의 (실제 등수 - 해당 아이템 개수의 기준 평균)
+  let normalizedSum = 0;
+  let normalizedCount = 0;
+  for (const m of matchingPlayers) {
+    const baseline = baselines[m.itemCount];
+    if (baseline) {
+      normalizedSum += m.player.placement - baseline.avgPlacement;
+      normalizedCount++;
+    }
+  }
+  const normalizedScore = normalizedCount > 0 ? normalizedSum / normalizedCount : 0;
 
-  const sampleGames = createSampleGames(matchingPlayers, targetItems);
+  // 상위 4등 비율
+  const topFourCount = matchingPlayers.filter(m => m.player.placement <= 4).length;
+  const topFourRate = Math.round((topFourCount / matchingPlayers.length) * 100);
+
+  const sampleGames = createSampleGames(
+    matchingPlayers.map(m => ({ player: m.player, weight: 1 })),
+    targetItems
+  );
 
   return {
     avgPlacement: Math.round(avgPlacement * 100) / 100,
+    normalizedScore: Math.round(normalizedScore * 100) / 100,
     topFourRate,
     sampleGames,
   };
 }
 
 // ============ 2개 선택: 완성 아이템 1개 ============
-function processTwo(components: string[], players: PlayerData[]): CombinationResult[] {
+function processTwo(components: string[], players: PlayerData[], baselines: ItemCountBaseline): CombinationResult[] {
   const results: CombinationResult[] = [];
   const itemApiName = findItemFromComponents(components[0], components[1]);
 
   if (!itemApiName) return results;
 
-  const matchingPlayers: { player: PlayerData; weight: number }[] = [];
+  const matchingPlayers: { player: PlayerData; itemCount: number }[] = [];
   for (const p of players) {
     if (!p.units) continue;
     if (!hasItem(p.units, itemApiName)) continue;
     const itemCount = countCompletedItems(p.units);
-    matchingPlayers.push({ player: p, weight: 1 / itemCount });
+    matchingPlayers.push({ player: p, itemCount });
   }
 
-  const stats = calculateStats(matchingPlayers, [itemApiName]);
+  const stats = calculateStats(matchingPlayers, [itemApiName], baselines);
 
   results.push({
     type: "single_complete",
@@ -361,6 +417,7 @@ function processTwo(components: string[], players: PlayerData[]): CombinationRes
     components: [...components],
     componentNames: components.map(getComponentNameKo),
     avgPlacement: stats.avgPlacement,
+    normalizedScore: stats.normalizedScore,
     gameCount: matchingPlayers.length,
     topFourRate: stats.topFourRate,
     sampleGames: stats.sampleGames,
@@ -370,7 +427,7 @@ function processTwo(components: string[], players: PlayerData[]): CombinationRes
 }
 
 // ============ 3개 선택: 완성 + 남은 조합 ============
-function processThree(components: string[], players: PlayerData[]): CombinationResult[] {
+function processThree(components: string[], players: PlayerData[], baselines: ItemCountBaseline): CombinationResult[] {
   const results: CombinationResult[] = [];
   const addedKeys = new Set<string>();
 
@@ -390,15 +447,15 @@ function processThree(components: string[], players: PlayerData[]): CombinationR
       addedKeys.add(key);
 
       // 해당 아이템 보유 플레이어 필터링
-      const matchingPlayers: { player: PlayerData; weight: number }[] = [];
+      const matchingPlayers: { player: PlayerData; itemCount: number }[] = [];
       for (const p of players) {
         if (!p.units) continue;
         if (!hasItem(p.units, itemApiName)) continue;
         const itemCount = countCompletedItems(p.units);
-        matchingPlayers.push({ player: p, weight: 1 / itemCount });
+        matchingPlayers.push({ player: p, itemCount });
       }
 
-      const stats = calculateStats(matchingPlayers, [itemApiName]);
+      const stats = calculateStats(matchingPlayers, [itemApiName], baselines);
 
       results.push({
         type: "complete_plus_component",
@@ -409,6 +466,7 @@ function processThree(components: string[], players: PlayerData[]): CombinationR
         remainingComponent: remaining,
         remainingComponentName: getComponentNameKo(remaining),
         avgPlacement: stats.avgPlacement,
+        normalizedScore: stats.normalizedScore,
         gameCount: matchingPlayers.length,
         topFourRate: stats.topFourRate,
         sampleGames: stats.sampleGames,
@@ -420,7 +478,7 @@ function processThree(components: string[], players: PlayerData[]): CombinationR
 }
 
 // ============ 4개 선택: 완성 + 완성 ============
-function processFour(components: string[], players: PlayerData[]): CombinationResult[] {
+function processFour(components: string[], players: PlayerData[], baselines: ItemCountBaseline): CombinationResult[] {
   const results: CombinationResult[] = [];
   const addedKeys = new Set<string>();
 
@@ -450,16 +508,16 @@ function processFour(components: string[], players: PlayerData[]): CombinationRe
     addedKeys.add(sortedKey);
 
     // 두 아이템 모두 보유한 플레이어 필터링
-    const matchingPlayers: { player: PlayerData; weight: number }[] = [];
+    const matchingPlayers: { player: PlayerData; itemCount: number }[] = [];
     for (const p of players) {
       if (!p.units) continue;
       if (!hasItem(p.units, item1)) continue;
       if (!hasItem(p.units, item2)) continue;
       const itemCount = countCompletedItems(p.units);
-      matchingPlayers.push({ player: p, weight: 1 / itemCount });
+      matchingPlayers.push({ player: p, itemCount });
     }
 
-    const stats = calculateStats(matchingPlayers, [item1, item2]);
+    const stats = calculateStats(matchingPlayers, [item1, item2], baselines);
 
     results.push({
       type: "double_complete",
@@ -472,6 +530,7 @@ function processFour(components: string[], players: PlayerData[]): CombinationRe
       item2Components: [comp2a, comp2b],
       item2ComponentNames: [getComponentNameKo(comp2a), getComponentNameKo(comp2b)],
       avgPlacement: stats.avgPlacement,
+      normalizedScore: stats.normalizedScore,
       gameCount: matchingPlayers.length,
       topFourRate: stats.topFourRate,
       sampleGames: stats.sampleGames,
@@ -515,15 +574,18 @@ export async function POST(request: Request) {
       );
     }
 
+    // 아이템 개수별 기준 평균 계산
+    const baselines = calculateBaselines(players);
+
     let results: CombinationResult[] = [];
 
     // 선택 개수에 따라 다른 로직 적용
     if (components.length === 2) {
-      results = processTwo(components, players);
+      results = processTwo(components, players, baselines);
     } else if (components.length === 3) {
-      results = processThree(components, players);
+      results = processThree(components, players, baselines);
     } else if (components.length === 4) {
-      results = processFour(components, players);
+      results = processFour(components, players, baselines);
     }
 
     if (results.length === 0) {
@@ -536,12 +598,12 @@ export async function POST(request: Request) {
       });
     }
 
-    // 평균 순위로 정렬 (낮을수록 좋음)
+    // 정규화 점수로 정렬 (낮을수록 좋음, 음수 = 기준보다 좋음)
     results.sort((a, b) => {
       if (a.gameCount === 0 && b.gameCount === 0) return 0;
       if (a.gameCount === 0) return 1;
       if (b.gameCount === 0) return -1;
-      return a.avgPlacement - b.avgPlacement;
+      return a.normalizedScore - b.normalizedScore;
     });
 
     return NextResponse.json({
