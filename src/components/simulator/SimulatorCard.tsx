@@ -30,7 +30,7 @@ export default function SimulatorCard({ simulator }: SimulatorCardProps) {
         style={{ backgroundColor: simulator.color }}
       />
 
-      {/* 아이콘 - 이미지 또는 이모지 */}
+      {/* 아이콘 - 이미지, 듀얼 이미지, 또는 이모지 */}
       <div className="mb-3">
         {simulator.iconType === 'image' ? (
           <Image
@@ -40,6 +40,19 @@ export default function SimulatorCard({ simulator }: SimulatorCardProps) {
             height={56}
             className="rounded-lg"
           />
+        ) : simulator.iconType === 'dual-image' && simulator.icons ? (
+          <div className="flex gap-1">
+            {simulator.icons.map((iconUrl, idx) => (
+              <Image
+                key={idx}
+                src={iconUrl}
+                alt={`${simulator.name} ${idx + 1}`}
+                width={40}
+                height={40}
+                className="rounded-lg"
+              />
+            ))}
+          </div>
         ) : (
           <span className="text-5xl">{simulator.icon}</span>
         )}

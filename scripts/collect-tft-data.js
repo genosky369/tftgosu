@@ -155,10 +155,10 @@ async function collectData() {
     // 1. 챌린저 플레이어 목록
     const challengers = await getChallengerPlayers();
 
-    // 상위 50명만 먼저 테스트 (전체는 시간이 오래 걸림)
+    // 상위 200명 수집 (약 2시간 소요)
     const targetPlayers = challengers
       .sort((a, b) => b.leaguePoints - a.leaguePoints) // LP 높은 순
-      .slice(0, 50);
+      .slice(0, 200);
 
     console.log(`\n🎯 상위 ${targetPlayers.length}명 수집 시작\n`);
 

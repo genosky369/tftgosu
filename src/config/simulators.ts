@@ -8,7 +8,8 @@ export interface Simulator {
   name: string;
   description: string;
   icon: string;        // 이모지 또는 이미지 경로 (/images/simulators/xxx.png)
-  iconType: 'emoji' | 'image';
+  iconType: 'emoji' | 'image' | 'dual-image';
+  icons?: string[];    // dual-image일 때 사용
   color: string;
   path: string;
   status: SimulatorStatus;
@@ -39,8 +40,12 @@ export const SIMULATORS: Simulator[] = [
     id: 'item-analysis',
     name: '아이템 분석기',
     description: '조합 아이템별 승률 통계',
-    icon: '🎰',
-    iconType: 'emoji',
+    icon: '',
+    iconType: 'dual-image',
+    icons: [
+      'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/tft-item/TFT_Item_InfinityEdge.png',
+      'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/tft-item/TFT_Item_LastWhisper.png',
+    ],
     color: '#eab308',
     path: '/simulator/item-analysis',
     status: 'active',
