@@ -37,6 +37,14 @@ export interface ComponentItemStat {
   itemsUsing: string[];  // 이 조합템을 사용하는 완성템 목록
 }
 
+/** 유물 장착 챔피언 정보 */
+export interface ArtifactHolder {
+  apiName: string;           // 챔피언 API 이름
+  name: string;              // 챔피언 한글 이름
+  count: number;             // 장착 횟수
+  percentage: number;        // 장착 비율 (0-100)
+}
+
 /** 유물 아이템 통계 */
 export interface ArtifactStat {
   itemApiName: string;       // API 이름 (예: "TFT_Item_Artifact_Mittens")
@@ -46,6 +54,7 @@ export interface ArtifactStat {
   placementDelta: number;    // 조합 평균 대비 등수 차이 (음수 = 좋음)
   gameCount: number;         // 표본 수
   priorityScore: number;     // 우선순위 점수 (높을수록 좋음)
+  holders: ArtifactHolder[]; // 장착 챔피언 상위 3명
 }
 
 /** 유물 분석 결과 */

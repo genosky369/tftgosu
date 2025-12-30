@@ -113,6 +113,18 @@ export function ArtifactPriorityList({ artifacts }: ArtifactPriorityListProps) {
                 <span>|</span>
                 <span>{artifact.gameCount}게임</span>
               </div>
+              {/* 장착 챔피언 */}
+              {artifact.holders && artifact.holders.length > 0 && (
+                <div className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                  <span className="text-gray-500">장착:</span>
+                  {artifact.holders.map((holder, hIdx) => (
+                    <span key={holder.apiName} className="text-blue-400">
+                      {holder.name}({holder.percentage}%)
+                      {hIdx < artifact.holders.length - 1 && <span className="text-gray-600">, </span>}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}

@@ -602,14 +602,114 @@ interface MetaComp {
 - [ ] `MetaCompCard.tsx`에 이미지 통합
 
 ### Phase 3: 유물 아이템 분석
-- [ ] `scripts/analyze-meta-comps.js`에 유물 분석 로직 추가
-- [ ] `src/types/meta.ts`에 ArtifactStat 타입 추가
-- [ ] `ArtifactPriorityList.tsx` 컴포넌트 생성
-- [ ] `MetaCompCard.tsx`에 유물 섹션 추가
-- [ ] 유물 이미지 연동
+- [x] `scripts/analyze-meta-comps.js`에 유물 분석 로직 추가
+- [x] `src/types/meta.ts`에 ArtifactStat 타입 추가
+- [x] `ArtifactPriorityList.tsx` 컴포넌트 생성
+- [x] `MetaCompCard.tsx`에 유물 섹션 추가
+- [x] 유물 이미지 연동
+- [x] 장착 챔피언 정보 추가 (상위 3명)
 
 ### Phase 4: 테스트 및 검증
 - [ ] 히스토그램 시각적 확인
 - [ ] 이미지 로드 테스트 (성공/실패 케이스)
 - [ ] 유물 데이터 정확성 확인
 - [ ] 모바일 반응형 확인
+
+---
+
+## 11. 유물 아이템 분석 상세
+
+### 11.1 유물 분석 로직
+
+**유물 아이템 필터링:**
+```javascript
+// TFT_Item_Artifact_* 패턴으로 필터링
+if (itemName.includes('Artifact')) {
+  // 유물 아이템 처리
+}
+```
+
+**최소 등장률:** 1% (일반 아이템 5%보다 완화 - 유물은 희귀함)
+
+### 11.2 장착 챔피언 추적
+
+각 유물 아이템별로 어떤 챔피언이 장착했는지 추적:
+
+```javascript
+// 장착 챔피언 상위 3명 추출
+const topHolders = Object.entries(holders)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 3)
+  .map(([champId, count]) => ({
+    apiName: champId,
+    name: CHAMPION_NAMES[champId],
+    count: count,
+    percentage: Math.round((count / item.count) * 100)
+  }));
+```
+
+### 11.3 데이터 구조
+
+```typescript
+interface ArtifactStat {
+  itemApiName: string;       // "TFT_Item_Artifact_Mittens"
+  itemName: string;          // "마력 쥐방울"
+  appearanceRate: number;    // 등장률 (0-100)
+  avgPlacement: number;      // 평균 등수
+  placementDelta: number;    // 조합 대비 등수 차이
+  gameCount: number;         // 표본 수
+  priorityScore: number;     // 우선순위 점수
+  holders: ArtifactHolder[]; // 장착 챔피언 상위 3명
+}
+
+interface ArtifactHolder {
+  apiName: string;           // 챔피언 API 이름
+  name: string;              // 한글 이름
+  count: number;             // 장착 횟수
+  percentage: number;        // 장착 비율 (0-100)
+}
+```
+
+### 11.4 UI 표시
+
+```
+┌─────────────────────────────────────────────────────┐
+│ 핵심 유물 아이템                                     │
+├─────────────────────────────────────────────────────┤
+│ 1. [금테두리] 공허 건틀릿 (-1.61등)                  │
+│    평균 1.47등 | 3% 등장 | 32게임                   │
+│    장착: 오른(75%), 브라움(9%), 타릭(6%)            │
+├─────────────────────────────────────────────────────┤
+│ 2. [금테두리] 지평선의 초점 (-1.49등)               │
+│    평균 1.74등 | 2% 등장 | 23게임                   │
+│    장착: T-헥스(80%), 럭스(10%), 세라핀(5%)         │
+└─────────────────────────────────────────────────────┘
+```
+
+### 11.5 유물 이름 매핑 (23개)
+
+| API 이름 | 한글 이름 |
+|----------|-----------|
+| TFT_Item_Artifact_Mittens | 마력 쥐방울 |
+| TFT_Item_Artifact_NavoriFlickerblades | 나보리 단검 |
+| TFT_Item_Artifact_AegisOfDawn | 새벽의 방패 |
+| TFT_Item_Artifact_SeekersArmguard | 탐색자의 아대 |
+| TFT_Item_Artifact_Dawncore | 새벽의 핵 |
+| TFT_Item_Artifact_LightshieldCrest | 광휘의 문장 |
+| TFT_Item_Artifact_HorizonFocus | 지평선의 초점 |
+| TFT_Item_Artifact_Fishbones | 피쉬본즈 |
+| TFT_Item_Artifact_VoidGauntlet | 공허 건틀릿 |
+| TFT_Item_Artifact_SilvermereDawn | 은빛새벽 |
+| TFT_Item_Artifact_WitsEnd | 재치의 종말 |
+| TFT_Item_Artifact_AegisOfDusk | 황혼의 방패 |
+| TFT_Item_Artifact_BlightingJewel | 역병의 보석 |
+| TFT_Item_Artifact_TheIndomitable | 불굴의 유물 |
+| TFT_Item_Artifact_RapidFirecannon | 쾌속 기관포 |
+| TFT_Item_Artifact_StatikkShiv | 스태틱의 단검 |
+| TFT_Item_Artifact_TalismanOfAscension | 승천의 부적 |
+| TFT_Item_Artifact_LichBane | 리치베인 |
+| TFT_Item_Artifact_LudensTempest | 루덴의 폭풍 |
+| TFT_Item_Artifact_ProwlersClaw | 포식자의 발톱 |
+| TFT_Item_Artifact_HellfireHatchet | 지옥불 손도끼 |
+| TFT_Item_Artifact_EternalPact | 영원의 서약 |
+| TFT_Item_Artifact_TitanicHydra | 거인의 히드라 |

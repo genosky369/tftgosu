@@ -364,18 +364,27 @@ function calculateClusterStats(clusters, validPlayers) {
       }
     }
 
-    // 아이템 등장 빈도
+    // 아이템 등장 빈도 (유물은 장착 챔피언도 추적)
     for (const player of players) {
       if (!player.units) continue;
       for (const unit of player.units) {
         if (!unit.itemNames) continue;
+        const champId = unit.character_id;
         for (const itemName of unit.itemNames) {
           if (itemName.startsWith('TFT_Item_') || itemName.startsWith('TFT16_Item_')) {
             if (!stats.itemCounts[itemName]) {
-              stats.itemCounts[itemName] = { count: 0, placements: [] };
+              stats.itemCounts[itemName] = { count: 0, placements: [], holders: {} };
             }
             stats.itemCounts[itemName].count++;
             stats.itemCounts[itemName].placements.push(player.placement);
+
+            // 유물 아이템은 장착 챔피언 추적
+            if (itemName.includes('Artifact')) {
+              if (!stats.itemCounts[itemName].holders[champId]) {
+                stats.itemCounts[itemName].holders[champId] = 0;
+              }
+              stats.itemCounts[itemName].holders[champId]++;
+            }
           }
         }
       }
@@ -571,6 +580,18 @@ function calculateArtifactPriority(stats) {
     const sampleScore = Math.min(item.count / 50, 1) * 30; // 유물은 50게임 기준
     const priorityScore = deltaScore + popularityScore + sampleScore;
 
+    // 장착 챔피언 상위 3명 추출
+    const holders = item.holders || {};
+    const topHolders = Object.entries(holders)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([champId, count]) => ({
+        apiName: champId,
+        name: CHAMPION_NAMES[champId] || champId.replace('TFT16_', ''),
+        count: count,
+        percentage: Math.round((count / item.count) * 100)
+      }));
+
     artifacts.push({
       itemApiName: itemName,
       itemName: ARTIFACT_NAMES[itemName] || itemName.replace('TFT_Item_Artifact_', ''),
@@ -578,7 +599,8 @@ function calculateArtifactPriority(stats) {
       avgPlacement: Math.round(avgPlacement * 100) / 100,
       placementDelta: Math.round(placementDelta * 100) / 100,
       gameCount: item.count,
-      priorityScore: Math.round(priorityScore * 100) / 100
+      priorityScore: Math.round(priorityScore * 100) / 100,
+      holders: topHolders  // 장착 챔피언 정보 추가
     });
   }
 
