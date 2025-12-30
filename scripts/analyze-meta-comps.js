@@ -520,11 +520,35 @@ function calculateItemPriority(stats, allPlayerStats) {
   };
 }
 
-// 티어 분류
-function assignTier(avgPlacement) {
-  if (avgPlacement <= 3.5) return 'S';
-  if (avgPlacement <= 4.0) return 'A';
-  if (avgPlacement <= 4.3) return 'B';
+// 복합 점수 계산 (METAsrc 방식 참고)
+// 참고: docs/features/tier-scoring.md
+function calculateCompositeScore(stats) {
+  // 평균 등수 점수 (40%) - 1등=100점, 8등=0점
+  const placementScore = (8 - stats.avgPlacement) / 7 * 100;
+
+  // Top4 비율 점수 (25%)
+  const top4Score = stats.top4Rate;
+
+  // 1등 비율 점수 (20%) - 20% 1등률 = 100점
+  const winScore = Math.min(stats.winRate * 5, 100);
+
+  // 안정성 점수 (15%) - 표준편차 1.0=100점, 4.0=0점
+  const consistencyScore = Math.max((4 - stats.stdDeviation) / 3 * 100, 0);
+
+  // 복합 점수
+  return (
+    placementScore * 0.40 +
+    top4Score * 0.25 +
+    winScore * 0.20 +
+    consistencyScore * 0.15
+  );
+}
+
+// 티어 분류 (복합 점수 기반)
+function assignTier(compositeScore) {
+  if (compositeScore >= 65) return 'S';
+  if (compositeScore >= 55) return 'A';
+  if (compositeScore >= 45) return 'B';
   return 'C';
 }
 
@@ -615,11 +639,14 @@ async function main() {
       // 아이템 우선순위 계산
       const itemAnalysis = calculateItemPriority(stats, clusterStats);
 
+      // 복합 점수 계산 (METAsrc 방식)
+      const compositeScore = calculateCompositeScore(stats);
+
       // 메타 조합 객체 생성
       metaComps.push({
         id: `comp_${clusterId}`,
         name: nameInfo.name,
-        tier: assignTier(stats.avgPlacement),
+        tier: assignTier(compositeScore),
 
         coreChampions: champions.core,
         flexChampions: champions.flex,
@@ -637,7 +664,8 @@ async function main() {
           stdDeviation: stats.stdDeviation,
           placementDistribution: stats.placementDistribution,
           top4Rate: stats.top4Rate,
-          winRate: stats.winRate
+          winRate: stats.winRate,
+          compositeScore: Math.round(compositeScore * 10) / 10  // 복합 점수 추가
         },
 
         itemAnalysis
