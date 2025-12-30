@@ -38,25 +38,28 @@ export function PlacementHistogram({ distribution, avgPlacement, stdDeviation }:
         </div>
       </div>
 
-      {/* 히스토그램 */}
-      <div className="flex items-end justify-between gap-1 h-24 mb-2">
+      {/* 히스토그램 - 높이 증가 */}
+      <div className="flex items-end justify-between gap-2 h-40 mb-2">
         {distribution.slice(1).map((percent, idx) => {
           const placement = idx + 1;
-          const height = maxPercent > 0 ? (percent / maxPercent) * 100 : 0;
+          // 상대적 높이 계산 (최대값 = 100%)
+          const heightPercent = maxPercent > 0 ? (percent / maxPercent) * 100 : 0;
 
           return (
-            <div key={placement} className="flex-1 flex flex-col items-center">
-              <div className="relative w-full flex flex-col items-center">
-                {/* 퍼센트 표시 */}
-                <span className="text-[10px] text-gray-400 mb-1">
-                  {Math.round(percent * 100)}%
-                </span>
-                {/* 막대 */}
-                <div
-                  className={`w-full max-w-[24px] rounded-t transition-all ${getPlacementColor(placement)}`}
-                  style={{ height: `${height}%`, minHeight: percent > 0 ? '4px' : '0' }}
-                />
-              </div>
+            <div key={placement} className="flex-1 flex flex-col items-center justify-end h-full">
+              {/* 퍼센트 표시 */}
+              <span className="text-xs text-gray-400 mb-1 font-medium">
+                {Math.round(percent * 100)}%
+              </span>
+              {/* 막대 - 최대 120px */}
+              <div
+                className={`w-full max-w-[32px] rounded-t transition-all ${getPlacementColor(placement)}`}
+                style={{
+                  height: `${heightPercent}%`,
+                  minHeight: percent > 0 ? '8px' : '0',
+                  maxHeight: '120px'
+                }}
+              />
             </div>
           );
         })}

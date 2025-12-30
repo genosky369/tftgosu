@@ -1,9 +1,74 @@
 'use client';
 
 import { useState } from 'react';
-import type { MetaComp } from '@/types/meta';
+import Image from 'next/image';
+import type { MetaComp, MetaChampionInfo } from '@/types/meta';
 import { PlacementHistogram } from './PlacementHistogram';
 import { ItemPriorityList } from './ItemPriorityList';
+import { ArtifactPriorityList } from './ArtifactPriorityList';
+import { getChampionImageUrl } from '@/lib/championImage';
+
+// 코스트별 테두리 색상
+const COST_BORDER_COLORS: Record<number, string> = {
+  1: '#9ca3af', // 회색 (gray-400)
+  2: '#22c55e', // 초록 (green-500)
+  3: '#3b82f6', // 파랑 (blue-500)
+  4: '#a855f7', // 보라 (purple-500)
+  5: '#fbbf24', // 금색 (yellow-400)
+};
+
+// 챔피언 이미지 컴포넌트
+function ChampionImage({
+  champion,
+  size = 48,
+  opacity = 1,
+}: {
+  champion: MetaChampionInfo;
+  size?: number;
+  opacity?: number;
+}) {
+  const [imageError, setImageError] = useState(false);
+  const borderColor = COST_BORDER_COLORS[champion.cost] || COST_BORDER_COLORS[1];
+
+  if (imageError) {
+    // Fallback: 회색 박스 + 첫 글자
+    return (
+      <div
+        className="flex items-center justify-center bg-gray-700 rounded text-white font-bold"
+        style={{
+          width: size,
+          height: size,
+          border: `2px solid ${borderColor}`,
+          opacity,
+        }}
+      >
+        {champion.name.charAt(0)}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="relative rounded overflow-hidden"
+      style={{
+        width: size,
+        height: size,
+        border: `2px solid ${borderColor}`,
+        opacity,
+      }}
+    >
+      <Image
+        src={getChampionImageUrl(champion.apiName)}
+        alt={champion.name}
+        width={size}
+        height={size}
+        className="object-cover"
+        onError={() => setImageError(true)}
+        unoptimized
+      />
+    </div>
+  );
+}
 
 interface MetaCompCardProps {
   comp: MetaComp;
@@ -93,31 +158,32 @@ export function MetaCompCard({ comp, rank }: MetaCompCardProps) {
         <div className="px-4 pb-4 space-y-4 border-t border-gray-800">
           {/* 핵심 챔피언 */}
           <div className="pt-4">
-            <h4 className="text-sm font-medium text-gray-300 mb-2">핵심 챔피언</h4>
+            <h4 className="text-sm font-medium text-gray-300 mb-3">핵심 챔피언</h4>
             <div className="flex flex-wrap gap-2">
               {comp.coreChampions.map((champ) => (
                 <div
                   key={champ.apiName}
-                  className="bg-gray-800 rounded px-2 py-1 text-sm"
-                  title={`${champ.frequency}% 등장, 평균 ${champ.avgItems}개 아이템`}
+                  className="flex flex-col items-center gap-1"
+                  title={`${champ.name} (${champ.frequency}% 등장, 평균 ${champ.avgItems}개 아이템)`}
                 >
-                  <span className="text-gray-200">{champ.name}</span>
-                  <span className="text-gray-500 text-xs ml-1">({champ.frequency}%)</span>
+                  <ChampionImage champion={champ} size={48} />
+                  <span className="text-xs text-gray-400">{champ.name}</span>
                 </div>
               ))}
             </div>
 
             {comp.flexChampions.length > 0 && (
               <>
-                <h4 className="text-sm font-medium text-gray-400 mt-3 mb-2">유동 챔피언</h4>
+                <h4 className="text-sm font-medium text-gray-400 mt-4 mb-3">유동 챔피언</h4>
                 <div className="flex flex-wrap gap-2">
                   {comp.flexChampions.slice(0, 6).map((champ) => (
                     <div
                       key={champ.apiName}
-                      className="bg-gray-800/50 rounded px-2 py-1 text-sm"
+                      className="flex flex-col items-center gap-1"
+                      title={`${champ.name} (${champ.frequency}% 등장)`}
                     >
-                      <span className="text-gray-400">{champ.name}</span>
-                      <span className="text-gray-600 text-xs ml-1">({champ.frequency}%)</span>
+                      <ChampionImage champion={champ} size={40} opacity={0.7} />
+                      <span className="text-xs text-gray-500">{champ.name}</span>
                     </div>
                   ))}
                 </div>
@@ -137,6 +203,11 @@ export function MetaCompCard({ comp, rank }: MetaCompCardProps) {
             completedItems={comp.itemAnalysis.completedItems}
             componentItems={comp.itemAnalysis.componentItems}
           />
+
+          {/* 유물 아이템 분석 */}
+          {comp.artifactAnalysis && comp.artifactAnalysis.effectiveArtifacts.length > 0 && (
+            <ArtifactPriorityList artifacts={comp.artifactAnalysis.effectiveArtifacts} />
+          )}
         </div>
       )}
     </div>

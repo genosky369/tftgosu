@@ -1,6 +1,57 @@
 'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
 import type { CompletedItemStat, ComponentItemStat } from '@/types/meta';
+import { getItemImageUrl, getComponentImageUrl } from '@/lib/itemImage';
+
+// 아이템 이미지 컴포넌트
+function ItemImage({
+  apiName,
+  name,
+  size = 32,
+  isComponent = false,
+}: {
+  apiName: string;
+  name: string;
+  size?: number;
+  isComponent?: boolean;
+}) {
+  const [imageError, setImageError] = useState(false);
+
+  if (imageError) {
+    // Fallback: 회색 박스 + 첫 글자
+    return (
+      <div
+        className="flex items-center justify-center bg-gray-700 rounded text-white text-xs font-bold shrink-0"
+        style={{ width: size, height: size }}
+      >
+        {name.charAt(0)}
+      </div>
+    );
+  }
+
+  const imageUrl = isComponent
+    ? getComponentImageUrl(apiName)
+    : getItemImageUrl(apiName);
+
+  return (
+    <div
+      className="relative rounded overflow-hidden shrink-0"
+      style={{ width: size, height: size }}
+    >
+      <Image
+        src={imageUrl}
+        alt={name}
+        width={size}
+        height={size}
+        className="object-cover"
+        onError={() => setImageError(true)}
+        unoptimized
+      />
+    </div>
+  );
+}
 
 interface ItemPriorityListProps {
   completedItems: CompletedItemStat[];
@@ -37,6 +88,11 @@ export function ItemPriorityList({ completedItems, componentItems }: ItemPriorit
               className="flex items-center gap-2 text-sm"
             >
               <span className="w-5 text-gray-500 text-xs">{idx + 1}.</span>
+              <ItemImage
+                apiName={item.itemApiName}
+                name={item.itemName}
+                size={28}
+              />
               <span className="flex-1 text-gray-200 truncate">{item.itemName}</span>
               <span className={`text-xs ${getDeltaColor(item.placementDelta)}`}>
                 ({formatDelta(item.placementDelta)})
@@ -67,6 +123,12 @@ export function ItemPriorityList({ completedItems, componentItems }: ItemPriorit
               className="flex items-center gap-2 text-sm"
             >
               <span className="w-5 text-gray-500 text-xs">{idx + 1}.</span>
+              <ItemImage
+                apiName={item.componentId}
+                name={item.componentName}
+                size={24}
+                isComponent
+              />
               <span className="flex-1 text-gray-200">{item.componentName}</span>
               <span className={`text-xs ${getDeltaColor(item.avgDelta)}`}>
                 ({formatDelta(item.avgDelta)})
