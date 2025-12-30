@@ -1,6 +1,116 @@
 {
   "patch": "14.24",
-  "updatedAt": "2025-12-30T00:00:00.000Z",
+  "updatedAt": "2025-12-30T12:00:00.000Z",
   "totalGames": 0,
-  "comps": []
+  "comps": [
+    {
+      "id": "dummy_1",
+      "name": "[더미] 테스트 조합 S-1",
+      "tier": "S",
+      "coreChampions": [
+        { "apiName": "TEST_Champion1", "name": "테스트챔피언1", "frequency": 95, "avgItems": 2.8 },
+        { "apiName": "TEST_Champion2", "name": "테스트챔피언2", "frequency": 88, "avgItems": 1.2 },
+        { "apiName": "TEST_Champion3", "name": "테스트챔피언3", "frequency": 85, "avgItems": 0.8 }
+      ],
+      "flexChampions": [
+        { "apiName": "TEST_Champion4", "name": "테스트챔피언4", "frequency": 65, "avgItems": 0.4 }
+      ],
+      "mainTrait": { "apiName": "TEST_Trait", "name": "테스트시너지", "avgUnits": 6, "avgTier": 3.0 },
+      "mainCarry": "테스트챔피언1",
+      "stats": {
+        "gameCount": 500,
+        "avgPlacement": 3.21,
+        "stdDeviation": 1.85,
+        "placementDistribution": [0, 0.18, 0.17, 0.15, 0.14, 0.12, 0.10, 0.08, 0.06],
+        "top4Rate": 64,
+        "winRate": 18
+      },
+      "itemAnalysis": {
+        "completedItems": [
+          { "itemApiName": "TEST_Item1", "itemName": "테스트아이템1", "appearanceRate": 82, "avgPlacement": 2.95, "placementDelta": -0.82, "gameCount": 410, "priorityScore": 78.5 },
+          { "itemApiName": "TEST_Item2", "itemName": "테스트아이템2", "appearanceRate": 75, "avgPlacement": 3.05, "placementDelta": -0.65, "gameCount": 375, "priorityScore": 72.3 },
+          { "itemApiName": "TEST_Item3", "itemName": "테스트아이템3", "appearanceRate": 58, "avgPlacement": 3.12, "placementDelta": -0.42, "gameCount": 290, "priorityScore": 65.8 }
+        ],
+        "componentItems": [
+          { "componentId": "TestComp1", "componentName": "테스트재료1", "avgDelta": -0.52, "usageCount": 600, "itemsUsing": ["TEST_Item1", "TEST_Item2"] },
+          { "componentId": "TestComp2", "componentName": "테스트재료2", "avgDelta": -0.45, "usageCount": 500, "itemsUsing": ["TEST_Item2", "TEST_Item3"] }
+        ]
+      }
+    },
+    {
+      "id": "dummy_2",
+      "name": "[더미] 테스트 조합 A-1",
+      "tier": "A",
+      "coreChampions": [
+        { "apiName": "TEST_ChampionA", "name": "테스트챔피언A", "frequency": 90, "avgItems": 2.2 },
+        { "apiName": "TEST_ChampionB", "name": "테스트챔피언B", "frequency": 85, "avgItems": 1.0 }
+      ],
+      "flexChampions": [],
+      "mainTrait": { "apiName": "TEST_TraitA", "name": "테스트시너지A", "avgUnits": 4, "avgTier": 2.5 },
+      "mainCarry": "테스트챔피언A",
+      "stats": {
+        "gameCount": 350,
+        "avgPlacement": 3.85,
+        "stdDeviation": 2.10,
+        "placementDistribution": [0, 0.14, 0.14, 0.13, 0.13, 0.12, 0.12, 0.11, 0.11],
+        "top4Rate": 54,
+        "winRate": 14
+      },
+      "itemAnalysis": {
+        "completedItems": [
+          { "itemApiName": "TEST_ItemA", "itemName": "테스트아이템A", "appearanceRate": 75, "avgPlacement": 3.52, "placementDelta": -0.58, "gameCount": 263, "priorityScore": 70.2 }
+        ],
+        "componentItems": [
+          { "componentId": "TestCompA", "componentName": "테스트재료A", "avgDelta": -0.48, "usageCount": 400, "itemsUsing": ["TEST_ItemA"] }
+        ]
+      }
+    },
+    {
+      "id": "dummy_3",
+      "name": "[더미] 테스트 조합 B-1",
+      "tier": "B",
+      "coreChampions": [
+        { "apiName": "TEST_ChampionX", "name": "테스트챔피언X", "frequency": 88, "avgItems": 2.5 }
+      ],
+      "flexChampions": [],
+      "mainTrait": { "apiName": "TEST_TraitX", "name": "테스트시너지X", "avgUnits": 3, "avgTier": 2.0 },
+      "mainCarry": "테스트챔피언X",
+      "stats": {
+        "gameCount": 280,
+        "avgPlacement": 4.20,
+        "stdDeviation": 2.45,
+        "placementDistribution": [0, 0.12, 0.11, 0.10, 0.10, 0.12, 0.13, 0.15, 0.17],
+        "top4Rate": 43,
+        "winRate": 12
+      },
+      "itemAnalysis": {
+        "completedItems": [],
+        "componentItems": []
+      }
+    },
+    {
+      "id": "dummy_4",
+      "name": "[더미] 테스트 조합 C-1 (도박성)",
+      "tier": "C",
+      "coreChampions": [
+        { "apiName": "TEST_ChampionZ", "name": "테스트챔피언Z", "frequency": 95, "avgItems": 3.0 }
+      ],
+      "flexChampions": [],
+      "mainTrait": { "apiName": "TEST_TraitZ", "name": "테스트시너지Z", "avgUnits": 2, "avgTier": 1.5 },
+      "mainCarry": "테스트챔피언Z",
+      "stats": {
+        "gameCount": 220,
+        "avgPlacement": 4.55,
+        "stdDeviation": 2.90,
+        "placementDistribution": [0, 0.20, 0.06, 0.05, 0.04, 0.05, 0.08, 0.18, 0.34],
+        "top4Rate": 35,
+        "winRate": 20
+      },
+      "itemAnalysis": {
+        "completedItems": [],
+        "componentItems": []
+      }
+    }
+  ],
+  "_notice": "⚠️ 이 데이터는 UI 테스트용 더미 데이터입니다. 실제 TFT 메타와 무관합니다. 실제 데이터는 node scripts/analyze-meta-comps.js 실행 후 생성됩니다."
 }
