@@ -28,7 +28,7 @@ function ChampionImage({
   opacity?: number;
 }) {
   const [imageError, setImageError] = useState(false);
-  const borderColor = COST_BORDER_COLORS[champion.cost] || COST_BORDER_COLORS[1];
+  const borderColor = champion.cost ? COST_BORDER_COLORS[champion.cost] : COST_BORDER_COLORS[1];
 
   if (imageError) {
     // Fallback: 회색 박스 + 첫 글자
@@ -205,8 +205,8 @@ export function MetaCompCard({ comp, rank }: MetaCompCardProps) {
           />
 
           {/* 유물 아이템 분석 */}
-          {comp.artifactAnalysis && comp.artifactAnalysis.effectiveArtifacts.length > 0 && (
-            <ArtifactPriorityList artifacts={comp.artifactAnalysis.effectiveArtifacts} />
+          {comp.artifactAnalysis && comp.artifactAnalysis.artifacts && comp.artifactAnalysis.artifacts.length > 0 && (
+            <ArtifactPriorityList artifacts={comp.artifactAnalysis.artifacts} />
           )}
         </div>
       )}

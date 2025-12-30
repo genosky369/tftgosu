@@ -88,19 +88,19 @@ export function ArtifactPriorityList({ artifacts }: ArtifactPriorityListProps) {
       <div className="space-y-3">
         {artifacts.slice(0, 5).map((artifact, idx) => (
           <div
-            key={artifact.artifactApiName}
+            key={artifact.itemApiName}
             className="flex items-center gap-3"
           >
             <span className="w-5 text-gray-500 text-sm">{idx + 1}.</span>
             <ArtifactImage
-              apiName={artifact.artifactApiName}
-              name={artifact.artifactName}
+              apiName={artifact.itemApiName}
+              name={artifact.itemName}
               size={36}
             />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
                 <span className="text-gray-200 font-medium truncate">
-                  {artifact.artifactName}
+                  {artifact.itemName}
                 </span>
                 <span className={`text-sm ${getDeltaColor(artifact.placementDelta)}`}>
                   ({formatDelta(artifact.placementDelta)})

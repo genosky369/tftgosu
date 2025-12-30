@@ -4,7 +4,7 @@
 export interface MetaChampionInfo {
   apiName: string;       // API 이름 (예: TFT16_Jinx)
   name: string;          // 한글 이름 (예: "징크스")
-  cost: number;          // 코스트 (1~5)
+  cost?: number;         // 코스트 (1~5) - optional
   frequency: number;     // 등장 빈도 (0-100%)
   avgItems: number;      // 평균 아이템 개수
 }
@@ -39,8 +39,8 @@ export interface ComponentItemStat {
 
 /** 유물 아이템 통계 */
 export interface ArtifactStat {
-  artifactApiName: string;   // API 이름 (예: "TFT_Item_Artifact_InfinityForce")
-  artifactName: string;      // 한글 이름 (예: "무한의 힘")
+  itemApiName: string;       // API 이름 (예: "TFT_Item_Artifact_Mittens")
+  itemName: string;          // 한글 이름 (예: "마력 쥐방울")
   appearanceRate: number;    // 등장률 (0-100)
   avgPlacement: number;      // 이 유물 있을 때 평균 등수
   placementDelta: number;    // 조합 평균 대비 등수 차이 (음수 = 좋음)
@@ -50,7 +50,7 @@ export interface ArtifactStat {
 
 /** 유물 분석 결과 */
 export interface ArtifactAnalysis {
-  effectiveArtifacts: ArtifactStat[];  // 성적 좋은 유물 (상위 5개)
+  artifacts: ArtifactStat[];  // 성적 좋은 유물 (상위 10개)
 }
 
 /** 아이템 분석 결과 */
