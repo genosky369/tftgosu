@@ -110,6 +110,33 @@ const TRAIT_NAMES = {
   "TFT16_BaronUnique": "균열의 재앙", "TFT16_KindredUnique": "영겁"
 };
 
+// 유물 아이템 이름 매핑
+const ARTIFACT_NAMES = {
+  "TFT_Item_Artifact_Mittens": "마력 쥐방울",
+  "TFT_Item_Artifact_NavoriFlickerblades": "나보리 단검",
+  "TFT_Item_Artifact_AegisOfDawn": "새벽의 방패",
+  "TFT_Item_Artifact_SeekersArmguard": "탐색자의 아대",
+  "TFT_Item_Artifact_Dawncore": "새벽의 핵",
+  "TFT_Item_Artifact_LightshieldCrest": "광휘의 문장",
+  "TFT_Item_Artifact_HorizonFocus": "지평선의 초점",
+  "TFT_Item_Artifact_Fishbones": "피쉬본즈",
+  "TFT_Item_Artifact_VoidGauntlet": "공허 건틀릿",
+  "TFT_Item_Artifact_SilvermereDawn": "은빛새벽",
+  "TFT_Item_Artifact_WitsEnd": "재치의 종말",
+  "TFT_Item_Artifact_AegisOfDusk": "황혼의 방패",
+  "TFT_Item_Artifact_BlightingJewel": "역병의 보석",
+  "TFT_Item_Artifact_TheIndomitable": "불굴의 유물",
+  "TFT_Item_Artifact_RapidFirecannon": "쾌속 기관포",
+  "TFT_Item_Artifact_StatikkShiv": "스태틱의 단검",
+  "TFT_Item_Artifact_TalismanOfAscension": "승천의 부적",
+  "TFT_Item_Artifact_LichBane": "리치베인",
+  "TFT_Item_Artifact_LudensTempest": "루덴의 폭풍",
+  "TFT_Item_Artifact_ProwlersClaw": "포식자의 발톱",
+  "TFT_Item_Artifact_HellfireHatchet": "지옥불 손도끼",
+  "TFT_Item_Artifact_EternalPact": "영원의 서약",
+  "TFT_Item_Artifact_TitanicHydra": "거인의 히드라"
+};
+
 // 아이템 이름 매핑
 const ITEM_NAMES = {
   "TFT_Item_Deathblade": "죽음의 검", "TFT_Item_MadredsBloodrazor": "거인 학살자",
@@ -520,6 +547,49 @@ function calculateItemPriority(stats, allPlayerStats) {
   };
 }
 
+// 유물 아이템 우선순위 계산
+function calculateArtifactPriority(stats) {
+  const n = stats.gameCount;
+  const artifacts = [];
+
+  // 유물 아이템 필터링 (TFT_Item_Artifact_*)
+  for (const itemName in stats.itemCounts) {
+    if (!itemName.includes('Artifact')) continue;
+
+    const item = stats.itemCounts[itemName];
+    const appearanceRate = item.count / n;
+
+    if (appearanceRate < 0.01) continue; // 1% 미만은 제외 (유물은 희귀하므로 기준 완화)
+
+    const avgPlacement = item.placements.reduce((a, b) => a + b, 0) / item.placements.length;
+    const avgPlacementWithout = stats.avgPlacement;
+    const placementDelta = avgPlacement - avgPlacementWithout;
+
+    // 우선순위 점수 계산
+    const deltaScore = -placementDelta * 40;
+    const popularityScore = appearanceRate * 30;
+    const sampleScore = Math.min(item.count / 50, 1) * 30; // 유물은 50게임 기준
+    const priorityScore = deltaScore + popularityScore + sampleScore;
+
+    artifacts.push({
+      itemApiName: itemName,
+      itemName: ARTIFACT_NAMES[itemName] || itemName.replace('TFT_Item_Artifact_', ''),
+      appearanceRate: Math.round(appearanceRate * 100),
+      avgPlacement: Math.round(avgPlacement * 100) / 100,
+      placementDelta: Math.round(placementDelta * 100) / 100,
+      gameCount: item.count,
+      priorityScore: Math.round(priorityScore * 100) / 100
+    });
+  }
+
+  // 정렬 (점수 높은 순)
+  artifacts.sort((a, b) => b.priorityScore - a.priorityScore);
+
+  return {
+    artifacts: artifacts.slice(0, 10) // 상위 10개
+  };
+}
+
 // 복합 점수 계산 (METAsrc 방식 참고)
 // 참고: docs/features/tier-scoring.md
 function calculateCompositeScore(stats) {
@@ -639,6 +709,9 @@ async function main() {
       // 아이템 우선순위 계산
       const itemAnalysis = calculateItemPriority(stats, clusterStats);
 
+      // 유물 아이템 우선순위 계산
+      const artifactAnalysis = calculateArtifactPriority(stats);
+
       // 복합 점수 계산 (METAsrc 방식)
       const compositeScore = calculateCompositeScore(stats);
 
@@ -668,7 +741,8 @@ async function main() {
           compositeScore: Math.round(compositeScore * 10) / 10  // 복합 점수 추가
         },
 
-        itemAnalysis
+        itemAnalysis,
+        artifactAnalysis
       });
     }
 
