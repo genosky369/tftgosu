@@ -32,12 +32,7 @@ export default function Header() {
 
           {/* 데스크톱 네비게이션 */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/meta"
-              className="text-text-sub hover:text-text transition-colors"
-            >
-              메타 티어리스트
-            </Link>
+            {/* 메타 티어리스트 - 개발 중, 로컬 테스트 완료 후 공개 예정 */}
             <Link
               href="/board"
               className="text-text-sub hover:text-text transition-colors"
@@ -66,13 +61,7 @@ export default function Header() {
         {/* 모바일 네비게이션 */}
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-accent-blue/30">
-            <Link
-              href="/meta"
-              className="block py-2 text-text-sub hover:text-text transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              메타 티어리스트
-            </Link>
+            {/* 메타 티어리스트 - 개발 중, 로컬 테스트 완료 후 공개 예정 */}
             <Link
               href="/board"
               className="block py-2 text-text-sub hover:text-text transition-colors"
