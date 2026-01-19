@@ -50,6 +50,16 @@ export const SIMULATORS: Simulator[] = [
     path: '/simulator/item-analysis',
     status: 'active',
   },
+  {
+    id: 'ryze',
+    name: '라이즈 시뮬레이터',
+    description: '라이즈 지역 시너지 최대화',
+    icon: '/images/champions/Ryze.jpg',
+    iconType: 'image',
+    color: '#f97316',
+    path: '/simulator/ryze',
+    status: 'active',
+  },
   // 새 시뮬레이터 추가 예시:
   // {
   //   id: 'new-simulator',
