@@ -91,3 +91,40 @@ export interface ValidationResult {
   valid: boolean;
   error?: string;
 }
+
+// ============================================
+// 라이즈 시뮬레이터 타입
+// ============================================
+
+/** 라이즈 시뮬레이터 입력 */
+export interface RyzeSimulatorInput {
+  regionSymbols: string[];        // 보유 지역 상징 (최대 4개, 중복 허용)
+  ownedChampions: string[];       // 보유 챔피언 (최대 8명, 결과에 무조건 포함)
+  excludedRegions: string[];      // 제외할 지역
+  excludedChampions: string[];    // 제외할 챔피언
+}
+
+/** 활성화된 지역 정보 */
+export interface ActiveRegion {
+  name: string;           // 지역 이름
+  count: number;          // 해당 지역 챔피언 + 상징 수
+  threshold: number;      // 활성화 임계값
+  isActive: boolean;      // 활성화 여부
+}
+
+/** 라이즈 시뮬레이터 결과 */
+export interface RyzeSimulatorResult {
+  champions: Champion[];          // 덱 구성 (8명, 라이즈 제외)
+  activeRegions: ActiveRegion[];  // 활성화된 지역 목록
+  regionCount: number;            // 활성화 지역 수
+  totalCost: number;              // 총 코스트
+  championCount: number;          // 챔피언 수
+  unlockRequired: string[];       // 해금 필요 챔피언 목록
+  ownedChampionNames: string[];   // 보유 챔피언 이름 (구분 표시용)
+}
+
+/** 라이즈 시뮬레이터 입력 검증 결과 */
+export interface RyzeValidationResult {
+  valid: boolean;
+  error?: string;
+}

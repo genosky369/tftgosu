@@ -20,6 +20,7 @@ const config: Config = {
           worldrune: "#4ecdc4",
           pink: "#e94560",
           blue: "#0f3460",
+          ryze: "#f97316", // 라이즈 시뮬레이터용 오렌지
         },
         text: {
           DEFAULT: "#eaeaea",
